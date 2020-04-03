@@ -1,0 +1,6 @@
+[book]
+authors = ["Lubos Dolezel"]
+language = "en"
+multilingual = false
+src = "src"
+title = "Darling"
