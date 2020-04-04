@@ -211,7 +211,7 @@ to contain:
 The only way for a task to get a port right for a port is to either create that
 port, or have some other task (or the kernel) send it the right. In this way,
 Mach ports are *capabilities* (as in [capability-based
-security](https///en.wikipedia.org/wiki/Capability-based_security)).
+security](https://en.wikipedia.org/wiki/Capability-based_security)).
 
 Among other things, that means that for Mach programs (including the kernel
 itself) which allow other tasks to ask it to perform operations by sending
@@ -235,10 +235,10 @@ inherited:
   held by the kernel. This port allows to manipulate the task it refers to,
   including reading and writing its virtual memory, creating and otherwise
   manipulating its threads, and terminating (killing) the task (see
-  [task.defs](https///github.com/darlinghq/darling/blob/master/platform-include/mach/task.defs),
-  [mach_vm.defs](https///github.com/darlinghq/darling/blob/master/platform-include/mach/mach_vm.defs)
+  [task.defs](https://github.com/darlinghq/darling/blob/master/platform-include/mach/task.defs),
+  [mach_vm.defs](https://github.com/darlinghq/darling/blob/master/platform-include/mach/mach_vm.defs)
   and
-  [vm_map.defs](https///github.com/darlinghq/darling/blob/master/platform-include/mach/vm_map.defs)).
+  [vm_map.defs](https://github.com/darlinghq/darling/blob/master/platform-include/mach/vm_map.defs)).
   Call `mach_task_self()` to get the name for this port for the caller task.
   This port is only inherited across `exec()`; a new task created with `fork()`
   gets a new task port (as a special case, a task also gets a new task port
@@ -246,18 +246,18 @@ inherited:
   allows creating new tasks returns the task port of the new task to the caller;
   but it's unavailable (always returns `KERN_FAILURE`) on Darwin, so the only
   way to spawn a task and get its port is to perform the ["port swap
-  dance"](https///robert.sesek.com/2014/1/changes_to_xnu_mach_ipc.html) while
+  dance"](https://robert.sesek.com/2014/1/changes_to_xnu_mach_ipc.html) while
   doing a `fork()`.
 
 * **Host port**, a send right to another port whose receive right is held by the
   kernel. The host port allows getting information about the kernel and the host
   machine, such as the OS (kernel) version, number of processors and memory
   usage statistics (see
-  [mach_host.defs](https///github.com/darlinghq/darling/blob/master/platform-include/mach/mach_host.defs)).
+  [mach_host.defs](https://github.com/darlinghq/darling/blob/master/platform-include/mach/mach_host.defs)).
   Get it using `mach_host_self()`. There also exists a "privileged host control
   port" (`host_priv_t`) that allows privileged tasks (aka processes running as
   root) to *control* the host (see
-  [host_priv.defs](https///github.com/darlinghq/darling/blob/master/platform-include/mach/host_priv.defs)).
+  [host_priv.defs](https://github.com/darlinghq/darling/blob/master/platform-include/mach/host_priv.defs)).
   The official way to get it is by calling `host_get_host_priv_port()` passing
   the "regular" host port; in reality it returns either the same port name (if
   the task is privileged) or `MACH_PORT_NULL` (if it's not).
@@ -310,7 +310,7 @@ There also are two special sets of ports that tasks inherit:
   Under Darling, the Linux kernel delivers these kinds of events as Unix signals
   to the process that they happen in, then the process converts the received
   signals to Mach exceptions and sends them to the correct exception port (see
-  [sigexc.c](https///github.com/darlinghq/darling/blob/master/src/kernel/emulation/linux/signal/sigexc.c)).
+  [sigexc.c](https://github.com/darlinghq/darling/blob/master/src/kernel/emulation/linux/signal/sigexc.c)).
 
 As a Darwin extension, there are `pid_for_task()`, `task_for_pid()`, and
 `task_name_for_pid()` syscalls that allow converting between Mach task ports and
@@ -661,7 +661,7 @@ doesn't try to hide the possibility of connection errors, and only allows
 passing whitelisted types (to prevent certain kinds of attacks).
 
 Apple's XPC is not open source. On Darling, the low-level XPC implementation
-([libxpc](https///github.com/darlinghq/darling-libxpc)) is based on NextBSD
+([libxpc](https://github.com/darlinghq/darling-libxpc)) is based on NextBSD
 libxpc. The high-level Cocoa APIs are not yet implemented.
 
 ## Useful resources
@@ -669,19 +669,19 @@ libxpc. The high-level Cocoa APIs are not yet implemented.
 Note that Apple's version of Mach as used in XNU/Darwin is subtly different than
 both OSF Mach and GNU Mach.
 
-* [Inter Process Communication - The GNU Mach Reference Manual](https///www.gnu.org/software/hurd/gnumach-doc/Inter-Process-Communication.html)
+* [Inter Process Communication - The GNU Mach Reference Manual](https://www.gnu.org/software/hurd/gnumach-doc/Inter-Process-Communication.html)
 * [Mach Kernel Interface Reference Manual](http://web.mit.edu/darwin/src/modules/xnu/osfmk/man/)
-* [Changes to XNU Mach IPC](https///robert.sesek.com/2014/1/changes_to_xnu_mach_ipc.html)
-* [Debugging Mach Ports](https///robert.sesek.com/2012/1/debugging_mach_ports.html)
+* [Changes to XNU Mach IPC](https://robert.sesek.com/2014/1/changes_to_xnu_mach_ipc.html)
+* [Debugging Mach Ports](https://robert.sesek.com/2012/1/debugging_mach_ports.html)
 * [Some Fun with Mach Ports](http://www.foldr.org/~michaelw/log/computers/macosx/task-info-fun-with-mach)
 * [Reaching the MACH layer](http://blog.wuntee.sexy/reaching-the-mach-layer)
 * [Interprocess communication on iOS with Mach messages](http://ddeville.me/2015/02/interprocess-communication-on-ios-with-mach-messages)
 * [Mach Message and Bootstrap Server on OS X](http://przhu.github.io/using%20mac/2012/08/25/mach-message-and-bootstrap-server-on-os-x/)
-* [Friday Q&A 2013-01-11: Mach Exception Handlers](https///www.mikeash.com/pyblog/friday-qa-2013-01-11-mach-exception-handlers.html)
+* [Friday Q&A 2013-01-11: Mach Exception Handlers](https://www.mikeash.com/pyblog/friday-qa-2013-01-11-mach-exception-handlers.html)
 * [Mach 3 Server Writer's Guide](http://shakthimaan.com/downloads/hurd/server_writer.pdf)
-* [Revisiting Apple IPC: (1) Distributed Objects](https///googleprojectzero.blogspot.com/2015/09/revisiting-apple-ipc-1-distributed_28.html)
-* [About Distributed Objects](https///developer.apple.com/library/archive/documentation/Cocoa/Conceptual/DistrObjects/Concepts/AboutDistributedObjects.html)
+* [Revisiting Apple IPC: (1) Distributed Objects](https://googleprojectzero.blogspot.com/2015/09/revisiting-apple-ipc-1-distributed_28.html)
+* [About Distributed Objects](https://developer.apple.com/library/archive/documentation/Cocoa/Conceptual/DistrObjects/Concepts/AboutDistributedObjects.html)
 * [GNUstep Distributed Objects](http://www.gnustep.it/nicola/Tutorials/DistributedObjects/)
 * [Objective-C GNUstep Base Programming Manual: 7. Distributed Objects](http://www.gnustep.org/resources/documentation/Developer/Base/ProgrammingManual/manual_7.html)
-* [Creating XPC Services](https///developer.apple.com/library/archive/documentation/MacOSX/Conceptual/BPSystemStartup/Chapters/CreatingXPCServices.html)
-* [Auditing and Exploiting Apple IPC](https///thecyberwire.com/events/docs/IanBeer_JSS_Slides.pdf)
+* [Creating XPC Services](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/BPSystemStartup/Chapters/CreatingXPCServices.html)
+* [Auditing and Exploiting Apple IPC](https://thecyberwire.com/events/docs/IanBeer_JSS_Slides.pdf)

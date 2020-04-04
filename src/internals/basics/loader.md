@@ -2,13 +2,13 @@
 
 Multiple loaders are involved in loading macOS applications on Linux. This is
 due to the fact that macOS applications use
-[Mach-O](https///en.wikipedia.org/wiki/Mach-O) as the file format of
+[Mach-O](https://en.wikipedia.org/wiki/Mach-O) as the file format of
 applications, dynamic libraries and so on, whereas Linux uses the
-[ELF](https///en.wikipedia.org/wiki/Executable_and_Linkable_Format) format.
+[ELF](https://en.wikipedia.org/wiki/Executable_and_Linkable_Format) format.
 
 ## mldr
 
-[mldr](https///github.com/darlinghq/darling/blob/master/src/startup/mldr.c) is
+[mldr](https://github.com/darlinghq/darling/blob/master/src/startup/mldr.c) is
 the first loader. It's an ordinary Linux executable written in C. Its main
 purpose is to map the Mach-O executable to be started into the memory, find out
 what dynamic linker is required to fully load it (''/usr/lib/dyld'' is used on

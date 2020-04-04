@@ -51,7 +51,7 @@ Linux 4.9 or higher is required.
 
 * Fedora and CentOS:
 
-  [RPMFusion](https///rpmfusion.org/RPM%20Fusion) is required for FFmpeg.
+  [RPMFusion](https://rpmfusion.org/RPM%20Fusion) is required for FFmpeg.
 
   ```
   $ sudo dnf install make cmake clang bison flex python2 glibc-devel.i686 fuse-devel systemd-devel kernel-devel elfutils-libelf-devel cairo-devel freetype-devel.{x86_64,i686} libjpeg-turbo-devel.{x86_64,i686} libtiff-devel.{x86_64,i686} fontconfig-devel.{x86_64,i686} libglvnd-devel.{x86_64,i686} mesa-libGL-devel.{x86_64,i686} mesa-libEGL-devel.{x86_64,i686} libxml2-devel libbsd-devel git libXcursor-devel giflib-devel ffmpeg-devel pulseaudio-libs-devel
