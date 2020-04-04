@@ -1,6 +1,7 @@
 # Darling
 
-- [Using Darling](README.md)
+- [Introduction](README.md)
+- [Using Darling](using-darling.md)
   - [Build instructions](build-instructions.md)
   - [Uninstall](uninstall.md)
   - [Darling shell](darling-shell.md)
