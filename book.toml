@@ -1,6 +1,6 @@
 [book]
-authors = ["Lubos Dolezel"]
+authors = ["Lubos Dolezel", "Sergey Bugaev"]
 language = "en"
 multilingual = false
 src = "src"
-title = "Darling"
+title = "Darling Docs"
