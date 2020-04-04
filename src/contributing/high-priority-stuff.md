@@ -6,12 +6,12 @@ areas where work is most needed.
 ## Work to be done
 
 
-* Reimplement [CoreCrypto](https///github.com/darlinghq/darling-corecrypto).
+* Reimplement [CoreCrypto](https://github.com/darlinghq/darling-corecrypto).
 
   CoreCrypto's source code is publicly available, but its license prevents us
   from using it for Darling. Luckily, it's not that difficult! Some work has
   already been done. Having CoreCrypto will also enable us to build a recent
-  version of [CommonCrypto](https///github.com/darlinghq/darling-commoncrypto).
+  version of [CommonCrypto](https://github.com/darlinghq/darling-commoncrypto).
 
 * AppKit.framework
 

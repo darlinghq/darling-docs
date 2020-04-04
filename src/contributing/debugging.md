@@ -1,7 +1,7 @@
 # Debugging
 
 We provide a [build of
-LLDB](https///osdn.net/projects/darling/storage/apps/lldb.tar.bz2) that is known
+LLDB](https://osdn.net/projects/darling/storage/apps/lldb.tar.bz2) that is known
 to work under Darling. It is built from vanilla sources, i.e. without any
 modifications.
 
@@ -49,7 +49,7 @@ Please note that environment variables may be missing by default, if used like t
 Debugging support in Darling makes use of what we call "cooperative debugging".
 It means the code in the debuggee is aware it's being debugged and actively
 assists the process. In Darling, this role is taken on mainly by
-[sigexc.c](https///github.com/darlinghq/darling/blob/master/src/kernel/emulation/linux/signal/sigexc.c)
+[sigexc.c](https://github.com/darlinghq/darling/blob/master/src/kernel/emulation/linux/signal/sigexc.c)
 in `libsystem_kernel.dylib`, so no application modifications are necessary.
 
 MacOS debuggers use a combination of BSD-like and Mach APIs to control and
@@ -94,7 +94,7 @@ catch buffer overruns), or with `MALLOC_PROTECT_BEFORE`, before it (to catch
 buffer underruns). You're likely want to try it both ways, with and without
 `MALLOC_PROTECT_BEFORE`. Another useful option is `MALLOC_FILL_SPACE` (similar
 to `MallocPreScribble` from above). See
-[libgmalloc(3)](https///www.manpagez.com/man/3/libgmalloc/) for more details.
+[libgmalloc(3)](https://www.manpagez.com/man/3/libgmalloc/) for more details.
 
 ### Objective-C and Cocoa
 

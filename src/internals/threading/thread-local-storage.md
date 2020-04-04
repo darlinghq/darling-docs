@@ -13,7 +13,7 @@ libpthread (otherwise `pthread_self()` would not work) and also in libc itself
 (`errno` is typically a per-thread value to avoid races).
 
 On 32/64-bit x86, old [segment
-registers](https///en.wikipedia.org/wiki/X86_memory_segmentation) from the
+registers](https://en.wikipedia.org/wiki/X86_memory_segmentation) from the
 16-bit times have found new use thanks to TLS.
 
 ## TLS setup
@@ -21,7 +21,7 @@ registers](https///en.wikipedia.org/wiki/X86_memory_segmentation) from the
 1. When a new thread is being set up, a block of memory is allocated by
    libpthread. This block of memory is usually what `pthread_self()` returns.
 2. libpthread asks the kernel to set up a new
-   [GDT](https///en.wikibooks.org/wiki/X86_Assembly/Global_Descriptor_Table)
+   [GDT](https://en.wikibooks.org/wiki/X86_Assembly/Global_Descriptor_Table)
    entry that refers to this memory block.
 3. The entry number is then set into the respective segment register.
 

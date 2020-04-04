@@ -7,7 +7,7 @@ under Darling therefore use the same exact threading library as on macOS.
 
 Apple's libpthread manages threads through a collection of `bsdthread*` system
 calls, which are [implemented by
-Darling](https///github.com/darlinghq/darling/tree/master/src/kernel/emulation/linux/bsdthread).
+Darling](https://github.com/darlinghq/darling/tree/master/src/kernel/emulation/linux/bsdthread).
 This way Apple's libpthread could operate absolutely independently on Linux.
 
 However, there is a huge catch. Darling could set up threads on its own and
@@ -21,7 +21,7 @@ thread-local storage access as well.
 
 In Darling, `bsdthread*` system calls call back into the
 [loader](../basics/loader.md), which
-[uses](https///github.com/darlinghq/darling/blob/master/src/startup/threads.c)
+[uses](https://github.com/darlinghq/darling/blob/master/src/startup/threads.c)
 native libpthread to start a thread. Once native libpthread sets up the thread,
 the control is handed over to Apple's libpthread.
 

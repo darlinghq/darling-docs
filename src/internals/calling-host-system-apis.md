@@ -38,7 +38,7 @@ are also passed to all initializers marked with `__attribute__((constructor))`.
 
 The `apple` parameter is ideal for passing additional information without
 interfering with the environment undesirably. `mldr`
-[declares](https///github.com/darlinghq/darling/blob/master/src/startup/elfcalls.h)
+[declares](https://github.com/darlinghq/darling/blob/master/src/startup/elfcalls.h)
 `struct elf_calls` with a set of function pointers, instantiates it and fills it
 out. An address of this structure is then added as a string formatted as
 `elf_calls=%p` into `apple`.

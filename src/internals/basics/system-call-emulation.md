@@ -51,7 +51,7 @@ kernels is out of question as well.
 
 * Inability to run software making direct system calls. This includes Go
   applications and some UPX packed executables. Note that [Apple provides no
-  support](https///developer.apple.com/library/content/qa/qa1118/_index.html)
+  support](https://developer.apple.com/library/content/qa/qa1118/_index.html)
   for making direct system calls (which is effectively very similar to
   distributing statically linked executables described in the article) and
   frequently changes the system call table, hence such software is bound to

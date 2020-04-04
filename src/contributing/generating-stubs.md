@@ -73,7 +73,7 @@ Run a build and make sure your new code compiles. After that completes, you are
 ready to submit a pull request.
 
 See [Contributing](README.md) for how to submit a pull request. [This
-commit](https///github.com/darlinghq/darling/commit/92233d4e5ca613658345910d1acf4b3b7620a4f6)
+commit](https://github.com/darlinghq/darling/commit/92233d4e5ca613658345910d1acf4b3b7620a4f6)
 is an example of a stub for a framework that was added to Darling using the
 process described in this article. Most notable is what it does to
 `src/CMakeLists.txt`.

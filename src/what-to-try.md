@@ -239,7 +239,7 @@ Darling [~]$ curl http://example.og
 ## Try using sudo
 
 Just like [the real Mac OS X
-may](https///www.macrumors.com/2017/11/28/macos-high-sierra-bug-admin-access/),
+may](https://www.macrumors.com/2017/11/28/macos-high-sierra-bug-admin-access/),
 Darling allows you to get root priveleges without having to enter any password,
 except in our case it's a feature:
 
@@ -323,7 +323,7 @@ Darling [~]$ man defaults
 
 ## Run neofetch
 
-Get the `neofetch.sh` script from [its homepage](https///github.com/dylanaraps/neofetch ) and run it:
+Get the `neofetch.sh` script from [its homepage](https://github.com/dylanaraps/neofetch ) and run it:
 
 ```
 Darling [~]$ bash neofetch.sh

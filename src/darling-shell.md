@@ -47,9 +47,9 @@ Linux
 Should you encounter an application that bails out because you are not root
 (typically because it needs write access outside your home directory), you can
 use the fake `sudo` command. It is fake, because it only makes
-[`getuid()`](https///developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man2/getuid.2.html)
+[`getuid()`](https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man2/getuid.2.html)
 and
-[`geteuid()`](https///developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man2/geteuid.2.html)
+[`geteuid()`](https://developer.apple.com/library/mac/documentation/Darwin/Reference/ManPages/man2/geteuid.2.html)
 system calls return 0, but grants you no extra privileges.
 
 ## Examples

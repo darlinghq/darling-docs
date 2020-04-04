@@ -4,7 +4,7 @@ There are multiple ways to install software on macOS, and our aim is to make all
 
 ## You might not even need to install it
 
-[Unlike Wine](https///wiki.winehq.org/FAQ#I_have_lots_of_applications_already_installed_in_Windows._How_do_I_run_them_in_Wine.3F), Darling can run software that's installed on an **existing macOS installation** on the same computer. This is possible thanks to the way application bundles (`.app`-s) work on macOS and Darling.
+[Unlike Wine](https://wiki.winehq.org/FAQ#I_have_lots_of_applications_already_installed_in_Windows._How_do_I_run_them_in_Wine.3F), Darling can run software that's installed on an **existing macOS installation** on the same computer. This is possible thanks to the way application bundles (`.app`-s) work on macOS and Darling.
 
 To use an app that's already installed, you just need to locate the existing installation (e.g. `/Volumes/SystemRoot/run/media/username/Macintosh HD/Applications/SomeApp.app`) and run the app from there.
 
@@ -42,7 +42,7 @@ Unlike macOS, Darling also has the `uninstaller` command, which lets you easily 
 
 ## Package managers
 
-There are many third-party package managers for macOS, the most popular one being [Homebrew](https///brew.sh/). Ultimately, we want to make it possible to use all the existing package managers with Darling, however, some may not work well right now.
+There are many third-party package managers for macOS, the most popular one being [Homebrew](https://brew.sh/). Ultimately, we want to make it possible to use all the existing package managers with Darling, however, some may not work well right now.
 
 ## Command-line developer tools
 

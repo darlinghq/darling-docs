@@ -14,14 +14,14 @@ case of Darling, this functionality is supplemented by `mldr`.
   of certain primitives (e.g. OSAtomicFifoEnqueue). (Not available under
   Darling.)
 
-It is somewhat related to [vDSO](https///en.wikipedia.org/wiki/VDSO) on Linux,
+It is somewhat related to [vDSO](https://en.wikipedia.org/wiki/VDSO) on Linux,
 except that vDSO behaves like a real library, while commpage is just a chunk of
 data.
 
 The commpage is not documented anywhere, meaning it's not an API intended to be
 used by 3rd party software. It is however used in source code provided on
 [opensource.apple.com](http://opensource.apple.com). Darling
-[provides](https///github.com/darlinghq/darling/blob/master/src/startup/commpage.c)
+[provides](https://github.com/darlinghq/darling/blob/master/src/startup/commpage.c)
 a commpage for compatibility reasons.
 
 ## Location
