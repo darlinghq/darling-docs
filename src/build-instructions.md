@@ -34,7 +34,9 @@ Linux 4.9 or higher is required.
 
 
 * Arch Linux & Manjaro:
-
+  
+  `libavresample` needs to be downloaded from the AUR.
+  
   ```
   $ sudo pacman -S --needed make cmake clang flex bison icu fuse linux-headers gcc-multilib lib32-gcc-libs pkg-config fontconfig cairo libtiff python2 mesa llvm
   ```
