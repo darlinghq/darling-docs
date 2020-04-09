@@ -25,16 +25,5 @@ In Darling, `bsdthread*` system calls call back into the
 native libpthread to start a thread. Once native libpthread sets up the thread,
 the control is handed over to Apple's libpthread.
 
-This carries its own share of complications. Apple's libpthread needs control
-over the stack, hence we cannot use the stack provided and managed by native
-libpthread. Furthermore, someone needs to call `pthread_join` on the native
-Linux pthread object in order to free all associated resources.
-
-This is why there is a special "reaper" thread fired up once the macOS
-application starts using threads. Note that starting additional threads not
-directly initiated by the application - such as the reaper thread - is of no
-concern on Darling. The use of Grand Central Dispatch (libdispatch) involves
-possible creation of many unsolicited threads, so applications are not expected
-to treat additional threads as a sign of "cracking", like some Windows apps may
-do.
-
+Apple's libpthread needs control over the stack, so we cannot use the stack provided and managed by native
+libpthread. Therefore we quickly switch to a different stack once we get control from the native libpthread library.
