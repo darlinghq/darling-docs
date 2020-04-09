@@ -40,3 +40,7 @@ invoke actions in the cooperative debugging code.
 | Pausing the debuggee | `kill(SIGSTOP)` | `kill(SIGSTOP)` or `ptrace(PTRACE_INTERRUPT)` | Send a RT signal to the debuggee that it should act as if `SIGSTOP` were sent to the process. We cannot send a real `SIGSTOP`, because then the debuggee couldn't provide/update register state to the debugger etc. |
 | Change signal delivery | `ptrace(PT_THUPDATE)` | `ptrace(PTRACE_rest)` | Send a RT signal to the debuggee to inform it what it should do with the signal (ignore, pass it to the application etc.) |
 | Set memory watchpoints | `thread_set_state(X86_DEBUG_STATE)` | `ptrace(PTRACE_POKEUSER)` | Implement the effects of `PTRACE_POKEUSER` in the LKM. |
+
+## Resources
+
+* [Using ptrace on OS X](https://www.spaceflint.com/?p=150)
