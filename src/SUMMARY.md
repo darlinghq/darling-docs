@@ -19,6 +19,7 @@
     - [Thread local storage](internals/threading/thread-local-storage.md)
   - [MacOS specifics](internals/macos-specifics/README.md)
     - [Mach ports](internals/macos-specifics/mach-ports.md)
+    - [Mach exceptions](internals/macos-specifics/mach-exceptions.md)
     - [Commpage](internals/macos-specifics/commpage.md)
     - [Distributed Objects](internals/macos-specifics/distributed-objects.md)
 - [Contributing](contributing/README.md)
