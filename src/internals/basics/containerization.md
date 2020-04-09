@@ -17,17 +17,13 @@ which performs several tasks:
   is installed e.g. in `/usr/local/libexec/darling`) with the prefix's path.
   This means the prefix gets updated prefix contents for free (unlike in Wine),
   but the user can still manipulate prefix contents.
-* Use `pivot_root()` to change the root directory. The original root is
-  accessible via `/Volumes/SystemRoot` (from inside the container).
-* Set up a new PID namespace. A virtual "init" process is started, which reaps
-  zombie processes. The init process is also used for joining the namespace. (In
-  future, launchd should be used here.)
+* Activate "vchroot". That is how we call our virtual chroot implementation, which still allows applications to escape into the outside system via a special directory (`/Volumes/SystemRoot`).
+* Set up a new PID namespace. [launchd](https://en.wikipedia.org/wiki/Launchd) is then started as the init process for the container.
 
 More namespaces (e.g. UID or network) will be considered in future.
 
 ## Caveats
 
 * When you make changes to Darling's installation directory (e.g.
-  `/usr/local/libexec/darling`), you must stop running containers (via `darling
-  shutdown`) so that the changes take effect.
+  `/usr/local/libexec/darling`), you must stop running containers (via `darling shutdown`) so that the changes take effect. This is a limitaton of overlayfs.
 
