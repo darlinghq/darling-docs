@@ -49,8 +49,7 @@ kernels is out of question as well.
   legality of such endeavor), at least the files mentioned above need to be
   different.
 
-* Inability to run software making direct system calls. This includes Go
-  applications and some UPX packed executables. Note that [Apple provides no
+* Inability to run software making direct system calls. This includes some old UPX-packed executables. In the past, software written in Go also belonged in this group, but this is no longer the case. Note that [Apple provides no
   support](https://developer.apple.com/library/content/qa/qa1118/_index.html)
   for making direct system calls (which is effectively very similar to
   distributing statically linked executables described in the article) and
