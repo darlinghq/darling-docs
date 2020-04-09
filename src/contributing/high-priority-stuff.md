@@ -28,7 +28,7 @@ areas where work is most needed.
 * CoreAudio.framework
   * Implement AudioFormat and ExtAudioConverter APIs.
   * Implement AUGraph and AudioQueue utility APIs.
-  * Implement various Audio Units provided by default on macOS. This includes units providing audio mixing or effects.
+  * Implement various Audio Units existing by default on macOS. This includes units providing audio mixing or effects.
 
 * CoreServices.framework
   * Implement LaunchServices APIs for applications and file type mappings, backed by a database.
