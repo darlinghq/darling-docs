@@ -26,9 +26,9 @@ areas where work is most needed.
   * Implement `NSXPC*` classes that wrap libxpc.
 
 * CoreAudio.framework
-  * Implement CoreAudio.framework as the core place for platform audio abstraction (PulseAudio, ALSA, ...).
-  * Modify existing AudioUnit code to use CoreAudio instead of accessing PA/ALSA directly.
+  * Implement AudioFormat and ExtAudioConverter APIs.
   * Implement AUGraph and AudioQueue utility APIs.
+  * Implement various Audio Units provided by default on macOS. This includes units providing audio mixing or effects.
 
 * CoreServices.framework
   * Implement LaunchServices APIs for applications and file type mappings, backed by a database.
