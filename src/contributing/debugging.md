@@ -1,7 +1,7 @@
 # Debugging
 
 We provide a [build of
-LLDB](https://osdn.net/projects/darling/storage/apps/lldb.tar.bz2) that is known
+LLDB](https://darling-misc.s3.eu-central-1.amazonaws.com/lldb.tar.bz2) that is known
 to work under Darling. It is built from vanilla sources, i.e. without any
 modifications.
 
