@@ -39,7 +39,7 @@ A machine-dependent ("machdep") system call `thread_fast_set_cthread_self()` is
 used to create a new segment. Darling translates this call to one of the above
 Linux system calls.
 
-## TLS ssage
+## TLS usage
 
 The concept of memory segments is very simple. You can imagine that the segment
 refers to a certain area of your process' virtual memory. Any memory accesses
