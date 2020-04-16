@@ -4,9 +4,9 @@
 
 ## Debian
 
-To package Darling for Debian-baded system we provide the ```tools/makedeb``` script.
+To package Darling for Debian-baded system we provide the `tools/makedeb` script.
 
-All output files are stored in ```..``` because of a technical limtation of ```debuild```.
+All output files are stored in `..` because of a technical limtation of `debuild`.
 
 ### Install Dependencies
 ```bash
@@ -17,7 +17,7 @@ $ sudp apt install devscripts equivs dpkg-dev debhelper
 
 #### Install Build Dependencies
 ```bash
-sudo mk-build-deps -ir
+$ sudo mk-build-deps -ir
 ```
 
 #### Build
