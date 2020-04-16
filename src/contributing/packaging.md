@@ -10,7 +10,7 @@ All output files are stored in ```..``` because of a technical limtation of ```d
 
 ### Install Dependencies
 ```bash
-$ sudp apt install devscripts equivs dpkg-dev
+$ sudp apt install devscripts equivs dpkg-dev debhelper
 ```
 
 ### Building Binary Packages
