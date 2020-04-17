@@ -38,7 +38,7 @@ Linux 4.9 or higher is required.
   `libavresample` needs to be downloaded from the AUR.
   
   ```
-  $ sudo pacman -S --needed make cmake clang flex bison icu fuse linux-headers gcc-multilib lib32-gcc-libs pkg-config fontconfig cairo libtiff python2 mesa llvm
+  $ sudo pacman -S --needed make cmake clang flex bison icu fuse linux-headers gcc-multilib lib32-gcc-libs pkg-config fontconfig cairo libtiff python2 mesa llvm libbsd
   ```
 
   Make sure you install the headers package that matches your kernel version. The kernel version can be checked with `uname -r`.
