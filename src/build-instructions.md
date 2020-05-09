@@ -71,8 +71,7 @@ If you have already cloned Darling and would like to get the latest changes, do 
 
 ```
 $ git pull
-$ git submodule init
-$ git submodule update
+$ git submodule update --init --recursive
 ```
 
 # Build
