@@ -162,11 +162,23 @@ Use the following commands to generate a key and self-sign the kernel module:
 openssl req -new -x509 -newkey rsa:2048 -keyout MOK.priv -outform DER -out MOK.der -nodes -days 36500 -subj "/CN=Darling LKM/"
 # Enroll Key
 sudo mokutil --import MOK.der
-# Sign Module
+```
+
+The signing tool is `scripts/sign-file.c` within the kernel source tree. See `Documentation/admin-guide/module-signing.rst` at https://www.kernel.org for usage.
+This tool is packaged differently for different Linux distributions:
+
+```
+# Fedora - Sign Module
+sudo /lib/modules/$(uname -r)/build/scripts/sign-file sha512 MOK.priv MOK.der /lib/modules/$(uname -r)/extra/darling-mach.ko
+
+# Ubuntu (not Debian) - Sign Module
 sudo kmodsign sha512 MOK.priv MOK.der /lib/modules/$(uname -r)/extra/darling-mach.ko
+
 # Reboot System and Enroll Key
 ```
 
+Debian / Raspbian does not provide this tool in binary form (Debian bug #939393, Sept 2019), nor SuSE. You may need to build it by `make scripts`
+in a kernel source tree.
 
 ### No rule to make target 'modules'
 
