@@ -179,3 +179,19 @@ make -C /lib/modules/5.4.2-1-MANJARO/build M=/home/xeab/Downloads/darling/src/lk
 make[5]: Entering directory '/usr/lib/modules/5.4.2-1-MANJARO/build'
 make[5]: *** No rule to make target 'modules'.  Stop.
 ```
+
+### File System Support
+
+Darling uses overlayfs for implementing prefixes on top of the macOS-like root filesystem. While overlayfs is not very picky about the lower (read-only) filesystem (where your `/usr` lives), it has stricter requirements for the upper filesystem (your home directory, unless you override the `DPREFIX` environment variable).
+
+To quote the [kernel documentation](https://www.kernel.org/doc/Documentation/filesystems/overlayfs.txt):
+
+> The lower filesystem can be any filesystem supported by Linux and does not need to be writable. The lower filesystem can even be another overlayfs. The upper filesystem will normally be writable and if it is it must support the creation of trusted.* extended attributes, and must provide valid d_type in readdir responses, so NFS is not suitable.
+
+In addition to NFS not being supported, ZFS is also known not to work.
+
+If you try to use an unsupported file system, this error will be printed:
+
+```
+Cannot mount overlay: Invalid argument
+```
