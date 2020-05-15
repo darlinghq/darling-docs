@@ -9,31 +9,44 @@ It is recommended that you use at least Clang 3.8. You can force a specific vers
 Linux 4.19 or higher is required.
 
 
-* Debian 10:
+**Debian 10**
 
   ```
-  $ sudo apt install cmake clang-6.0 bison flex xz-utils libfuse-dev libudev-dev pkg-config libc6-dev-i386 linux-headers-amd64 libcap2-bin git python2 libglu1-mesa-dev libcairo2-dev libgl1-mesa-dev libtiff5-dev libfreetype6-dev libxml2-dev libegl1-mesa-dev libfontconfig1-dev libbsd-dev libxrandr-dev libxcursor-dev libgif-dev libpulse-dev libavformat-dev libavcodec-dev libavresample-dev libdbus-1-dev libxkbfile-dev
+  $ sudo apt install cmake clang-6.0 bison flex xz-utils libfuse-dev libudev-dev pkg-config \
+  libc6-dev-i386 linux-headers-amd64 libcap2-bin git python2 libglu1-mesa-dev libcairo2-dev \
+  libgl1-mesa-dev libtiff5-dev libfreetype6-dev libxml2-dev libegl1-mesa-dev libfontconfig1-dev \
+  libbsd-dev libxrandr-dev libxcursor-dev libgif-dev libpulse-dev libavformat-dev libavcodec-dev \
+  libavresample-dev libdbus-1-dev libxkbfile-dev
   ````
 
-* Debian Testing:
+**Debian Testing**
 
   ```
-  $ sudo apt install cmake clang-9 bison flex xz-utils libfuse-dev libudev-dev pkg-config libc6-dev-i386 linux-headers-amd64 libcap2-bin git python2 libglu1-mesa-dev libcairo2-dev libgl1-mesa-dev libtiff5-dev libfreetype6-dev libxml2-dev libegl1-mesa-dev libfontconfig1-dev libbsd-dev libxrandr-dev libxcursor-dev libgif-dev libpulse-dev libavformat-dev libavcodec-dev libavresample-dev libdbus-1-dev libxkbfile-dev
+  $ sudo apt install cmake clang-9 bison flex xz-utils libfuse-dev libudev-dev pkg-config \
+  libc6-dev-i386 linux-headers-amd64 libcap2-bin git python2 libglu1-mesa-dev libcairo2-dev \
+  libgl1-mesa-dev libtiff5-dev libfreetype6-dev libxml2-dev libegl1-mesa-dev libfontconfig1-dev \
+  libbsd-dev libxrandr-dev libxcursor-dev libgif-dev libpulse-dev libavformat-dev libavcodec-dev \
+  libavresample-dev libdbus-1-dev libxkbfile-dev
   ```
 
-* Ubuntu 18.04/20.04:
+**Ubuntu 18.04/20.04:**
 
   ```
-  $ sudo apt install cmake clang bison flex libfuse-dev libudev-dev pkg-config libc6-dev-i386 linux-headers-generic gcc-multilib libcairo2-dev libgl1-mesa-dev libglu1-mesa-dev libtiff5-dev libfreetype6-dev git libelf-dev libxml2-dev libegl1-mesa-dev libfontconfig1-dev libbsd-dev libxrandr-dev libxcursor-dev libgif-dev libavutil-dev libpulse-dev libavformat-dev libavcodec-dev libavresample-dev libdbus-1-dev libxkbfile-dev
+  $ sudo apt install cmake clang bison flex libfuse-dev libudev-dev pkg-config libc6-dev-i386 \
+  linux-headers-generic gcc-multilib libcairo2-dev libgl1-mesa-dev libglu1-mesa-dev libtiff5-dev \
+  libfreetype6-dev git libelf-dev libxml2-dev libegl1-mesa-dev libfontconfig1-dev libbsd-dev \
+  libxrandr-dev libxcursor-dev libgif-dev libavutil-dev libpulse-dev libavformat-dev libavcodec-dev \
+  libavresample-dev libdbus-1-dev libxkbfile-dev
   ```
 For Ubuntu 20.04, also install `python2`.
 
-* Arch Linux & Manjaro:
+**Arch Linux & Manjaro:**
   
   `libavresample` needs to be downloaded from the AUR.
   
   ```
-  $ sudo pacman -S --needed make cmake clang flex bison icu fuse linux-headers gcc-multilib lib32-gcc-libs pkg-config fontconfig cairo libtiff python2 mesa llvm libbsd
+  $ sudo pacman -S --needed make cmake clang flex bison icu fuse linux-headers gcc-multilib \
+  lib32-gcc-libs pkg-config fontconfig cairo libtiff python2 mesa llvm libbsd
   ```
 
   Make sure you install the headers package that matches your kernel version. The kernel version can be checked with `uname -r`.
@@ -46,12 +59,17 @@ For Ubuntu 20.04, also install `python2`.
 
   Then you should have `linux54-headers` installed. You will typically be prompted but may have to install this manually.
 
-* Fedora and CentOS:
+**Fedora and CentOS**
 
   [RPMFusion](https://rpmfusion.org/RPM%20Fusion) is required for FFmpeg.
 
   ```
-  $ sudo dnf install make cmake clang bison dbus-devel flex python2 glibc-devel.i686 fuse-devel systemd-devel kernel-devel elfutils-libelf-devel cairo-devel freetype-devel.{x86_64,i686} libjpeg-turbo-devel.{x86_64,i686} libtiff-devel.{x86_64,i686} fontconfig-devel.{x86_64,i686} libglvnd-devel.{x86_64,i686} mesa-libGL-devel.{x86_64,i686} mesa-libEGL-devel.{x86_64,i686} libxml2-devel libbsd-devel git libXcursor-devel libXrandr-devel giflib-devel ffmpeg-devel pulseaudio-libs-devel libxkbfile-devel
+  $ sudo dnf install make cmake clang bison dbus-devel flex python2 glibc-devel.i686 fuse-devel \
+  systemd-devel kernel-devel elfutils-libelf-devel cairo-devel freetype-devel.{x86_64,i686} \
+  libjpeg-turbo-devel.{x86_64,i686} libtiff-devel.{x86_64,i686} fontconfig-devel.{x86_64,i686} \
+  libglvnd-devel.{x86_64,i686} mesa-libGL-devel.{x86_64,i686} mesa-libEGL-devel.{x86_64,i686} \
+  libxml2-devel libbsd-devel git libXcursor-devel libXrandr-devel giflib-devel ffmpeg-devel \
+  pulseaudio-libs-devel libxkbfile-devel
   ```
 
 
