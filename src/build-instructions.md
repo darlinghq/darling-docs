@@ -24,9 +24,9 @@ Linux 4.19 or higher is required.
 * Ubuntu 18.04/20.04:
 
   ```
-  $ sudo apt install cmake clang bison flex libfuse-dev libudev-dev pkg-config libc6-dev-i386 linux-headers-generic gcc-multilib libcairo2-dev libgl1-mesa-dev libglu1-mesa-dev libtiff5-dev libfreetype6-dev git python2 libelf-dev libxml2-dev libegl1-mesa-dev libfontconfig1-dev libbsd-dev libxrandr-dev libxcursor-dev libgif-dev libavutil-dev libpulse-dev libavformat-dev libavcodec-dev libavresample-dev libdbus-1-dev libxkbfile-dev
+  $ sudo apt install cmake clang bison flex libfuse-dev libudev-dev pkg-config libc6-dev-i386 linux-headers-generic gcc-multilib libcairo2-dev libgl1-mesa-dev libglu1-mesa-dev libtiff5-dev libfreetype6-dev git libelf-dev libxml2-dev libegl1-mesa-dev libfontconfig1-dev libbsd-dev libxrandr-dev libxcursor-dev libgif-dev libavutil-dev libpulse-dev libavformat-dev libavcodec-dev libavresample-dev libdbus-1-dev libxkbfile-dev
   ```
-
+For Ubuntu 20.04, also install `python2`.
 
 * Arch Linux & Manjaro:
   
