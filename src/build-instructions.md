@@ -46,7 +46,8 @@ For Ubuntu 20.04, also install `python2`.
   
   ```
   $ sudo pacman -S --needed make cmake clang flex bison icu fuse linux-headers gcc-multilib \
-  lib32-gcc-libs pkg-config fontconfig cairo libtiff python2 mesa llvm libbsd
+  lib32-gcc-libs pkg-config fontconfig cairo libtiff python2 mesa llvm libbsd libxkbfile \ 
+  libxcursor libxext libxkbcommon libxrandr
   ```
 
   Make sure you install the headers package that matches your kernel version. The kernel version can be checked with `uname -r`.
