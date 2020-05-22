@@ -71,8 +71,7 @@ $ git clone --recursive https://github.com/darlinghq/darling.git
 If you have already cloned Darling and would like to get the latest changes, do this in the source root:
 
 ```
-$ git pull
-$ git submodule update --init --recursive
+$ git pull --recurse-submodules
 ```
 
 # Build
