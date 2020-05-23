@@ -170,9 +170,11 @@ This tool is packaged differently for different Linux distributions:
 ```
 # Fedora - Sign Module
 sudo /lib/modules/$(uname -r)/build/scripts/sign-file sha512 MOK.priv MOK.der /lib/modules/$(uname -r)/extra/darling-mach.ko
+sudo /lib/modules/$(uname -r)/build/scripts/sign-file sha512 MOK.priv MOK.der /lib/modules/$(uname -r)/extra/darling-overlay.ko
 
 # Ubuntu (not Debian) - Sign Module
 sudo kmodsign sha512 MOK.priv MOK.der /lib/modules/$(uname -r)/extra/darling-mach.ko
+sudo kmodsign sha512 MOK.priv MOK.der /lib/modules/$(uname -r)/extra/darling-overlay.ko
 
 # Reboot System and Enroll Key
 ```
