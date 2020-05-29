@@ -6,6 +6,9 @@ The container uses overlayfs along with a user mount namespace to provide a diff
 
 When you run an executable inside the prefix for the first time (after boot), `launchd`, the Darwin init process representing the container is started. This init process keeps the root file system mounted.
 
+Note: Do not put an ending `/` in the variable - Darling uses `${DPREFIX}.workdir` directly as overlayfs's working directory,
+and `someplace/.workdir` breaks it. Also, do not create it beforehand (unlike WINE) - if the directory exists and empty, it confuses darling.
+
 ## Updating the prefix
 
 Unlike Wine, Darling doesn't need to update the prefix whenever the Darling installation is updated. There is one caveat, though: since overlayfs caches the contents of underlying file system(s), you may need to terminate the container to see Darling's updated files:
