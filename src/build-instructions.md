@@ -144,7 +144,8 @@ Cannot open mnt namespace file: No such file or directory
 ```
 
 To work around this try this command: `setsebool -P mmap_low_allowed 1`.
-( `-P` means persistent - Don't use this option if you prefer to auto-revert this change after reboot.)
+( `-P` means persistent - Don't use this option if you prefer to auto-revert this change after reboot.
+See `man 8 kernel_selinux` of selinux policy documentation for details. )
 
 ### Secure Boot
 
