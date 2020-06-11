@@ -143,6 +143,14 @@ Another way to speed up the build is to run `make` with multiple jobs. For this,
 
 If you run LLDB and encounter messages indicating a lack of debug symbols, make sure you are doing a debug build. To do this, use the `-DCMAKE_BUILD_TYPE=Debug`.
 
+### Custom Installation Prefix
+To install Darling in a custom directory use the ``CMAKE_INSTALL_PREFIX`` CMake option. However, a Darling installataion is **NOT** portable, because the installataion prefix is hardcoded into the ``darling`` executable. This is intentional. If you do move your Darling installation you will get this error message:
+```
+Cannot mount overlay: No such file or directory
+Cannot open mnt namespace file: No such file or directory
+```
+If you wish to properly move your Darling installation, the only supported option is for you to uninstall your current Darling installation, and then rebuild Darling with a different installation prefix.
+
 ## Known Issues
 
 ### BackBox
