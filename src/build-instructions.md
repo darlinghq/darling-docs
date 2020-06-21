@@ -107,6 +107,12 @@ $ make lkm
 $ sudo make lkm_install
 ```
 
+The above builds against your currently running kernel. If you need to build against a different one from your running kernel, set `KERNELDIR`:
+
+```
+$ KERNELDIR=/lib/modules/5.6.19-300.fc32.x86_64/build/ make lkm
+```
+
 If module installation produces warnings such as `SSL error:02001002:system library:fopen:No such file or directory: bss_file.c:175`, then these can be usually ignored, unless you configured your system to enforce secure boot.
 
 The kernel module is an experimental piece of code; it's likely to have many bugs and vulnerabilities. Be prepared for kernel hangups and crashes, and run Darling on a virtual machine if possible.
