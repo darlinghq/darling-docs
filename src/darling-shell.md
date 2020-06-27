@@ -21,7 +21,7 @@ The filesystem layout inside the container is similar to that of macOS,
 including the top-level `/Applications`, `/Users` and `/System` directories. The
 original Linux filesystem is visible as a separate partition that's mounted on
 `/Volumes/SystemRoot`. When running macOS programs under Darling, you'll likely
-want them to access files in you home folder; to make this convenient, there's a
+want them to access files in your home folder; to make this convenient, there's a
 `LinuxHome` symlink in your Darling home folder that points to your Linux home
 folder, as seen from inside the container; additionally, standard directories
 such as `Downloads` in your Darling home folder are symlinked to the
