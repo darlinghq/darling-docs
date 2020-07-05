@@ -44,6 +44,29 @@ Connected: no
 
 Please note that environment variables may be missing by default, if used like this.
 
+## Debug with core dump
+
+If you are unable to start your application through lldb, you can generate a core dump and load it through lldb. You will need to enable some options on the Linux side before you are able to generate a core dump. You will to tell Linux that you want to generate a core dump, and that there is no size limit for the core dump.
+
+```
+sudo sysctl -w kernel.core_pattern=core_dump
+ulimit -c unlimited
+```
+
+Note that the core dump will be stored into the current working directory that Linux (not Darling) is pointing to. So you should `cd` into the directory you want the core dump to be stored in before you execute `darling shell`. From there, you can execute the application.
+
+```
+cd /path/you/want/to/store/core/dump/in
+darling shell
+/path/to/application/executable
+```
+
+If everything was set up properly, you should find a file called `core_dump`. It will be located in the current working directory that Linux is pointing to. Once you found the file, you can load it up on lldb.
+
+```
+lldb --core /path/to/core/dump/file
+```
+
 ## Built-in debugging utilities
 
 ### malloc
