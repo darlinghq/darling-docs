@@ -9,6 +9,8 @@ When you run an executable inside the prefix for the first time (after boot), `l
 Note: Do not put an ending `/` in the variable - Darling uses `${DPREFIX}.workdir` directly as overlayfs's working directory,
 and `someplace/.workdir` breaks it. Also, do not create it beforehand (unlike WINE) - if the directory exists and empty, it confuses darling.
 
+Also, cannot set DPREFIX via `DPREFIX=prefix darling shell` (unlike wine) - you will see an error message about `Target executable not found: /sbin/launchd`.
+
 ## Updating the prefix
 
 Unlike Wine, Darling doesn't need to update the prefix whenever the Darling installation is updated. There is one caveat, though: since overlayfs caches the contents of underlying file system(s), you may need to terminate the container to see Darling's updated files:
