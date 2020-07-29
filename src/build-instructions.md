@@ -4,9 +4,9 @@ You must be running a 64-bit x86 Linux distribution. Darling cannot be used on a
 
 # Dependencies
 
-It is recommended that you use at least Clang 3.8. You can force a specific version of Clang (if it is installed on your system) by editing `Toolchain.cmake`.
+It is recommended that you use at least Clang 6. You can force a specific version of Clang (if it is installed on your system) by editing `Toolchain.cmake`.
 
-Linux 4.19 or higher is required.
+Linux 5.0 or higher is required.
 
 
 **Debian 10**
@@ -159,8 +159,8 @@ If you wish to properly move your Darling installation, the only supported optio
 If your distribution is Backbox and you run into build issues try the following commands:
 
 ```
-sudo update-alternatives --install /usr/bin/clang clang /usr/bin/clang-4.0 400
-sudo update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-4.0 400
+sudo update-alternatives --install /usr/bin/clang clang /usr/bin/clang-6.0 600
+sudo update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-6.0 600
 ```
 
 ### SELinux
