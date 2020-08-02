@@ -158,6 +158,8 @@ Another way to speed up the build is to run `make` with multiple jobs. For this,
 
 If you run LLDB and encounter messages indicating a lack of debug symbols, make sure you are doing a debug build. To do this, use the `-DCMAKE_BUILD_TYPE=Debug`.
 
+Darling tries to stick to a standard macOS installation as much as possible. However, if you would like to build and install some additional packages (such as GNU tar), you can add `-DADDITIONAL_PACKAGES=ON`.
+
 ### Custom Installation Prefix
 To install Darling in a custom directory use the ``CMAKE_INSTALL_PREFIX`` CMake option. However, a Darling installataion is **NOT** portable, because the installataion prefix is hardcoded into the ``darling`` executable. This is intentional. If you do move your Darling installation you will get this error message:
 ```
