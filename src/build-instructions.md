@@ -16,7 +16,7 @@ Linux 5.0 or higher is required.
   libc6-dev-i386 linux-headers-amd64 libcap2-bin git python2 libglu1-mesa-dev libcairo2-dev \
   libgl1-mesa-dev libtiff5-dev libfreetype6-dev libxml2-dev libegl1-mesa-dev libfontconfig1-dev \
   libbsd-dev libxrandr-dev libxcursor-dev libgif-dev libpulse-dev libavformat-dev libavcodec-dev \
-  libavresample-dev libdbus-1-dev libxkbfile-dev
+  libavresample-dev libdbus-1-dev libxkbfile-dev libssl-dev
   ````
 
 **Debian Testing**
@@ -26,7 +26,7 @@ Linux 5.0 or higher is required.
   libc6-dev-i386 linux-headers-amd64 libcap2-bin git python2 libglu1-mesa-dev libcairo2-dev \
   libgl1-mesa-dev libtiff5-dev libfreetype6-dev libxml2-dev libegl1-mesa-dev libfontconfig1-dev \
   libbsd-dev libxrandr-dev libxcursor-dev libgif-dev libpulse-dev libavformat-dev libavcodec-dev \
-  libavresample-dev libdbus-1-dev libxkbfile-dev
+  libavresample-dev libdbus-1-dev libxkbfile-dev libssl-dev
   ```
 
 **Ubuntu 18.04/20.04:**
