@@ -73,6 +73,9 @@ For Ubuntu 20.04, also install `python2`.
   pulseaudio-libs-devel libxkbfile-devel llvm
   ```
 
+**Setup Git-Lfs**
+
+  Darling makes use of git-lfs, set this up if needed with the instructions [here](https://github.com/git-lfs/git-lfs/wiki/Installation)
 
 # Fetch the Sources
 
