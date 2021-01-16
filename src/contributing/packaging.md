@@ -8,7 +8,7 @@ All output files are stored in `..` because of a technical limtation of `debuild
 
 ### Install Dependencies
 ```bash
-$ sudp apt install devscripts equivs dpkg-dev debhelper
+$ sudo apt install devscripts equivs dpkg-dev debhelper
 ```
 
 ### Building Binary Packages
