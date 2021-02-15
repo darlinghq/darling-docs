@@ -73,6 +73,17 @@ For Ubuntu 20.04, also install `python2`.
   ffmpeg-devel pulseaudio-libs-devel libxkbfile-devel openssl-devel llvm
   ```
 
+**OpenSUSE Tumbleweed**
+
+  You will need to build Darling with only the 64bit components. See **Build Options** for instructions. 
+
+  ```
+  $ sudo zypper install make cmake-full clang10 bison flex python-base glibc fuse-devel libsystemd0 \
+  kernel-source libelf1 cairo-devel libfreetype6 libjpeg-turbo libfontconfig1 libglvnd Mesa-libGL-devel \
+  Mesa-libEGL-devel libGLU1 libxml2-tools libbsd-devel git libXcursor-devel giflib-devel ffmpeg-4 \
+  ffmpeg-4-libavcodec-devel ffmpeg-4-libavformat-devel libpulse-devel pulseaudio-utils libxkbfile-devel \
+  openssl llvm libcap-progs libtiff-devel libjpeg8-devel libXrandr-devel dbus-1-devel glu-devel
+  ```
 
 # Fetch the Sources
 
@@ -138,6 +149,8 @@ You will notice that it takes a long time to build Darling. Darling contains the
 To do this, use the `-DFULL_BUILD=OFF` option when configuring Darling through CMake.
 
 You may encounter some things to be missing, such as JavaScriptCore. Before creating an issue about a certain library or framework missing from Darling, verify that you are doing a full build by not using this option or setting it to ''ON''.
+
+If you want to build just the 64bit components, use `-DTARGET_i386=off` to disable building the 32bit components.
 
 Another way to speed up the build is to run `make` with multiple jobs. For this, run `make -j8` instead, where 8 is a number of current jobs to run of your choosing. In general, avoid running more jobs than twice the amount CPU cores of your machine.
 
