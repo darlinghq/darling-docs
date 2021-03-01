@@ -4,7 +4,7 @@ You must be running a 64-bit x86 Linux distribution. Darling cannot be used on a
 
 # Dependencies
 
-It is recommended that you use at least Clang 6. You can force a specific version of Clang (if it is installed on your system) by editing `Toolchain.cmake`.
+Clang is required to compile Darling; at least Clang 9 is required. You can force a specific version of Clang (if it is installed on your system) by editing `Toolchain.cmake`.
 
 Linux 5.0 or higher is required.
 
