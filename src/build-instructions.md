@@ -84,8 +84,10 @@ For Ubuntu 20.04, also install `python2`.
   ffmpeg-4-libavcodec-devel ffmpeg-4-libavformat-devel libpulse-devel pulseaudio-utils libxkbfile-devel \
   openssl llvm libcap-progs libtiff-devel libjpeg8-devel libXrandr-devel dbus-1-devel glu-devel
   ```
-
+  
 # Fetch the Sources
+
+Darling uses git-lfs. Set this up if needed with [official instructions](https://github.com/git-lfs/git-lfs/wiki/Installation).
 
 Darling makes extensive use of Git submodules, therefore you cannot use a plain `git clone`. Make a clone like this:
 
