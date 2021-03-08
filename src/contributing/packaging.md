@@ -8,7 +8,7 @@ All output files are stored in `..` because of a technical limtation of `debuild
 
 ### Install Dependencies
 ```bash
-$ sudp apt install devscripts equivs dpkg-dev debhelper
+$ sudo apt install devscripts equivs dpkg-dev debhelper
 ```
 
 ### Building Binary Packages
@@ -20,14 +20,14 @@ $ sudo mk-build-deps -ir
 
 #### Build
 ```bash
-$ tools/makedeb
+$ tools/debian/make-deb
 ```
 
 ### Build Sources Packages
 Use this if you want to upload to a service like Launchpad.
 
 ```bash
-$ tools/makedeb --dsc
+$ tools/debian/make-deb --dsc
 ```
 
 ## RPM

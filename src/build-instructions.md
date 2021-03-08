@@ -4,36 +4,50 @@ You must be running a 64-bit x86 Linux distribution. Darling cannot be used on a
 
 # Dependencies
 
-It is recommended that you use at least Clang 3.8. You can force a specific version of Clang (if it is installed on your system) by editing `Toolchain.cmake`.
+Clang is required to compile Darling; at least Clang 9 is required. You can force a specific version of Clang (if it is installed on your system) by editing `Toolchain.cmake`.
 
-Linux 4.19 or higher is required.
+Linux 5.0 or higher is required.
 
 
-* Debian 10:
+**Debian 10**
 
   ```
-  $ sudo apt install cmake clang-6.0 bison flex xz-utils libfuse-dev libudev-dev pkg-config libc6-dev-i386 linux-headers-amd64 libcap2-bin git libcairo2-dev libgl1-mesa-dev libtiff5-dev libfreetype6-dev libxml2-dev libegl1-mesa-dev libfontconfig1-dev libbsd-dev libxrandr-dev libxcursor-dev libgif-dev libpulse-dev libavformat-dev libavcodec-dev libavresample-dev libdbus-1-dev libxkbfile-dev
+  $ sudo apt install cmake clang-6.0 bison flex xz-utils libfuse-dev libudev-dev pkg-config \
+  libc6-dev-i386 linux-headers-amd64 libcap2-bin git python2 libglu1-mesa-dev libcairo2-dev \
+  libgl1-mesa-dev libtiff5-dev libfreetype6-dev libxml2-dev libegl1-mesa-dev libfontconfig1-dev \
+  libbsd-dev libxrandr-dev libxcursor-dev libgif-dev libpulse-dev libavformat-dev libavcodec-dev \
+  libavresample-dev libdbus-1-dev libxkbfile-dev libssl-dev
   ````
 
-* Debian Testing:
+**Debian Testing**
 
   ```
-  $ sudo apt install cmake clang-9 bison flex xz-utils libfuse-dev libudev-dev pkg-config libc6-dev-i386 linux-headers-amd64 libcap2-bin git libcairo2-dev libgl1-mesa-dev libtiff5-dev libfreetype6-dev libxml2-dev libegl1-mesa-dev libfontconfig1-dev libbsd-dev libxrandr-dev libxcursor-dev libgif-dev libpulse-dev libavformat-dev libavcodec-dev libavresample-dev libdbus-1-dev libxkbfile-dev
+  $ sudo apt install cmake clang-9 bison flex xz-utils libfuse-dev libudev-dev pkg-config \
+  libc6-dev-i386 linux-headers-amd64 libcap2-bin git python2 libglu1-mesa-dev libcairo2-dev \
+  libgl1-mesa-dev libtiff5-dev libfreetype6-dev libxml2-dev libegl1-mesa-dev libfontconfig1-dev \
+  libbsd-dev libxrandr-dev libxcursor-dev libgif-dev libpulse-dev libavformat-dev libavcodec-dev \
+  libavresample-dev libdbus-1-dev libxkbfile-dev libssl-dev
   ```
 
-* Ubuntu 18.04/20.04:
+**Ubuntu 18.04/20.04:**
 
   ```
-  $ sudo apt install cmake clang bison flex libfuse-dev libudev-dev pkg-config libc6-dev-i386 linux-headers-generic gcc-multilib libcairo2-dev libgl1-mesa-dev libglu1-mesa-dev libtiff5-dev libfreetype6-dev git libelf-dev libxml2-dev libegl1-mesa-dev libfontconfig1-dev libbsd-dev libxrandr-dev libxcursor-dev libgif-dev libavutil-dev libpulse-dev libavformat-dev libavcodec-dev libavresample-dev libdbus-1-dev libxkbfile-dev
+  $ sudo apt install cmake clang bison flex libfuse-dev libudev-dev pkg-config libc6-dev-i386 \
+  linux-headers-generic gcc-multilib libcairo2-dev libgl1-mesa-dev libglu1-mesa-dev libtiff5-dev \
+  libfreetype6-dev git libelf-dev libxml2-dev libegl1-mesa-dev libfontconfig1-dev libbsd-dev \
+  libxrandr-dev libxcursor-dev libgif-dev libavutil-dev libpulse-dev libavformat-dev libavcodec-dev \
+  libavresample-dev libdbus-1-dev libxkbfile-dev libssl-dev
   ```
+For Ubuntu 20.04, also install `python2`.
 
-
-* Arch Linux & Manjaro:
+**Arch Linux & Manjaro:**
   
   `libavresample` needs to be downloaded from the AUR.
   
   ```
-  $ sudo pacman -S --needed make cmake clang flex bison icu fuse linux-headers gcc-multilib lib32-gcc-libs pkg-config fontconfig cairo libtiff python2 mesa llvm libbsd
+  $ sudo pacman -S --needed make cmake clang flex bison icu fuse linux-headers gcc-multilib \
+  lib32-gcc-libs pkg-config fontconfig cairo libtiff python2 mesa llvm libbsd libxkbfile \ 
+  libxcursor libxext libxkbcommon libxrandr
   ```
 
   Make sure you install the headers package that matches your kernel version. The kernel version can be checked with `uname -r`.
@@ -46,17 +60,37 @@ Linux 4.19 or higher is required.
 
   Then you should have `linux54-headers` installed. You will typically be prompted but may have to install this manually.
 
-* Fedora and CentOS:
+**Fedora and CentOS**
 
   [RPMFusion](https://rpmfusion.org/RPM%20Fusion) is required for FFmpeg.
 
   ```
-  $ sudo dnf install make cmake clang bison dbus-devel flex python2 glibc-devel.i686 fuse-devel systemd-devel kernel-devel elfutils-libelf-devel cairo-devel freetype-devel.{x86_64,i686} libjpeg-turbo-devel.{x86_64,i686} libtiff-devel.{x86_64,i686} fontconfig-devel.{x86_64,i686} libglvnd-devel.{x86_64,i686} mesa-libGL-devel.{x86_64,i686} mesa-libEGL-devel.{x86_64,i686} libxml2-devel libbsd-devel git libXcursor-devel libXrandr-devel giflib-devel ffmpeg-devel pulseaudio-libs-devel libxkbfile-devel
+  $ sudo dnf install make cmake clang bison dbus-devel flex python2 glibc-devel.i686 fuse-devel \
+  systemd-devel kernel-devel elfutils-libelf-devel cairo-devel freetype-devel.{x86_64,i686} \
+  libjpeg-turbo-devel.{x86_64,i686} libtiff-devel.{x86_64,i686} fontconfig-devel.{x86_64,i686} \
+  libglvnd-devel.{x86_64,i686} mesa-libGL-devel.{x86_64,i686} mesa-libEGL-devel.{x86_64,i686} \
+  mesa-libGLU-devel libxml2-devel libbsd-devel git libXcursor-devel libXrandr-devel giflib-devel \
+  ffmpeg-devel pulseaudio-libs-devel libxkbfile-devel openssl-devel llvm
   ```
+
 
   See also the `rpm/` sub-directory for docker-compose instructions.
 
+**OpenSUSE Tumbleweed**
+
+  You will need to build Darling with only the 64bit components. See **Build Options** for instructions. 
+
+  ```
+  $ sudo zypper install make cmake-full clang10 bison flex python-base glibc fuse-devel libsystemd0 \
+  kernel-source libelf1 cairo-devel libfreetype6 libjpeg-turbo libfontconfig1 libglvnd Mesa-libGL-devel \
+  Mesa-libEGL-devel libGLU1 libxml2-tools libbsd-devel git libXcursor-devel giflib-devel ffmpeg-4 \
+  ffmpeg-4-libavcodec-devel ffmpeg-4-libavformat-devel libpulse-devel pulseaudio-utils libxkbfile-devel \
+  openssl llvm libcap-progs libtiff-devel libjpeg8-devel libXrandr-devel dbus-1-devel glu-devel
+  ```
+  
 # Fetch the Sources
+
+Darling uses git-lfs. Set this up if needed with [official instructions](https://github.com/git-lfs/git-lfs/wiki/Installation).
 
 Darling makes extensive use of Git submodules, therefore you cannot use a plain `git clone`. Make a clone like this:
 
@@ -78,7 +112,7 @@ $ git pull --recurse-submodules
 
 The build system of Darling is CMake. Makefiles are generated by CMake by default.
 
-**Attention:** The build may require up to 6 GB of disk space!
+**Attention:** The build may require up to 10 GB of disk space! The Darling installation itself then takes up to 1 GB.
 
 ## Building and Installing
 
@@ -125,9 +159,19 @@ To do this, use the `-DFULL_BUILD=OFF` option when configuring Darling through C
 
 You may encounter some things to be missing, such as JavaScriptCore. Before creating an issue about a certain library or framework missing from Darling, verify that you are doing a full build by not using this option or setting it to ''ON''.
 
+If you want to build just the 64bit components, use `-DTARGET_i386=off` to disable building the 32bit components.
+
 Another way to speed up the build is to run `make` with multiple jobs. For this, run `make -j8` instead, where 8 is a number of current jobs to run of your choosing. In general, avoid running more jobs than twice the amount CPU cores of your machine.
 
 If you run LLDB and encounter messages indicating a lack of debug symbols, make sure you are doing a debug build. To do this, use the `-DCMAKE_BUILD_TYPE=Debug`.
+
+### Custom Installation Prefix
+To install Darling in a custom directory use the ``CMAKE_INSTALL_PREFIX`` CMake option. However, a Darling installataion is **NOT** portable, because the installataion prefix is hardcoded into the ``darling`` executable. This is intentional. If you do move your Darling installation you will get this error message:
+```
+Cannot mount overlay: No such file or directory
+Cannot open mnt namespace file: No such file or directory
+```
+If you wish to properly move your Darling installation, the only supported option is for you to uninstall your current Darling installation, and then rebuild Darling with a different installation prefix.
 
 ## Known Issues
 
@@ -137,8 +181,8 @@ If you run LLDB and encounter messages indicating a lack of debug symbols, make 
 If your distribution is Backbox and you run into build issues try the following commands:
 
 ```
-sudo update-alternatives --install /usr/bin/clang clang /usr/bin/clang-4.0 400
-sudo update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-4.0 400
+sudo update-alternatives --install /usr/bin/clang clang /usr/bin/clang-6.0 600
+sudo update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-6.0 600
 ```
 
 ### SELinux
@@ -199,4 +243,20 @@ Another cause is that the kernel headers may not be installed. Distributions suc
 make -C /lib/modules/5.4.2-1-MANJARO/build M=/home/xeab/Downloads/darling/src/lkm modules
 make[5]: Entering directory '/usr/lib/modules/5.4.2-1-MANJARO/build'
 make[5]: *** No rule to make target 'modules'.  Stop.
+```
+
+### File System Support
+
+Darling uses overlayfs for implementing prefixes on top of the macOS-like root filesystem. While overlayfs is not very picky about the lower (read-only) filesystem (where your `/usr` lives), it has stricter requirements for the upper filesystem (your home directory, unless you override the `DPREFIX` environment variable).
+
+To quote the [kernel documentation](https://www.kernel.org/doc/Documentation/filesystems/overlayfs.txt):
+
+> The lower filesystem can be any filesystem supported by Linux and does not need to be writable. The lower filesystem can even be another overlayfs. The upper filesystem will normally be writable and if it is it must support the creation of trusted.* extended attributes, and must provide valid d_type in readdir responses, so NFS is not suitable.
+
+In addition to NFS not being supported, ZFS is also known not to work.
+
+If you try to use an unsupported file system, this error will be printed:
+
+```
+Cannot mount overlay: Invalid argument
 ```
