@@ -215,6 +215,8 @@ openssl req -new -x509 -newkey rsa:2048 -keyout MOK.priv -outform DER -out MOK.d
 sudo mokutil --import MOK.der
 ```
 
+Fedora ships the generated keys in `/usr/share/doc/kernel-keys/` as part of the `kernel-core` package.
+
 The signing tool is `scripts/sign-file.c` within the kernel source tree. See `Documentation/admin-guide/module-signing.rst` at https://www.kernel.org for usage.
 This tool is packaged differently for different Linux distributions:
 
