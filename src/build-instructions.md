@@ -87,8 +87,6 @@ For Ubuntu 20.04, also install `python2`.
   
 # Fetch the Sources
 
-Darling uses git-lfs. Set this up if needed with [official instructions](https://github.com/git-lfs/git-lfs/wiki/Installation).
-
 Darling makes extensive use of Git submodules, therefore you cannot use a plain `git clone`. Make a clone like this:
 
 ```
@@ -96,6 +94,14 @@ $ git clone --recursive https://github.com/darlinghq/darling.git
 ```
 
 **Attention:** The source tree requires up to 4 GB of disk space!
+
+# Run the post-checkout script
+
+Darling requires certain additional components (e.g. Swift libraries) to be fetched after cloning. To do this, run the post-checkout script in the source root:
+
+```
+$ ./tools/post-checkout.sh
+```
 
 # Updating sources
 
@@ -105,6 +111,7 @@ If you have already cloned Darling and would like to get the latest changes, do 
 $ git pull
 $ git submodule init
 $ git submodule update
+$ ./tools/post-checkout.sh
 ```
 
 # Build
