@@ -10,7 +10,7 @@ You don't need to do this step if you already have a `bin` folder in your home
 directory, with the `PATH` variable pointing to it. If not, copy/paste the
 following commands into Terminal.
 
-Create the `bin folder if it doesn't exist:
+Create the `bin` folder if it doesn't exist:
 
 ```
 $ mkdir ~/bin

@@ -13,15 +13,14 @@ This way Apple's libpthread could operate absolutely independently on Linux.
 However, there is a huge catch. Darling could set up threads on its own and
 everything would be working fine, but only unless no calls to native Linux
 libraries (e.g. PulseAudio) would be made. The problem would become obvious as
-soon as given Linux library would make any thread-related operations on its
+soon as a Linux library makes any thread-related operations on its
 own - they would crash immediately. This includes many `pthread_*` calls, but
 thread-local storage access as well.
 
 ## Wrapping native libpthread
 
-In Darling, `bsdthread*` system calls call back into the
-[loader](../basics/loader.md), which
-[uses](https://github.com/darlinghq/darling/blob/master/src/startup/threads.c)
+In Darling, libsystem_kernel uses libelfloader to handle certain `bsdthread*` system calls. libelfloader, in turn,
+[uses](https://github.com/darlinghq/darling/blob/master/src/libelfloader/native/threads.c)
 native libpthread to start a thread. Once native libpthread sets up the thread,
 the control is handed over to Apple's libpthread.
 

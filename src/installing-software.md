@@ -30,7 +30,7 @@ Many apps are only available via Apple's Mac App Store. To install such an appli
 
 ## PKG files
 
-Many apps use `.pkg`, the native package format of macOS, as their distribution format. It's not enough to simply copy the contents of a package somewhere, they are really meant to be *installed* and can run arbitrary scripts during installation.
+Many apps use `.pkg`, the native package format of macOS, as their distribution format. It's not enough to simply copy the contents of a package somewhere; they are really meant to be *installed* and can run arbitrary scripts during installation.
 
 Under macOS, you would use the graphical Installer.app or the command-line `installer` utility to install this kind of package. You can do the latter under Darling as well:
 
