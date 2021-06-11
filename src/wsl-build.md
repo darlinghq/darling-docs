@@ -9,6 +9,10 @@ as well as the fact that they do not include an entry in `/lib/modules` and ther
 Thankfully, Microsoft has added the ability to use custom kernels with WSL 2. This guide walks you through the process
 of building a kernel for the WSL that you can use Darling with.
 
+## 0. Things to keep in mind
+
+When building Darling on the WSL, be sure to **perform all steps in a directory native to the WSL**. Cloning and attempting to build Darling in a mounted Windows directory, such as one under `/mnt/c`, will result in a build failure down the line, as directories that are non-native to the WSL have different treatment of file capitilization.
+
 ## 1. Future-proofing this guide
 
 Microsoft updates the kernel versions in their repo, so to make these steps more future-proof to work across different versions, all of the shell
