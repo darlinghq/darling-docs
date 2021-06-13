@@ -84,7 +84,27 @@ For Ubuntu 20.04, also install `python2`.
   ffmpeg-4-libavcodec-devel ffmpeg-4-libavformat-devel libpulse-devel pulseaudio-utils libxkbfile-devel \
   openssl llvm libcap-progs libtiff-devel libjpeg8-devel libXrandr-devel dbus-1-devel glu-devel
   ```
-  
+
+**Alpine Linux**
+
+  Make sure to [enable the community repository](https://wiki.alpinelinux.org/wiki/Enable_Community_Repository).
+  Alpine also doesn't support 32-bit builds, so make sure to [disable that](#disabling-32-bit-libraries).
+
+  ```sh
+  $ sudo apk add cmake clang bison flex xz fuse-dev pkgconfig linux-headers libcap git python2 python3 glu-dev \
+  cairo-dev mesa-dev tiff-dev freetype-dev libxml2-dev fontconfig-dev libbsd-dev libxrandr-dev libxcursor-dev \
+  giflib-dev pulseaudio-dev ffmpeg-dev dbus-dev libxkbfile-dev openssl-dev libexecinfo-dev make gcc g++ xdg-user-dirs
+  ```
+
+  Also install the dev package for your kernel. For the default LTS kernel:
+  ```sh
+  # replace as appropriate (e.g. with linux-edge-dev)
+  $ sudo apk add linux-lts-dev
+  ```
+
+  These are the minimum requirements for building and running Darling on Alpine. Of course, if you want to run GUI applications,
+  you'll also need a desktop environment.
+
 # Fetch the Sources
 
 Darling uses git-lfs. Set this up if needed with [official instructions](https://github.com/git-lfs/git-lfs/wiki/Installation).
