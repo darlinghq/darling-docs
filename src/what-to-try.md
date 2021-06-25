@@ -221,6 +221,9 @@ System/
     com.apple.xpc.system (XPC Singleton Domain)/
 ```
 
+And, `launchctl shutdown` for completely shutting down darling, including lingering background processes.
+This might be useful if you want to unload the kernel modules, for example.
+
 Read `man launchctl` for more information of other commands `launchctl` has.
 
 ## Fetch a webpage

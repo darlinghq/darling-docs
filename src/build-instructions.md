@@ -73,6 +73,9 @@ For Ubuntu 20.04, also install `python2`.
   ffmpeg-devel pulseaudio-libs-devel libxkbfile-devel openssl-devel llvm
   ```
 
+
+  See also the `rpm/` sub-directory for docker-compose instructions.
+
 **OpenSUSE Tumbleweed**
 
   You will need to build Darling with only the 64bit components. See **Build Options** for instructions. 
@@ -122,9 +125,7 @@ $ git clone --recursive https://github.com/darlinghq/darling.git
 If you have already cloned Darling and would like to get the latest changes, do this in the source root:
 
 ```
-$ git pull
-$ git submodule init
-$ git submodule update
+$ git pull --recurse-submodules
 ```
 
 # Build
@@ -158,6 +159,12 @@ Darling also requires a kernel module named `darling-mach`:
 ```
 $ make lkm
 $ sudo make lkm_install
+```
+
+The above builds against your currently running kernel. If you need to build against a different one from your running kernel, set `KERNELDIR`:
+
+```
+$ KERNELDIR=/lib/modules/5.6.19-300.fc32.x86_64/build/ make lkm
 ```
 
 If module installation produces warnings such as `SSL error:02001002:system library:fopen:No such file or directory: bss_file.c:175`, then these can be usually ignored, unless you configured your system to enforce secure boot.
@@ -227,6 +234,8 @@ Cannot open mnt namespace file: No such file or directory
 ```
 
 To work around this try this command: `setsebool -P mmap_low_allowed 1`.
+( `-P` means persistent - Don't use this option if you prefer to auto-revert this change after reboot.
+See `man 8 kernel_selinux` of selinux policy documentation for details. )
 
 ### Secure Boot
 
@@ -244,11 +253,27 @@ Use the following commands to generate a key and self-sign the kernel module:
 openssl req -new -x509 -newkey rsa:2048 -keyout MOK.priv -outform DER -out MOK.der -nodes -days 36500 -subj "/CN=Darling LKM/"
 # Enroll Key
 sudo mokutil --import MOK.der
-# Sign Module
+```
+
+Fedora ships the generated keys in `/usr/share/doc/kernel-keys/` as part of the `kernel-core` package.
+
+The signing tool is `scripts/sign-file.c` within the kernel source tree. See `Documentation/admin-guide/module-signing.rst` at https://www.kernel.org for usage.
+This tool is packaged differently for different Linux distributions:
+
+```
+# Fedora - Sign Module
+sudo /lib/modules/$(uname -r)/build/scripts/sign-file sha512 MOK.priv MOK.der /lib/modules/$(uname -r)/extra/darling-mach.ko
+sudo /lib/modules/$(uname -r)/build/scripts/sign-file sha512 MOK.priv MOK.der /lib/modules/$(uname -r)/extra/darling-overlay.ko
+
+# Ubuntu (not Debian) - Sign Module
 sudo kmodsign sha512 MOK.priv MOK.der /lib/modules/$(uname -r)/extra/darling-mach.ko
+sudo kmodsign sha512 MOK.priv MOK.der /lib/modules/$(uname -r)/extra/darling-overlay.ko
+
 # Reboot System and Enroll Key
 ```
 
+Debian / Raspbian does not provide this tool in binary form (Debian bug #939393, Sept 2019), nor SuSE. You may need to build it by `make scripts`
+in a kernel source tree.
 
 ### No rule to make target 'modules'
 
