@@ -150,7 +150,7 @@ $ make
 $ sudo make install
 ```
 
-
+### Kernel Module
 Darling also requires a kernel module named `darling-mach`:
 
 ```
