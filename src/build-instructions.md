@@ -122,6 +122,7 @@ $ git clone --recursive https://github.com/darlinghq/darling.git
 If you have already cloned Darling and would like to get the latest changes, do this in the source root:
 
 ```
+$ git lfs install
 $ git pull
 $ git submodule init
 $ git submodule update
