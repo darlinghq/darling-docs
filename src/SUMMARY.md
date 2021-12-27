@@ -29,6 +29,7 @@
 - [Contributing](contributing/README.md)
   - [Debugging](contributing/debugging.md)
   - [Generating stubs](contributing/generating-stubs.md)
+  - [Generating syscalls](contributing/generating-syscalls.md)
   - [High priority stuff](contributing/high-priority-stuff.md)
   - [Google Summer of Code](contributing/google-summer-of-code.md)
   - [Packaging](contributing/packaging.md)
