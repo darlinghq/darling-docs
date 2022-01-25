@@ -16,7 +16,7 @@ Linux 5.0 or higher is required.
   libc6-dev-i386 linux-headers-amd64 libcap2-bin git git-lfs python2 libglu1-mesa-dev libcairo2-dev \
   libgl1-mesa-dev libtiff5-dev libfreetype6-dev libxml2-dev libegl1-mesa-dev libfontconfig1-dev \
   libbsd-dev libxrandr-dev libxcursor-dev libgif-dev libpulse-dev libavformat-dev libavcodec-dev \
-  libavresample-dev libdbus-1-dev libxkbfile-dev libssl-dev
+  libswresample-dev libdbus-1-dev libxkbfile-dev libssl-dev
   ````
 
 **Debian Testing**
@@ -26,7 +26,7 @@ Linux 5.0 or higher is required.
   libc6-dev-i386 linux-headers-amd64 libcap2-bin git git-lfs python2 libglu1-mesa-dev libcairo2-dev \
   libgl1-mesa-dev libtiff5-dev libfreetype6-dev libxml2-dev libegl1-mesa-dev libfontconfig1-dev \
   libbsd-dev libxrandr-dev libxcursor-dev libgif-dev libpulse-dev libavformat-dev libavcodec-dev \
-  libavresample-dev libdbus-1-dev libxkbfile-dev libssl-dev
+  libswresample-dev libdbus-1-dev libxkbfile-dev libssl-dev
   ```
 
 **Ubuntu 18.04/20.04:**
@@ -36,18 +36,16 @@ Linux 5.0 or higher is required.
   linux-headers-generic gcc-multilib libcairo2-dev libgl1-mesa-dev libglu1-mesa-dev libtiff5-dev \
   libfreetype6-dev git git-lfs libelf-dev libxml2-dev libegl1-mesa-dev libfontconfig1-dev libbsd-dev \
   libxrandr-dev libxcursor-dev libgif-dev libavutil-dev libpulse-dev libavformat-dev libavcodec-dev \
-  libavresample-dev libdbus-1-dev libxkbfile-dev libssl-dev
+  libswresample-dev libdbus-1-dev libxkbfile-dev libssl-dev
   ```
 For Ubuntu 20.04, also install `python2`.
 
 **Arch Linux & Manjaro:**
   
-  `libavresample` needs to be downloaded from the AUR.
-  
   ```
   $ sudo pacman -S --needed make cmake clang flex bison icu fuse linux-headers gcc-multilib \
   lib32-gcc-libs pkg-config fontconfig cairo libtiff python2 mesa llvm libbsd libxkbfile \ 
-  libxcursor libxext libxkbcommon libxrandr git git-lfs
+  libxcursor libxext libxkbcommon libxrandr ffmpeg git git-lfs
   ```
 
   Make sure you install the headers package that matches your kernel version. The kernel version can be checked with `uname -r`.
@@ -82,7 +80,7 @@ For Ubuntu 20.04, also install `python2`.
   kernel-source libelf1 cairo-devel libfreetype6 libjpeg-turbo libfontconfig1 libglvnd Mesa-libGL-devel \
   Mesa-libEGL-devel libGLU1 libxml2-tools libbsd-devel git git-lfs libXcursor-devel giflib-devel ffmpeg-4 \
   ffmpeg-4-libavcodec-devel ffmpeg-4-libavformat-devel libpulse-devel pulseaudio-utils libxkbfile-devel \
-  openssl llvm libcap-progs libtiff-devel libjpeg8-devel libXrandr-devel dbus-1-devel glu-devel
+  openssl llvm libcap-progs libtiff-devel libjpeg8-devel libXrandr-devel dbus-1-devel glu-devel ffmpeg-4-libswresample-devel
   ```
 
 **Alpine Linux**
@@ -153,7 +151,7 @@ $ make
 $ sudo make install
 ```
 
-
+### Kernel Module
 Darling also requires a kernel module named `darling-mach`:
 
 ```
