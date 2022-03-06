@@ -68,7 +68,7 @@ For Ubuntu 20.04, also install `python2`.
   libjpeg-turbo-devel.{x86_64,i686} libtiff-devel.{x86_64,i686} fontconfig-devel.{x86_64,i686} \
   libglvnd-devel.{x86_64,i686} mesa-libGL-devel.{x86_64,i686} mesa-libEGL-devel.{x86_64,i686} \
   mesa-libGLU-devel libxml2-devel libbsd-devel git git-lfs libXcursor-devel libXrandr-devel giflib-devel \
-  ffmpeg-devel pulseaudio-libs-devel libxkbfile-devel openssl-devel llvm
+  ffmpeg-devel pulseaudio-libs-devel libxkbfile-devel openssl-devel llvm libcap-devel
   ```
 
 **OpenSUSE Tumbleweed**
