@@ -11,6 +11,7 @@ Follow [step 1](index.md#step-1) in "General Steps", with some extra exceptions.
   * `empty.c` - This is needed as a dummy source file for libraries that are only built for certain configurations.
   * `weak_reference.h` - This is needed to provide a no-op macro that sometimes gets overridden or undefined in certain files
   * `darling-scripts` - This directory contains some scripts you'll need later on to generate some essential files
+  * `locale/locale` - Contains locale information. 
 
 ### 2. Create an initial update commit
 
