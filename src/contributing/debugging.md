@@ -117,7 +117,7 @@ You can find more tips (not all of which work under Darling)
 ### xtrace
 
 You can use **xtrace** to trace Darwin syscalls a program makes, a lot like
-using `strace on Linux:
+using `strace` on Linux:
 
 ```
 $ xtrace vm_stat
