@@ -228,7 +228,7 @@ Read `man launchctl` for more information of other commands `launchctl` has.
 See if networking works as it should:
 
 ```
-Darling [~]$ curl http://example.og
+Darling [~]$ curl http://example.org
 <!doctype html>
 <html>
 <head>
