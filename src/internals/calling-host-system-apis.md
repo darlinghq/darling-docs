@@ -12,39 +12,18 @@ set up.
 
 ## The ELF Bridge
 
-The set of information provided to [dyld](basics/loader.md#dyld) by
-[mldr](basics/loader.md#mldr) whenever a Mach-O executable is to be launched is
-precisely defined. You probably know the typical C main function signature:
+libelfloader is responsible for providing the bridge between the ELF and Mach-O worlds.
+libelfloader itself is a Mach-O dylib. However, in order to provide the bridge, it loads
+a special ELF binary called the dummy. To give the dummy full access to a dynamic
+ELF environment, libelfloader loads the dummy's interpreter (i.e. Linux's dynamic ELF linker,
+`ld-linux.so`) and uses it to execute the dummy.
 
-```c
-int main(int argc, const char** argv)
-```
-
-If you have fiddled with this stuff before, you probably know there is also an
-extra `const char** envp` parameter containing all of the environment variables.
-Well, on Apple's systems, `envp` is followed by `const char** apple` containing
-miscelaneous extra pieces of information, e.g. a full path to the executable
-being run or possibly a block of random bytes as a seed for libc.
-
-So this gives us the following signature:
-
-```c
-int main(int argc, const char** argv, const char** envp, const char** apple)
-```
-
-These arguments are passed to `main` by dyld, which receives them on the stack
-from `mldr` (or from the kernel on a real macOS). By the way, these arguments
-are also passed to all initializers marked with `__attribute__((constructor))`.
-
-The `apple` parameter is ideal for passing additional information without
-interfering with the environment undesirably. `mldr`
-[declares](https://github.com/darlinghq/darling/blob/master/src/startup/elfcalls.h)
-`struct elf_calls` with a set of function pointers, instantiates it and fills it
-out. An address of this structure is then added as a string formatted as
-`elf_calls=%p` into `apple`.
-
-The address of `struct elf_calls` is later parsed inside libsystem_kernel an
-exported as a symbol named `_elfcalls`.
+The dummy itself has access to a normal Linux ELF environment, complete with dynamic library loading and
+pthread functionality (which is necessary for [Darling's threading implementation](threading/thread-implementation.md)).
+How does the dummy allow the Mach-O world to use this stuff? As part of the setup for the dummy,
+libelfloader allocates a structure for the dummy to populate with the addresses of ELF functions we want to use.
+After the dummy populates this structure ([`struct elf_calls`](https://github.com/darlinghq/darling/blob/master/src/libelfloader/native/elfcalls.h#L13)),
+Mach-O code can call those functions at any time using the function pointers stored in the structure.
 
 ## Wrappers
 

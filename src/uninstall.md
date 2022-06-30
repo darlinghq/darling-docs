@@ -1,6 +1,6 @@
 # Uninstall
 
-This page is only for if Darling was build and installed manually as instructed on [Build Instructions](build-instructions.md). If you installed Darling through a package manager please remove the related packages using that package manager.
+This page is only for if Darling was build and installed manually as instructed on [Build Instructions](build-instructions.md). If you installed Darling through a package manager, please remove the related packages using that package manager.
 
 ## Uninstall commands
 

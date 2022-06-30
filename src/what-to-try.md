@@ -231,7 +231,7 @@ Read `man launchctl` for more information of other commands `launchctl` has.
 See if networking works as it should:
 
 ```
-Darling [~]$ curl http://example.og
+Darling [~]$ curl http://example.org
 <!doctype html>
 <html>
 <head>
@@ -243,7 +243,7 @@ Darling [~]$ curl http://example.og
 
 Just like [the real Mac OS X
 may](https://www.macrumors.com/2017/11/28/macos-high-sierra-bug-admin-access/),
-Darling allows you to get root priveleges without having to enter any password,
+Darling allows you to get root privileges without having to enter any password,
 except in our case it's a feature:
 
 ```	
@@ -272,6 +272,20 @@ Now you can install arbitrary packages using the `rudix` command:
 
 ```
 Darling [~]$ sudo rudix install wget mc
+```
+
+### Install Homebrew
+
+macOS's de-facto package manager, [Homebrew](https://brew.sh/), installs and works under Darling (albeit with issues with certain formulas).
+
+```
+Darling [~]$ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+Now you can install packages just like you would on a real macOS installation:
+
+```
+Darling [~]$ brew install wget
 ```
 
 ## Try running Midnight Commander

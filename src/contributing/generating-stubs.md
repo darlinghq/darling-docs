@@ -10,7 +10,7 @@ You don't need to do this step if you already have a `bin` folder in your home
 directory, with the `PATH` variable pointing to it. If not, copy/paste the
 following commands into Terminal.
 
-Create the `bin folder if it doesn't exist:
+Create the `bin` folder if it doesn't exist:
 
 ```
 $ mkdir ~/bin
@@ -72,7 +72,7 @@ Finally, you will need to add the folder to the build. In
 Run a build and make sure your new code compiles. After that completes, you are
 ready to submit a pull request.
 
-See [Contributing](README.md) for how to submit a pull request. [This
+See [Contributing](index.md) for how to submit a pull request. [This
 commit](https://github.com/darlinghq/darling/commit/92233d4e5ca613658345910d1acf4b3b7620a4f6)
 is an example of a stub for a framework that was added to Darling using the
 process described in this article. Most notable is what it does to

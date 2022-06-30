@@ -2,7 +2,7 @@
 
 Commpage is a special memory structure that is always located at the same
 address in all processes. On macOS, this mapping is provided by the kernel. In
-case of Darling, this functionality is supplemented by `mldr`.
+case of Darling, this functionality is supplemented by the kernel module.
 
 ## Purpose
 
@@ -21,7 +21,7 @@ data.
 The commpage is not documented anywhere, meaning it's not an API intended to be
 used by 3rd party software. It is however used in source code provided on
 [opensource.apple.com](http://opensource.apple.com). Darling
-[provides](https://github.com/darlinghq/darling/blob/master/src/startup/commpage.c)
+[provides](https://github.com/darlinghq/darling-newlkm/blob/master/darling/commpage.c)
 a commpage for compatibility reasons.
 
 ## Location

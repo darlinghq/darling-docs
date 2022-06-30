@@ -17,7 +17,7 @@ which performs several tasks:
   is installed e.g. in `/usr/local/libexec/darling`) with the prefix's path.
   This means the prefix gets updated prefix contents for free (unlike in Wine),
   but the user can still manipulate prefix contents.
-* Activate "vchroot". That is how we call our virtual chroot implementation, which still allows applications to escape into the outside system via a special directory (`/Volumes/SystemRoot`).
+* Activate "vchroot". That is what we call our virtual chroot implementation, which still allows applications to escape into the outside system via a special directory (`/Volumes/SystemRoot`).
 * Set up a new PID namespace. [launchd](https://en.wikipedia.org/wiki/Launchd) is then started as the init process for the container.
 
 More namespaces (e.g. UID or network) will be considered in future.

@@ -3,34 +3,32 @@
 The intention of this page is to serve as a location for pointing developers to
 areas where work is most needed.
 
-## Work to be done
+## CoreCrypto
 
+CoreCrypto's source code is publicly available, but its license prevents us
+from using it for Darling. Luckily, it's not that difficult! Some work has
+already been done.
 
-* Reimplement [CoreCrypto](https://github.com/darlinghq/darling-corecrypto).
+## Cocotron
 
-  CoreCrypto's source code is publicly available, but its license prevents us
-  from using it for Darling. Luckily, it's not that difficult! Some work has
-  already been done. Having CoreCrypto will also enable us to build a recent
-  version of [CommonCrypto](https://github.com/darlinghq/darling-commoncrypto).
+### AppKit
 
-* AppKit.framework
+More details to be added.
 
-  More details to be added.
+## libxpc & launchd
 
-* libxpc
-  * Implement missing APIs - many things in `xpc_dictionary` are missing.
-  * `xpc_main()` should access the calling application's bundle and automatically listen as the defined `XPCService`.
-    * This is a little tricky, because libxpc may not use CoreFoundation to parse the `Info.plist` (at least not directly). It should use `_NSGetExecutablePath()` and `xpc_create_from_plist()`.
+  * Implement missing APIs
+    * Most (if not all) of the missing APIs are private ones
+  * Implement XPC domain support in launchd
+    * This is required for proper XPC service support, since at the moment, only system-wide services (i.e. traditional launchd services) are supported
 
-* Foundation.framework
-  * Implement `NSXPC*` classes that wrap libxpc.
+## CoreAudio
 
-* CoreAudio.framework
   * Implement AudioFormat and ExtAudioConverter APIs.
   * Implement AUGraph and AudioQueue utility APIs.
   * Implement various Audio Units existing by default on macOS. This includes units providing audio mixing or effects.
 
-* CoreServices.framework
+## CoreServices
+
   * Implement LaunchServices APIs for applications and file type mappings, backed by a database.
   * Implement UTI (Uniform Type Identifiers) API, also backed by a database.
-

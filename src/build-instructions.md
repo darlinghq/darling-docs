@@ -4,7 +4,7 @@ You must be running a 64-bit x86 Linux distribution. Darling cannot be used on a
 
 # Dependencies
 
-Clang is required to compile Darling; at least Clang 9 is required. You can force a specific version of Clang (if it is installed on your system) by editing `Toolchain.cmake`.
+Clang is required to compile Darling; at least Clang 6 is required. You can force a specific version of Clang (if it is installed on your system) by editing `Toolchain.cmake`.
 
 Linux 5.0 or higher is required.
 
@@ -13,20 +13,20 @@ Linux 5.0 or higher is required.
 
   ```
   $ sudo apt install cmake clang-6.0 bison flex xz-utils libfuse-dev libudev-dev pkg-config \
-  libc6-dev-i386 linux-headers-amd64 libcap2-bin git python2 libglu1-mesa-dev libcairo2-dev \
+  libc6-dev-i386 linux-headers-amd64 libcap2-bin git git-lfs python2 libglu1-mesa-dev libcairo2-dev \
   libgl1-mesa-dev libtiff5-dev libfreetype6-dev libxml2-dev libegl1-mesa-dev libfontconfig1-dev \
   libbsd-dev libxrandr-dev libxcursor-dev libgif-dev libpulse-dev libavformat-dev libavcodec-dev \
-  libavresample-dev libdbus-1-dev libxkbfile-dev libssl-dev
+  libswresample-dev libdbus-1-dev libxkbfile-dev libssl-dev
   ````
 
 **Debian Testing**
 
   ```
   $ sudo apt install cmake clang-9 bison flex xz-utils libfuse-dev libudev-dev pkg-config \
-  libc6-dev-i386 linux-headers-amd64 libcap2-bin git python2 libglu1-mesa-dev libcairo2-dev \
+  libc6-dev-i386 linux-headers-amd64 libcap2-bin git git-lfs python2 libglu1-mesa-dev libcairo2-dev \
   libgl1-mesa-dev libtiff5-dev libfreetype6-dev libxml2-dev libegl1-mesa-dev libfontconfig1-dev \
   libbsd-dev libxrandr-dev libxcursor-dev libgif-dev libpulse-dev libavformat-dev libavcodec-dev \
-  libavresample-dev libdbus-1-dev libxkbfile-dev libssl-dev
+  libswresample-dev libdbus-1-dev libxkbfile-dev libssl-dev
   ```
 
 **Ubuntu 18.04/20.04:**
@@ -34,20 +34,18 @@ Linux 5.0 or higher is required.
   ```
   $ sudo apt install cmake clang bison flex libfuse-dev libudev-dev pkg-config libc6-dev-i386 \
   linux-headers-generic gcc-multilib libcairo2-dev libgl1-mesa-dev libglu1-mesa-dev libtiff5-dev \
-  libfreetype6-dev git libelf-dev libxml2-dev libegl1-mesa-dev libfontconfig1-dev libbsd-dev \
+  libfreetype6-dev git git-lfs libelf-dev libxml2-dev libegl1-mesa-dev libfontconfig1-dev libbsd-dev \
   libxrandr-dev libxcursor-dev libgif-dev libavutil-dev libpulse-dev libavformat-dev libavcodec-dev \
-  libavresample-dev libdbus-1-dev libxkbfile-dev libssl-dev
+  libswresample-dev libdbus-1-dev libxkbfile-dev libssl-dev
   ```
 For Ubuntu 20.04, also install `python2`.
 
 **Arch Linux & Manjaro:**
   
-  `libavresample` needs to be downloaded from the AUR.
-  
   ```
   $ sudo pacman -S --needed make cmake clang flex bison icu fuse linux-headers gcc-multilib \
   lib32-gcc-libs pkg-config fontconfig cairo libtiff python2 mesa llvm libbsd libxkbfile \ 
-  libxcursor libxext libxkbcommon libxrandr
+  libxcursor libxext libxkbcommon libxrandr ffmpeg git git-lfs
   ```
 
   Make sure you install the headers package that matches your kernel version. The kernel version can be checked with `uname -r`.
@@ -69,8 +67,8 @@ For Ubuntu 20.04, also install `python2`.
   systemd-devel kernel-devel elfutils-libelf-devel cairo-devel freetype-devel.{x86_64,i686} \
   libjpeg-turbo-devel.{x86_64,i686} libtiff-devel.{x86_64,i686} fontconfig-devel.{x86_64,i686} \
   libglvnd-devel.{x86_64,i686} mesa-libGL-devel.{x86_64,i686} mesa-libEGL-devel.{x86_64,i686} \
-  mesa-libGLU-devel libxml2-devel libbsd-devel git libXcursor-devel libXrandr-devel giflib-devel \
-  ffmpeg-devel pulseaudio-libs-devel libxkbfile-devel openssl-devel llvm
+  mesa-libGLU-devel.{x86_64,i686} libxml2-devel libbsd-devel git git-lfs libXcursor-devel libXrandr-devel giflib-devel \
+  ffmpeg-devel pulseaudio-libs-devel libxkbfile-devel openssl-devel llvm libcap-devel
   ```
 
 
@@ -83,11 +81,31 @@ For Ubuntu 20.04, also install `python2`.
   ```
   $ sudo zypper install make cmake-full clang10 bison flex python-base glibc fuse-devel libsystemd0 \
   kernel-source libelf1 cairo-devel libfreetype6 libjpeg-turbo libfontconfig1 libglvnd Mesa-libGL-devel \
-  Mesa-libEGL-devel libGLU1 libxml2-tools libbsd-devel git libXcursor-devel giflib-devel ffmpeg-4 \
+  Mesa-libEGL-devel libGLU1 libxml2-tools libbsd-devel git git-lfs libXcursor-devel giflib-devel ffmpeg-4 \
   ffmpeg-4-libavcodec-devel ffmpeg-4-libavformat-devel libpulse-devel pulseaudio-utils libxkbfile-devel \
-  openssl llvm libcap-progs libtiff-devel libjpeg8-devel libXrandr-devel dbus-1-devel glu-devel
+  openssl llvm libcap-progs libtiff-devel libjpeg8-devel libXrandr-devel dbus-1-devel glu-devel ffmpeg-4-libswresample-devel
   ```
-  
+
+**Alpine Linux**
+
+  Make sure to [enable the community repository](https://wiki.alpinelinux.org/wiki/Enable_Community_Repository).
+  Alpine also doesn't support 32-bit builds, so make sure to [disable that](#disabling-32-bit-libraries).
+
+  ```sh
+  $ sudo apk add cmake clang bison flex xz fuse-dev pkgconfig linux-headers libcap git git-lfs python2 python3 glu-dev \
+  cairo-dev mesa-dev tiff-dev freetype-dev libxml2-dev fontconfig-dev libbsd-dev libxrandr-dev libxcursor-dev \
+  giflib-dev pulseaudio-dev ffmpeg-dev dbus-dev libxkbfile-dev openssl-dev libexecinfo-dev make gcc g++ xdg-user-dirs
+  ```
+
+  Also install the dev package for your kernel. For the default LTS kernel:
+  ```sh
+  # replace as appropriate (e.g. with linux-edge-dev)
+  $ sudo apk add linux-lts-dev
+  ```
+
+  These are the minimum requirements for building and running Darling on Alpine. Of course, if you want to run GUI applications,
+  you'll also need a desktop environment.
+
 # Fetch the Sources
 
 Darling uses git-lfs. Set this up if needed with [official instructions](https://github.com/git-lfs/git-lfs/wiki/Installation).
@@ -105,6 +123,7 @@ $ git clone --recursive https://github.com/darlinghq/darling.git
 If you have already cloned Darling and would like to get the latest changes, do this in the source root:
 
 ```
+$ git lfs install
 $ git pull --recurse-submodules
 ```
 
@@ -133,7 +152,7 @@ $ make
 $ sudo make install
 ```
 
-
+### Kernel Module
 Darling also requires a kernel module named `darling-mach`:
 
 ```
@@ -153,19 +172,39 @@ The kernel module is an experimental piece of code; it's likely to have many bug
 
 ##  Build Options 
 
-You will notice that it takes a long time to build Darling. Darling contains the software layer equivalent to an entire operating system, which means a large amount of code. You can optionally disable some large and less vital parts of the build in order to get faster builds.
+### Doing non-full (a.k.a. shallow) builds
+
+You will notice that it takes a long time to build Darling. Darling contains the software layer equivalent to an entire operating system, which means it contains a large amount of code. You can optionally disable some large and less vital parts of the build in order to get faster builds.
 
 To do this, use the `-DFULL_BUILD=OFF` option when configuring Darling through CMake.
 
-You may encounter some things to be missing, such as JavaScriptCore. Before creating an issue about a certain library or framework missing from Darling, verify that you are doing a full build by not using this option or setting it to ''ON''.
+You may encounter some things to be missing, such as JavaScriptCore. Before creating an issue about a certain library or framework missing from Darling, verify that you are doing a full build by not using this option or setting it to `ON`.
 
-If you want to build just the 64bit components, use `-DTARGET_i386=off` to disable building the 32bit components.
+### Disabling 32-bit Libraries
+
+Darling normally builds both 32-bit and 64-bit versions of all libraries, to enable 32-bit programs to run under Darling.
+However, this means Darling also requires 32-bit version of certain native libraries. If you can't setup a multilib environment or you just
+want to build only the 64-bit components, use `-DTARGET_i386=OFF` during configuration to disable building the 32-bit components.
+
+### Parallel Builds
 
 Another way to speed up the build is to run `make` with multiple jobs. For this, run `make -j8` instead, where 8 is a number of current jobs to run of your choosing. In general, avoid running more jobs than twice the amount CPU cores of your machine.
 
+### "Unified" JavaScriptCore Builds
+
+If you still want to build JavaScriptCore and have a bit of RAM to spare, JavaScriptCore also supports a build mode known as ["unified builds"](https://blogs.gnome.org/mcatanzaro/2018/02/17/on-compiling-webkit-now-twice-as-fast/). This build mode can cut JSC build times in half, at the expense of causing slightly higher RAM usage. This build mode can be enabled in Darling by adding `-DJSC_UNIFIED_BUILD=ON` when configuring the build.
+
+### Debug Builds
+
+By default, CMake setups up a non-debug, non-release build.
 If you run LLDB and encounter messages indicating a lack of debug symbols, make sure you are doing a debug build. To do this, use the `-DCMAKE_BUILD_TYPE=Debug`.
 
+### Additional, Non-standard Binaries
+
+Darling tries to stick to a standard macOS installation as much as possible. However, if you would like to build and install some additional packages (such as GNU tar), you can add `-DADDITIONAL_PACKAGES=ON`.
+
 ### Custom Installation Prefix
+
 To install Darling in a custom directory use the ``CMAKE_INSTALL_PREFIX`` CMake option. However, a Darling installataion is **NOT** portable, because the installataion prefix is hardcoded into the ``darling`` executable. This is intentional. If you do move your Darling installation you will get this error message:
 ```
 Cannot mount overlay: No such file or directory
