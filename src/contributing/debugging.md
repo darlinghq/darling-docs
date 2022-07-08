@@ -144,3 +144,57 @@ Note that `xtrace` only traces emulated Darwin syscalls, so any native Linux
 syscalls made (usually by native ELF libraries) will not be displayed, which
 means information and open file descriptors may appear to come from nowhere in
 those cases.
+
+## When Darling Is Not Able To Start Up Properly
+
+In some situations, Darling is not able to access the bash shell. Normally, you should never run into this situation if you are building off of master. However, if you are doing any major changes to the source code (ex: updating Apple's open-source code to a new release), it may cause core applications to break in unexpected ways.
+
+If you ever run into this situation, here are some tricks that can help you find the root cause.
+
+### Logging When An Executable is Loading.
+
+In `src/kernel/emulation/linux/mach/lkm.c`, you can add the following print statements to the `mach_driver_init` method, like so:
+
+```
+	if (applep != NULL)
+	{
+		__simple_printf("applep is not NULL\n");
+		int i;
+		for (i = 0; applep[i] != NULL; i++)
+		{
+			__simple_printf("applep[%d] = %s\n", i, applep[i]);
+			if (strncmp(applep[i], "elf_calls=", 10) == 0)
+			{
+				uintptr_t table = (uintptr_t) __simple_atoi16(applep[i] + 10, NULL);
+				_elfcalls = (struct elf_calls*) table;
+				__simple_printf("_elfcalls = %d\n", _elfcalls);
+			}
+		}
+	}
+```
+
+This will print out values stored in `applep`. One benefit of this is that you get to see which programs are being executed.
+
+```
+$ darling shell
+Bootstrapping the container with launchd...
+applep is not NULL
+applep[0] = executable_path=/usr/libexec/darling/vchroot
+applep[1] = kernfd=4
+applep[2] = elf_calls=428390
+_elfcalls = 4359056
+applep is not NULL
+applep[0] = executable_path=/sbin/launchd
+applep[1] = kernfd=4
+applep[2] = elf_calls=428390
+_elfcalls = 4359056
+applep is not NULL
+applep[0] = executable_path=/usr/sbin/memberd
+applep[1] = kernfd=4
+applep[2] = elf_calls=428390
+_elfcalls = 4359056
+applep is not NULL
+...
+```
+
+Just keep in mind that some scripts can break with this change.
