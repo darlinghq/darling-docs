@@ -13,7 +13,7 @@ Linux 5.0 or higher is required.
 
   ```
   $ sudo apt install cmake clang-6.0 bison flex xz-utils libfuse-dev libudev-dev pkg-config \
-  libc6-dev-i386 linux-headers-amd64 libcap2-bin git git-lfs python2 libglu1-mesa-dev libcairo2-dev \
+  libc6-dev-i386 libcap2-bin git git-lfs python2 libglu1-mesa-dev libcairo2-dev \
   libgl1-mesa-dev libtiff5-dev libfreetype6-dev libxml2-dev libegl1-mesa-dev libfontconfig1-dev \
   libbsd-dev libxrandr-dev libxcursor-dev libgif-dev libpulse-dev libavformat-dev libavcodec-dev \
   libswresample-dev libdbus-1-dev libxkbfile-dev libssl-dev
@@ -23,7 +23,7 @@ Linux 5.0 or higher is required.
 
   ```
   $ sudo apt install cmake clang-9 bison flex xz-utils libfuse-dev libudev-dev pkg-config \
-  libc6-dev-i386 linux-headers-amd64 libcap2-bin git git-lfs python2 libglu1-mesa-dev libcairo2-dev \
+  libc6-dev-i386 libcap2-bin git git-lfs python2 libglu1-mesa-dev libcairo2-dev \
   libgl1-mesa-dev libtiff5-dev libfreetype6-dev libxml2-dev libegl1-mesa-dev libfontconfig1-dev \
   libbsd-dev libxrandr-dev libxcursor-dev libgif-dev libpulse-dev libavformat-dev libavcodec-dev \
   libswresample-dev libdbus-1-dev libxkbfile-dev libssl-dev
@@ -33,7 +33,7 @@ Linux 5.0 or higher is required.
 
   ```
   $ sudo apt install cmake clang bison flex libfuse-dev libudev-dev pkg-config libc6-dev-i386 \
-  linux-headers-generic gcc-multilib libcairo2-dev libgl1-mesa-dev libglu1-mesa-dev libtiff5-dev \
+  gcc-multilib libcairo2-dev libgl1-mesa-dev libglu1-mesa-dev libtiff5-dev \
   libfreetype6-dev git git-lfs libelf-dev libxml2-dev libegl1-mesa-dev libfontconfig1-dev libbsd-dev \
   libxrandr-dev libxcursor-dev libgif-dev libavutil-dev libpulse-dev libavformat-dev libavcodec-dev \
   libswresample-dev libdbus-1-dev libxkbfile-dev libssl-dev
@@ -43,20 +43,10 @@ For Ubuntu 20.04, also install `python2`.
 **Arch Linux & Manjaro:**
   
   ```
-  $ sudo pacman -S --needed make cmake clang flex bison icu fuse linux-headers gcc-multilib \
+  $ sudo pacman -S --needed make cmake clang flex bison icu fuse gcc-multilib \
   lib32-gcc-libs pkg-config fontconfig cairo libtiff python2 mesa llvm libbsd libxkbfile \ 
   libxcursor libxext libxkbcommon libxrandr ffmpeg git git-lfs
   ```
-
-  Make sure you install the headers package that matches your kernel version. The kernel version can be checked with `uname -r`.
-
-  ```
-  $ uname -r
-  5.4.6-2-MANJARO
-  ```
-
-
-  Then you should have `linux54-headers` installed. You will typically be prompted but may have to install this manually.
 
 **Fedora and CentOS**
 
@@ -64,10 +54,10 @@ For Ubuntu 20.04, also install `python2`.
 
   ```
   $ sudo dnf install make cmake clang bison dbus-devel flex python2 glibc-devel.i686 fuse-devel \
-  systemd-devel kernel-devel elfutils-libelf-devel cairo-devel freetype-devel.{x86_64,i686} \
+  systemd-devel elfutils-libelf-devel cairo-devel freetype-devel.{x86_64,i686} \
   libjpeg-turbo-devel.{x86_64,i686} libtiff-devel.{x86_64,i686} fontconfig-devel.{x86_64,i686} \
   libglvnd-devel.{x86_64,i686} mesa-libGL-devel.{x86_64,i686} mesa-libEGL-devel.{x86_64,i686} \
-  mesa-libGLU-devel libxml2-devel libbsd-devel git git-lfs libXcursor-devel libXrandr-devel giflib-devel \
+  mesa-libGLU-devel.{x86_64,i686} libxml2-devel libbsd-devel git git-lfs libXcursor-devel libXrandr-devel giflib-devel \
   ffmpeg-devel pulseaudio-libs-devel libxkbfile-devel openssl-devel llvm libcap-devel
   ```
 
@@ -77,7 +67,7 @@ For Ubuntu 20.04, also install `python2`.
 
   ```
   $ sudo zypper install make cmake-full clang10 bison flex python-base glibc fuse-devel libsystemd0 \
-  kernel-source libelf1 cairo-devel libfreetype6 libjpeg-turbo libfontconfig1 libglvnd Mesa-libGL-devel \
+  libelf1 cairo-devel libfreetype6 libjpeg-turbo libfontconfig1 libglvnd Mesa-libGL-devel \
   Mesa-libEGL-devel libGLU1 libxml2-tools libbsd-devel git git-lfs libXcursor-devel giflib-devel ffmpeg-4 \
   ffmpeg-4-libavcodec-devel ffmpeg-4-libavformat-devel libpulse-devel pulseaudio-utils libxkbfile-devel \
   openssl llvm libcap-progs libtiff-devel libjpeg8-devel libXrandr-devel dbus-1-devel glu-devel ffmpeg-4-libswresample-devel
@@ -89,15 +79,9 @@ For Ubuntu 20.04, also install `python2`.
   Alpine also doesn't support 32-bit builds, so make sure to [disable that](#disabling-32-bit-libraries).
 
   ```sh
-  $ sudo apk add cmake clang bison flex xz fuse-dev pkgconfig linux-headers libcap git git-lfs python2 python3 glu-dev \
+  $ sudo apk add cmake clang bison flex xz fuse-dev pkgconfig libcap git git-lfs python2 python3 glu-dev \
   cairo-dev mesa-dev tiff-dev freetype-dev libxml2-dev fontconfig-dev libbsd-dev libxrandr-dev libxcursor-dev \
   giflib-dev pulseaudio-dev ffmpeg-dev dbus-dev libxkbfile-dev openssl-dev libexecinfo-dev make gcc g++ xdg-user-dirs
-  ```
-
-  Also install the dev package for your kernel. For the default LTS kernel:
-  ```sh
-  # replace as appropriate (e.g. with linux-edge-dev)
-  $ sudo apk add linux-lts-dev
   ```
 
   These are the minimum requirements for building and running Darling on Alpine. Of course, if you want to run GUI applications,
@@ -150,18 +134,6 @@ $ cmake ..
 $ make
 $ sudo make install
 ```
-
-### Kernel Module
-Darling also requires a kernel module named `darling-mach`:
-
-```
-$ make lkm
-$ sudo make lkm_install
-```
-
-If module installation produces warnings such as `SSL error:02001002:system library:fopen:No such file or directory: bss_file.c:175`, then these can be usually ignored, unless you configured your system to enforce secure boot.
-
-The kernel module is an experimental piece of code; it's likely to have many bugs and vulnerabilities. Be prepared for kernel hangups and crashes, and run Darling on a virtual machine if possible.
 
 ##  Build Options 
 
@@ -226,40 +198,6 @@ Cannot open mnt namespace file: No such file or directory
 ```
 
 To work around this try this command: `setsebool -P mmap_low_allowed 1`.
-
-### Secure Boot
-
-If Secure Boot is enabled you may see:
-
-```
-modprobe: ERROR: could not insert 'darling_mach': Operation not permitted
-Failed to load the kernel module
-```
-
-Use the following commands to generate a key and self-sign the kernel module:
-
-```
-# Generate Key
-openssl req -new -x509 -newkey rsa:2048 -keyout MOK.priv -outform DER -out MOK.der -nodes -days 36500 -subj "/CN=Darling LKM/"
-# Enroll Key
-sudo mokutil --import MOK.der
-# Sign Module
-sudo kmodsign sha512 MOK.priv MOK.der /lib/modules/$(uname -r)/extra/darling-mach.ko
-# Reboot System and Enroll Key
-```
-
-
-### No rule to make target 'modules'
-
-This error can occur for a number of reasons. The most common is that your currently running kernel is no longer installed, which occurs after an upgrade. Before trying other steps reboot your system in order to test against this.
-
-Another cause is that the kernel headers may not be installed. Distributions such as Ubuntu will install the correct headers automatically, but Arch/Manjaro may require you to install the appropriate headers manually. See the "Arch Linux & Manjaro" section earlier on this page for instructions on how to install the appropriate Linux headers.
-
-```
-make -C /lib/modules/5.4.2-1-MANJARO/build M=/home/xeab/Downloads/darling/src/lkm modules
-make[5]: Entering directory '/usr/lib/modules/5.4.2-1-MANJARO/build'
-make[5]: *** No rule to make target 'modules'.  Stop.
-```
 
 ### File System Support
 
