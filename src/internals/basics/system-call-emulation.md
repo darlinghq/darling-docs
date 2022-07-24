@@ -19,9 +19,8 @@ Unlike other kernels, XNU has three distinct system call tables:
  1. **BSD system calls**, invoked via sysenter/syscall. These calls frequently
     have a direct counterpart on Linux, which makes them easiest to implement.
  2. **Mach system calls**, which use negative system call numbers. These are
-    non-existent on Linux and are mostly implemented in the darling-mach Linux
-    kernel module. These calls are built around [Mach
-    ports](../macos-specifics/mach-ports.md).
+    non-existent on Linux and are mostly implemented in darlingserver.
+    These calls are built around [Mach ports](../macos-specifics/mach-ports.md).
  3. **Machine dependent system calls**, invoked via `int 0x82`. There are only a
     few of them and they are mainly related to [thread-local
     storage](../threading/thread-local-storage.md).
@@ -30,9 +29,8 @@ Unlike other kernels, XNU has three distinct system call tables:
 
 Darling emulates system calls by providing a modified
 `/usr/lib/system/libsystem_kernel.dylib` library, the source code of which is
-located in `src/kernel`. Even though some parts of the emulation are located in
-Darling's kernel module (located in `src/external/lkm`), Darling's emulation is
-user space based.
+located in `src/kernel`. However, some parts of the emulation are located in
+Darling's userspace kernel server (a.k.a. darlingserver, located in `src/external/darlingserver`).
 
 This is why `libsystem_kernel.dylib` (and also `dyld`, which contains a static
 build of this library) can never be copied from macOS to Darling.
@@ -42,6 +40,11 @@ isn't really workable. Unlike BSD kernels, Linux has no support for foreign
 system call emulation and having such an extensive and intrusive patchset merged
 into Linux would be too difficult. Requiring Darling's users to patch their
 kernels is out of question as well.
+
+In the past, Darling used a kernel module to implement many of the same things now handled by darlingserver.
+This approach had certain advantages (e.g. much simpler to manage Darling processes and typically faster than darlingserver),
+but it was found to be too unstable. Additionally, debugging kernel code is much harder than debugging userspace code, so it also presented
+development challenges.
 
 ### Disadvantages of this approach
 
@@ -96,25 +99,50 @@ long sys_chroot(const char* path) {
 In addition, to avoid dependence on external headers, libsystem_kernel includes copies of Linux headers defining syscall numbers. All of these syscall numbers
 are prefixed with `__NR_`. The syscall numbers, as well as availability, depends on the architecture. See [this directory](https://github.com/darlinghq/darling/tree/master/src/kernel/emulation/linux/linux-syscalls) for the header we include.
 
-### Making LKM calls
+### Making darlingserver calls
 
-Many syscalls can be emulated using only Linux syscalls. However, there are some, most notably Mach syscalls, that require calls into our Linux kernel module.
-Like with Linux syscalls, there's a function to help out with this: `lkm_call`. It accepts two arguments: the trap number and a nullable argument structure pointer
-(whether it is valid to pass null depends on the trap you're calling). This function will automatically translate the Linux errno returned into a BSD errno.
-As an alternative, `lkm_call_raw` provides the same API, but returns the Linux errno.
-The list of supported LKM traps can be seen in [the LKM API header](https://github.com/darlinghq/darling-newlkm/blob/master/darling/api.h).
+Many syscalls can be emulated using only Linux syscalls. However, there are some, most notably Mach syscalls, that require calls into our userspace kernel server.
 
-Here's an example of using the `getuidgid` trap, which returns the UID and GID of the calling process (as seen from within Darling):
+darlingserver calls have wrappers in libsystem_kernel that handle all the RPC boilerplate for messaging the server.
+Prototypes for these wrappers can be included using `#include <darlingserver/rpc.h>`. A full list of
+all the supported RPC calls can be found [here](https://github.com/darlinghq/darlingserver/blob/main/scripts/generate-rpc-wrappers.py#L22).
+
+Each wrapper is of the form:
 
 ```c
-long sys_getuid(void) {
-  struct uidgid ug;
-  lkm_call(NR_getuidgid, &ug);
-  return ug.uid;
-}
+int dserver_rpc_CALL_NAME_HERE(int arg1, char arg2 /* and arg3, arg4, etc. */, int* return_val1, char* return_val2 /* and return_val3, return_val4, etc. */);
 ```
 
-Internally, `lkm_call` performs an ioctl on the process's [`/dev/mach` descriptor](../lkm/chardev-and-traps.md).
+The arguments to the wrapper are the arguments (if any) to the RPC call followed by pointers to store the return values (if any) from the call.
+All return value pointers can be set to `NULL` if you don't want/care about that value.
+
+File descriptors can also be sent and received like any other argument or return value; the wrappers take care of the necessary RPC boilerplate behind
+the scenes.
+
+For example, this is the wrapper prototype for the `uidgid` call, which retrieves the UID and GID of the current process (as seen within the process)
+and optionally updates them (if either `new_uid` or `new_gid` are greater than `-1`):
+
+```c
+int dserver_rpc_uidgid(int32_t new_uid, int32_t new_gid, int32_t* out_old_uid, int32_t* out_old_gid);
+```
+
+The following are all valid invocations of this wrapper:
+
+```c
+int old_uid;
+int old_gid;
+
+// retrieve the old UID and set the new UID to 5 (without changing the GID)
+dserver_rpc_uidgid(5, -1, &old_uid, NULL);
+
+// retrieve the old UID and GID and don't change the UID or GID values
+dserver_rpc_uidgid(-1, -1, &old_uid, &old_gid);
+
+// set the new GID to 89 (without changing the UID)
+dserver_rpc_uidgid(-1, 89, NULL, NULL);
+```
+
+For more details on darlingserver RPC, see the [appropriate doc](../darlingserver/rpc.md).
 
 ### `errno` translation
 
@@ -126,7 +154,7 @@ It will also automatically handle signs: if you give a positive code, it'll retu
 ### "Simple" implementations of certain libc functions
 
 Libc provides some incredibly useful functions that we simply cannot use in libsystem_kernel,
-due the fact that libsystem_kernel can't have any external dependencies&mdash;libelfloader being the only exception (because we know it won't recurse back into libsystem_kernel).
+due the fact that libsystem_kernel can't have any external dependencies.
 However, we would still like to have many of these available in libsystem_kernel. Solution? Implement our own simple versions of these functions.
 
 The result is that everything in [`simple.h`](https://github.com/darlinghq/darling/blob/master/src/kernel/emulation/linux/simple.h) is available in libsystem_kernel.

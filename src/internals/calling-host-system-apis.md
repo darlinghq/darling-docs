@@ -12,18 +12,15 @@ set up.
 
 ## The ELF Bridge
 
-libelfloader is responsible for providing the bridge between the ELF and Mach-O worlds.
-libelfloader itself is a Mach-O dylib. However, in order to provide the bridge, it loads
-a special ELF binary called the dummy. To give the dummy full access to a dynamic
-ELF environment, libelfloader loads the dummy's interpreter (i.e. Linux's dynamic ELF linker,
-`ld-linux.so`) and uses it to execute the dummy.
-
-The dummy itself has access to a normal Linux ELF environment, complete with dynamic library loading and
-pthread functionality (which is necessary for [Darling's threading implementation](threading/thread-implementation.md)).
-How does the dummy allow the Mach-O world to use this stuff? As part of the setup for the dummy,
-libelfloader allocates a structure for the dummy to populate with the addresses of ELF functions we want to use.
-After the dummy populates this structure ([`struct elf_calls`](https://github.com/darlinghq/darling/blob/master/src/libelfloader/native/elfcalls.h#L13)),
-Mach-O code can call those functions at any time using the function pointers stored in the structure.
+mldr is responsible for [loading Mach-O's](basics/loader.md). However, it is also responsible for providing the ELF
+bridge for the Mach-O world. Because it is an ELF itself, it has full access to a normal Linux ELF environment,
+complete with dynamic library loading and pthread functionality (which is necessary for
+[Darling's threading implementation](threading/thread-implementation.md)).
+How does mldr allow the Mach-O world to use this stuff? As part of loading a Mach-O binary,
+mldr populates a structure with the addresses of ELF functions we want to use.
+After populating this structure ([`struct elf_calls`](https://github.com/darlinghq/darling/blob/master/src/startup/mldr/elfcalls/elfcalls.h#L17)),
+it passes it to the Mach-O binary as part of the special `applep` environment array.
+Mach-O code can then call those functions at any time using the function pointers stored in the structure.
 
 ## Wrappers
 
