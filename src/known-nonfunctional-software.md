@@ -18,4 +18,4 @@ GUI applications will not work in Darling at this point in time, with very few e
   - Logic.
   - Final Cut Pro.
   - Any Adobe Suite applications.
-  - Any complex GUI application in general will not work at this point in time.
+  - Any complex GUI application in general will not work at this point in time - only simple "Hello World" type GUIs will work.
