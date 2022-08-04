@@ -5,6 +5,7 @@ The following software has been tested and is known not to work with Darling:
 - XQuartz 2.8.1:
   - Hangs, and causes client applications to hang when they try to use it.
 - Macports (though Homebrew does work).
+- Python 3.10 (From https://www.python.org) (darlingserver regression).
 
 GUI applications will not work in Darling at this point in time, with very few exceptions. More specifically:
 
