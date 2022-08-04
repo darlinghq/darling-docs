@@ -163,7 +163,12 @@ If you still want to build JavaScriptCore and have a bit of RAM to spare, JavaSc
 ### Debug Builds
 
 By default, CMake setups up a non-debug, non-release build.
-If you run LLDB and encounter messages indicating a lack of debug symbols, make sure you are doing a debug build. To do this, use the `-DCMAKE_BUILD_TYPE=Debug`.
+If you run LLDB and encounter messages indicating a lack of debug symbols, make sure you are doing a debug build. To do this, use `-DCMAKE_BUILD_TYPE=Debug`.
+
+### Unit tests
+
+Darling has a limited number of unit tests. These are not currently built by default, but this can be enabled with '-DENABLE_TESTS=1'.
+These tests are then installed to /usr/libexec within your Darling container.
 
 ### Additional, Non-standard Binaries
 
