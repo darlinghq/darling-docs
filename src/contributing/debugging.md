@@ -61,10 +61,18 @@ darling shell
 /path/to/application/executable
 ```
 
-If everything was set up properly, you should find a file called `core_dump`. It will be located in the current working directory that Linux is pointing to. Once you found the file, you can load it up on lldb.
+If everything was set up properly, you should find a file called `core_dump`. It will be located in the current working directory that Linux is pointing to.
+
+For the time being, you will need to use the `darling-coredump` command to convert the ELF formatted core dump into a Mach-O core dump. 
 
 ```
-lldb --core /path/to/core/dump/file
+darling-coredump /path/to/core/dump/file
+```
+
+After the program has finished executing, you should see a `darlingcore-core_dump` file. This file will be in the same folder as the `core_dump` file. Once you found the file, you can load it up on lldb.
+
+```
+lldb --core /path/to/darlingcore/core/dump/file
 ```
 
 ## Built-in debugging utilities
