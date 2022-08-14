@@ -53,6 +53,8 @@ sudo sysctl -w kernel.core_pattern=core_dump
 ulimit -c unlimited
 ```
 
+### Option #1: Grab Core Dump From Current Working Directory
+
 Note that the core dump will be stored into the current working directory that Linux (not Darling) is pointing to. So you should `cd` into the directory you want the core dump to be stored in before you execute `darling shell`. From there, you can execute the application.
 
 ```
@@ -62,6 +64,32 @@ darling shell
 ```
 
 If everything was set up properly, you should find a file called `core_dump`. It will be located in the current working directory that Linux is pointing to.
+
+### Option #2: Using `coredumpctl` To Get The Core Dump.
+
+If your distro uses SystemD, you can use `coredumpctl` utility as an alternative to grab the code dump.
+
+To generate the core dump, run the application as normal (ex: `darling shell /path/to/application/executable`). Once the program crashes, you should see a `(core dumped)` message appear. For example:
+```
+Illegal instruction: 4 (core dumped)
+```
+
+After a core dump is generated, you will need to locate the core dump. `coredumpctl list -r` will give you a list of core dumps (where the newest entries are listed first).
+
+```
+$ coredumpctl list -r
+TIME                            PID  UID  GID SIG     COREFILE  EXE
+Sat 2022-08-13 23:43:20 PDT  812790 1000 1000 SIGILL  present   /usr/local/libexec/darling/usr/libexec/darling/mldr
+```
+
+Once you figure out the process' core_dump that you want save, you can use the `coredumpctl dump` command to dump it, like so:
+
+```
+# 812790 is the PID that you want to dump
+coredumpctl dump -o core_dump 812790
+```
+
+---
 
 For the time being, you will need to use the `darling-coredump` command to convert the ELF formatted core dump into a Mach-O core dump. 
 
