@@ -8,10 +8,10 @@ Clang is required to compile Darling; at least Clang 6 is required. You can forc
 
 A minimum of 4 GB of RAM is also required for building. Using swap space may help reduce the memory usage, but is likely to slow the build down significantly.
 
-Linux 5.0 or higher is required.
+Linux 5.3 or higher is required.
 
 
-**Debian 10/11**
+**Debian 11**
 
   ```
   $ sudo apt install cmake clang-6.0 bison flex xz-utils libfuse-dev libudev-dev pkg-config \
