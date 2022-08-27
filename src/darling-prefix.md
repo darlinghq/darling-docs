@@ -13,7 +13,7 @@ When you run an executable inside the prefix for the first time (after boot), `l
 Unlike Wine, Darling doesn't need to update the prefix whenever the Darling installation is updated. There is one caveat, though: since overlayfs caches the contents of underlying file system(s), you may need to terminate the container to see Darling's updated files:
 
 ```
-$ darling shutdown
+darling shutdown
 ```
 
 Note that this will terminate all processes running in the container.

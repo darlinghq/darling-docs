@@ -35,7 +35,7 @@ emulation](internals/basics/system-call-emulation.md) and may not see the
 macOS-like environment:
 
 ```
-$ darling shell
+darling shell
 Darling [~]$ uname
 Darwin
 Darling [~]$ /Volumes/SystemRoot/bin/uname

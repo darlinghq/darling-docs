@@ -19,7 +19,7 @@ It works!
 of the core OS. On Linux distributions, it prints "Linux":
 
 ```
-$ uname
+uname
 Linux
 ```
 

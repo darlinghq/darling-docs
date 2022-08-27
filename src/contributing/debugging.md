@@ -29,13 +29,13 @@ If you're having trouble using LLDB normally, you may get luckier by running the
 In one terminal, start the `debugserver`:
 
 ```
-$ ./debugserver 127.0.0.1:12345 /bin/bash
+./debugserver 127.0.0.1:12345 /bin/bash
 ```
 
 In another terminal, connect to the server in LLDB:
 
 ```	
-$ ./lldb
+./lldb
 (lldb) platform select remote-macosx
 Platform: remote-macosx
 Connected: no
@@ -77,7 +77,10 @@ Illegal instruction: 4 (core dumped)
 After a core dump is generated, you will need to locate the core dump. `coredumpctl list -r` will give you a list of core dumps (where the newest entries are listed first).
 
 ```
-$ coredumpctl list -r
+coredumpctl list -r
+```
+
+```
 TIME                            PID  UID  GID SIG     COREFILE  EXE
 Sat 2022-08-13 23:43:20 PDT  812790 1000 1000 SIGILL  present   /usr/local/libexec/darling/usr/libexec/darling/mldr
 ```
@@ -119,7 +122,7 @@ When this is not enough, you can use **libgmalloc**, which is (for the most
 part) a drop-in replacement for libmalloc. This is how you use it:
 
 ```
-$ DYLD_INSERT_LIBRARIES=/usr/lib/libgmalloc.dylib DYLD_FORCE_FLAT_NAMESPACE=1 ./test`
+DYLD_INSERT_LIBRARIES=/usr/lib/libgmalloc.dylib DYLD_FORCE_FLAT_NAMESPACE=1 ./test`
 ```
 
 libgmalloc catches memory issues such as use-after-free and buffer overflows,
@@ -156,7 +159,10 @@ You can use **xtrace** to trace Darwin syscalls a program makes, a lot like
 using `strace` on Linux:
 
 ```
-$ xtrace vm_stat
+xtrace vm_stat
+```
+
+```
 [139] fstat64(1, 0x7fffffdfe340) -> 0
 [139] host_self_trap() -> port right 2563
 [139] mach_msg_trap(0x7fffffdfdfc0, MACH_SEND_MSG|MACH_RCV_MSG, 40, 1072, port 1543, 0, port 0)
@@ -212,7 +218,10 @@ In `src/kernel/emulation/linux/mach/lkm.c`, you can add the following print stat
 This will print out values stored in `applep`. One benefit of this is that you get to see which programs are being executed.
 
 ```
-$ darling shell
+darling shell
+```
+
+```
 Bootstrapping the container with launchd...
 applep is not NULL
 applep[0] = executable_path=/usr/libexec/darling/vchroot

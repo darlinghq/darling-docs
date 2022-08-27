@@ -7,6 +7,6 @@ This page is only for if Darling was build and installed manually as instructed 
 The following commands will completely remove Darling. Replace the source root with the path to your local copy of the Darling source code.
 
 ```
-$ cd darling
-$ tools/uninstall
+cd darling
+tools/uninstall
 ```
