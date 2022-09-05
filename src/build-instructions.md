@@ -36,7 +36,7 @@ libswresample-dev libdbus-1-dev libxkbfile-dev libssl-dev
 ```bash
 sudo apt install cmake clang bison flex libfuse-dev libudev-dev pkg-config libc6-dev-i386 \
 gcc-multilib libcairo2-dev libgl1-mesa-dev libglu1-mesa-dev libtiff5-dev \
-libfreetype6-dev git git-lfs libelf-dev libxml2-dev libegl1-mesa-dev libfontconfig1-dev
+libfreetype6-dev git git-lfs libelf-dev libxml2-dev libegl1-mesa-dev libfontconfig1-dev \
 libbsd-dev libxrandr-dev libxcursor-dev libgif-dev libavutil-dev libpulse-dev \
 libavformat-dev libavcodec-dev libswresample-dev libdbus-1-dev libxkbfile-dev \
 libssl-dev python2
