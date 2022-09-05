@@ -6,7 +6,7 @@ If you are familiar with how GitHub Pull Requests work, you should feel right at
 
 Locate the repository that you made changes in on GitHub. The following command can help. 
 	
-```
+```bash
 cd darling/src/external/less
 git remote get-url origin
 https://github.com/darlinghq/darling-less.git
@@ -23,13 +23,13 @@ button to copy it.
 Create and check out a branch describing your changes. In this example, we will
 use `reinvent-wheel`. Next, add your fork as a remote.
 
-```
+```bash
 git remote add my-fork git@github.com:user/darling-less.git
 ```
 
 After this, push your commits to your fork. 
 
-```
+```bash
 git push -u my-fork reinvent-wheel
 ```
 

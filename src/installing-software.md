@@ -14,7 +14,7 @@ Many apps for macOS are distributed as `.dmg` (disk image) files that contain th
 
 Under Darling, use `hdiutil attach SomeApp.dmg` to mount the DMG (the same command works on macOS too), and then copy the `.app` using `cp`:
 
-```
+```bash
 Darling [~]$ hdiutil attach Downloads/SomeApp.dmg
 /Volumes/SomeApp
 Darling [~]$ cp -r /Volumes/SomeApp/SomeApp.app /Applications/
@@ -34,7 +34,7 @@ Many apps use `.pkg`, the native package format of macOS, as their distribution 
 
 Under macOS, you would use the graphical Installer.app or the command-line `installer` utility to install this kind of package. You can do the latter under Darling as well:
 
-```
+```bash
 Darling [~]$ installer -pkg mc-4.8.7-0.pkg -target /
 ```
 
@@ -49,13 +49,13 @@ There are many third-party package managers for macOS, the most popular one bein
 To install command-line developer tools such as the C compiler (Clang) and LLDB, you can install Xcode
 using one of the method mentioned above, and then run
 
-```
+```bash
 Darling [~]$ xcode-select --switch /Applications/Xcode.app
 ```
 
 Alternatively, you can download and install only command-line tools from Apple by running
 
-```
+```bash
 Darling [~]$ xcode-select --install
 ```
 
