@@ -22,7 +22,7 @@ If you `PATH` variable does not include the `bin` folder, you will need to add i
 # For bash
 echo "export PATH=\"~/bin:\$PATH\"" >> ~/.bash_profile && source ~/.bash_profile
 # For zsh
-% echo "export PATH=\"\$HOME/bin:\$PATH\"" >> ~/.zshenv && source ~/.zshenv
+echo "export PATH=\"\$HOME/bin:\$PATH\"" >> ~/.zshenv && source ~/.zshenv
 ```
 
 ## Getting the stub generator
