@@ -46,7 +46,7 @@ libssl-dev python2
   
 ```bash
 sudo pacman -S --needed make cmake clang flex bison icu fuse gcc-multilib \
-lib32-gcc-libs pkg-config fontconfig cairo libtiff python2 mesa llvm libbsd libxkbfile \ 
+lib32-gcc-libs pkg-config fontconfig cairo libtiff python2 mesa llvm libbsd libxkbfile \
 libxcursor libxext libxkbcommon libxrandr ffmpeg git git-lfs
 ```
 
