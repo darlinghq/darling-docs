@@ -18,7 +18,7 @@ It works!
 `uname` is a standard Unix command to get the name (and optionally the version)
 of the core OS. On Linux distributions, it prints "Linux":
 
-```
+```bash
 uname
 Linux
 ```

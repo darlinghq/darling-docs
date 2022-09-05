@@ -7,30 +7,26 @@ To package Darling for Debian-based systems, we provide the `tools/debian/makede
 All output files are stored in the parent directory of the source root because of a technical limitation of `debuild`.
 
 ### Install Dependencies
-```
-bash
+```bash
 sudo apt install devscripts equivs dpkg-dev debhelper
 ```
 
 ### Building Binary Packages
 
 #### Install Build Dependencies
-```
-bash
+```bash
 sudo mk-build-deps -ir
 ```
 
 #### Build
-```
-bash
+```bash
 tools/debian/make-deb
 ```
 
 ### Build Source Packages
 Use this if you want to upload to a service like Launchpad.
 
-```
-bash
+```bash
 tools/debian/make-deb --dsc
 ```
 
@@ -46,7 +42,7 @@ tools/debian/make-deb --dsc
 
 ### Build for other operating systems
 By default, the package will be built for Fedora 30. To build for a different OS, simply use:
-```
+```bash
 RPM_OS=fedora:31 docker-compose build rpm
 ```
 
