@@ -28,14 +28,14 @@ If you're having trouble using LLDB normally, you may get luckier by running the
 
 In one terminal, start the `debugserver`:
 
-```
-$ ./debugserver 127.0.0.1:12345 /bin/bash
+```bash
+./debugserver 127.0.0.1:12345 /bin/bash
 ```
 
 In another terminal, connect to the server in LLDB:
 
-```	
-$ ./lldb
+```bash
+./lldb
 (lldb) platform select remote-macosx
 Platform: remote-macosx
 Connected: no
@@ -48,7 +48,7 @@ Please note that environment variables may be missing by default, if used like t
 
 If you are unable to start your application through lldb, you can generate a core dump and load it through lldb. You will need to enable some options on the Linux side before you are able to generate a core dump. You will to tell Linux that you want to generate a core dump, and that there is no size limit for the core dump.
 
-```
+```bash
 sudo sysctl -w kernel.core_pattern=core_dump
 ulimit -c unlimited
 ```
@@ -57,7 +57,7 @@ ulimit -c unlimited
 
 Note that the core dump will be stored into the current working directory that Linux (not Darling) is pointing to. So you should `cd` into the directory you want the core dump to be stored in before you execute `darling shell`. From there, you can execute the application.
 
-```
+```bash
 cd /path/you/want/to/store/core/dump/in
 darling shell
 /path/to/application/executable
@@ -76,8 +76,11 @@ Illegal instruction: 4 (core dumped)
 
 After a core dump is generated, you will need to locate the core dump. `coredumpctl list -r` will give you a list of core dumps (where the newest entries are listed first).
 
+```bash
+coredumpctl list -r
 ```
-$ coredumpctl list -r
+
+```
 TIME                            PID  UID  GID SIG     COREFILE  EXE
 Sat 2022-08-13 23:43:20 PDT  812790 1000 1000 SIGILL  present   /usr/local/libexec/darling/usr/libexec/darling/mldr
 ```
@@ -93,13 +96,13 @@ coredumpctl dump -o core_dump 812790
 
 For the time being, you will need to use the `darling-coredump` command to convert the ELF formatted core dump into a Mach-O core dump. 
 
-```
+```bash
 darling-coredump /path/to/core/dump/file
 ```
 
 After the program has finished executing, you should see a `darlingcore-core_dump` file. This file will be in the same folder as the `core_dump` file. Once you found the file, you can load it up on lldb.
 
-```
+```bash
 lldb --core /path/to/darlingcore/core/dump/file
 ```
 
@@ -118,8 +121,8 @@ among them:
 When this is not enough, you can use **libgmalloc**, which is (for the most
 part) a drop-in replacement for libmalloc. This is how you use it:
 
-```
-$ DYLD_INSERT_LIBRARIES=/usr/lib/libgmalloc.dylib DYLD_FORCE_FLAT_NAMESPACE=1 ./test`
+```bash
+DYLD_INSERT_LIBRARIES=/usr/lib/libgmalloc.dylib DYLD_FORCE_FLAT_NAMESPACE=1 ./test`
 ```
 
 libgmalloc catches memory issues such as use-after-free and buffer overflows,
@@ -155,8 +158,11 @@ You can find more tips (not all of which work under Darling)
 You can use **xtrace** to trace Darwin syscalls a program makes, a lot like
 using `strace` on Linux:
 
+```bash
+xtrace vm_stat
 ```
-$ xtrace vm_stat
+
+```
 [139] fstat64(1, 0x7fffffdfe340) -> 0
 [139] host_self_trap() -> port right 2563
 [139] mach_msg_trap(0x7fffffdfdfc0, MACH_SEND_MSG|MACH_RCV_MSG, 40, 1072, port 1543, 0, port 0)
@@ -211,8 +217,11 @@ In `src/kernel/emulation/linux/mach/lkm.c`, you can add the following print stat
 
 This will print out values stored in `applep`. One benefit of this is that you get to see which programs are being executed.
 
+```bash
+darling shell
 ```
-$ darling shell
+
+```
 Bootstrapping the container with launchd...
 applep is not NULL
 applep[0] = executable_path=/usr/libexec/darling/vchroot

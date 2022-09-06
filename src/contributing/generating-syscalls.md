@@ -24,7 +24,7 @@ export ARCHS="arm64 i386 x86_64"
 
 ## Example
 
-```
+```bash
 export ARCHS="arm64 i386 x86_64"
 mkdir ~/Desktop/generated_syscalls
 ./create-syscalls.pl $XNU/bsd/kern/syscalls.master $XNU/libsyscall/custom/ $XNU/libsyscall/Platforms/ MacOSX ~/Desktop/generated_syscalls

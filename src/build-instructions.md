@@ -13,80 +13,85 @@ Linux 5.0 or higher is required.
 
 **Debian 10/11**
 
-  ```
-  $ sudo apt install cmake clang-6.0 bison flex xz-utils libfuse-dev libudev-dev pkg-config \
-  libc6-dev-i386 libcap2-bin git git-lfs python2 libglu1-mesa-dev libcairo2-dev \
-  libgl1-mesa-dev libtiff5-dev libfreetype6-dev libxml2-dev libegl1-mesa-dev libfontconfig1-dev \
-  libbsd-dev libxrandr-dev libxcursor-dev libgif-dev libpulse-dev libavformat-dev libavcodec-dev \
-  libswresample-dev libdbus-1-dev libxkbfile-dev libssl-dev
-  ````
+```bash
+sudo apt install cmake clang-6.0 bison flex xz-utils libfuse-dev libudev-dev pkg-config \
+libc6-dev-i386 libcap2-bin git git-lfs python2 libglu1-mesa-dev libcairo2-dev \
+libgl1-mesa-dev libtiff5-dev libfreetype6-dev libxml2-dev libegl1-mesa-dev libfontconfig1-dev \
+libbsd-dev libxrandr-dev libxcursor-dev libgif-dev libpulse-dev libavformat-dev libavcodec-dev \
+libswresample-dev libdbus-1-dev libxkbfile-dev libssl-dev
+```
 
 **Debian Testing**
 
-  ```
-  $ sudo apt install cmake clang-9 bison flex xz-utils libfuse-dev libudev-dev pkg-config \
-  libc6-dev-i386 libcap2-bin git git-lfs python2 libglu1-mesa-dev libcairo2-dev \
-  libgl1-mesa-dev libtiff5-dev libfreetype6-dev libxml2-dev libegl1-mesa-dev libfontconfig1-dev \
-  libbsd-dev libxrandr-dev libxcursor-dev libgif-dev libpulse-dev libavformat-dev libavcodec-dev \
-  libswresample-dev libdbus-1-dev libxkbfile-dev libssl-dev
-  ```
+```bash
+sudo apt install cmake clang-9 bison flex xz-utils libfuse-dev libudev-dev pkg-config \
+libc6-dev-i386 libcap2-bin git git-lfs python2 libglu1-mesa-dev libcairo2-dev \
+libgl1-mesa-dev libtiff5-dev libfreetype6-dev libxml2-dev libegl1-mesa-dev libfontconfig1-dev \
+libbsd-dev libxrandr-dev libxcursor-dev libgif-dev libpulse-dev libavformat-dev libavcodec-dev \
+libswresample-dev libdbus-1-dev libxkbfile-dev libssl-dev
+```
 
 **Ubuntu 18.04/20.04:**
 
-  ```
-  $ sudo apt install cmake clang bison flex libfuse-dev libudev-dev pkg-config libc6-dev-i386 \
-  gcc-multilib libcairo2-dev libgl1-mesa-dev libglu1-mesa-dev libtiff5-dev \
-  libfreetype6-dev git git-lfs libelf-dev libxml2-dev libegl1-mesa-dev libfontconfig1-dev libbsd-dev \
-  libxrandr-dev libxcursor-dev libgif-dev libavutil-dev libpulse-dev libavformat-dev libavcodec-dev \
-  libswresample-dev libdbus-1-dev libxkbfile-dev libssl-dev python2
-  ```
+```bash
+sudo apt install cmake clang bison flex libfuse-dev libudev-dev pkg-config libc6-dev-i386 \
+gcc-multilib libcairo2-dev libgl1-mesa-dev libglu1-mesa-dev libtiff5-dev \
+libfreetype6-dev git git-lfs libelf-dev libxml2-dev libegl1-mesa-dev libfontconfig1-dev \
+libbsd-dev libxrandr-dev libxcursor-dev libgif-dev libavutil-dev libpulse-dev \
+libavformat-dev libavcodec-dev libswresample-dev libdbus-1-dev libxkbfile-dev \
+libssl-dev python2
+```
 
 **Arch Linux & Manjaro:**
   
-  ```
-  $ sudo pacman -S --needed make cmake clang flex bison icu fuse gcc-multilib \
-  lib32-gcc-libs pkg-config fontconfig cairo libtiff python2 mesa llvm libbsd libxkbfile \ 
-  libxcursor libxext libxkbcommon libxrandr ffmpeg git git-lfs
-  ```
+```bash
+sudo pacman -S --needed make cmake clang flex bison icu fuse gcc-multilib \
+lib32-gcc-libs pkg-config fontconfig cairo libtiff python2 mesa llvm libbsd libxkbfile \
+libxcursor libxext libxkbcommon libxrandr ffmpeg git git-lfs
+```
 
 **Fedora and CentOS**
 
-  [RPMFusion](https://rpmfusion.org/RPM%20Fusion) is required for FFmpeg.
+[RPMFusion](https://rpmfusion.org/RPM%20Fusion) is required for FFmpeg.
 
-  ```
-  $ sudo dnf install make cmake clang bison dbus-devel flex python2 glibc-devel.i686 fuse-devel \
-  systemd-devel elfutils-libelf-devel cairo-devel freetype-devel.{x86_64,i686} \
-  libjpeg-turbo-devel.{x86_64,i686} libtiff-devel.{x86_64,i686} fontconfig-devel.{x86_64,i686} \
-  libglvnd-devel.{x86_64,i686} mesa-libGL-devel.{x86_64,i686} mesa-libEGL-devel.{x86_64,i686} \
-  mesa-libGLU-devel.{x86_64,i686} libxml2-devel libbsd-devel git git-lfs libXcursor-devel libXrandr-devel giflib-devel \
-  ffmpeg-devel pulseaudio-libs-devel libxkbfile-devel openssl-devel llvm libcap-devel
-  ```
+```bash
+sudo dnf install make cmake clang bison dbus-devel flex python2 glibc-devel.i686 fuse-devel \
+systemd-devel elfutils-libelf-devel cairo-devel freetype-devel.{x86_64,i686} \
+libjpeg-turbo-devel.{x86_64,i686} libtiff-devel.{x86_64,i686} fontconfig-devel.{x86_64,i686} \
+libglvnd-devel.{x86_64,i686} mesa-libGL-devel.{x86_64,i686} mesa-libEGL-devel.{x86_64,i686} \
+mesa-libGLU-devel.{x86_64,i686} libxml2-devel libbsd-devel git git-lfs libXcursor-devel \
+libXrandr-devel giflib-devel ffmpeg-devel pulseaudio-libs-devel libxkbfile-devel \
+openssl-devel llvm libcap-devel
+```
 
 **OpenSUSE Tumbleweed**
 
-  You will need to build Darling with only the 64bit components. See **Build Options** for instructions. 
+You will need to build Darling with only the 64bit components. See **Build Options** for instructions. 
 
-  ```
-  $ sudo zypper install make cmake-full clang10 bison flex python-base glibc fuse-devel libsystemd0 \
-  libelf1 cairo-devel libfreetype6 libjpeg-turbo libfontconfig1 libglvnd Mesa-libGL-devel \
-  Mesa-libEGL-devel libGLU1 libxml2-tools libbsd-devel git git-lfs libXcursor-devel giflib-devel ffmpeg-4 \
-  ffmpeg-4-libavcodec-devel ffmpeg-4-libavformat-devel libpulse-devel pulseaudio-utils libxkbfile-devel \
-  openssl llvm libcap-progs libtiff-devel libjpeg8-devel libXrandr-devel dbus-1-devel glu-devel ffmpeg-4-libswresample-devel
-  ```
+```bash
+sudo zypper install make cmake-full clang10 bison flex python-base glibc fuse-devel \
+libsystemd0 libelf1 cairo-devel libfreetype6 libjpeg-turbo libfontconfig1 libglvnd \
+Mesa-libGL-devel Mesa-libEGL-devel libGLU1 libxml2-tools libbsd-devel git git-lfs \
+libXcursor-devel giflib-devel ffmpeg-4 ffmpeg-4-libavcodec-devel \
+ffmpeg-4-libavformat-devel libpulse-devel pulseaudio-utils libxkbfile-devel openssl \
+llvm libcap-progs libtiff-devel libjpeg8-devel libXrandr-devel dbus-1-devel glu-devel \
+ffmpeg-4-libswresample-devel
+```
 
 **Alpine Linux**
 
-  Make sure to [enable the community repository](https://wiki.alpinelinux.org/wiki/Enable_Community_Repository).
-  Alpine also doesn't support 32-bit builds, so make sure to [disable that](#disabling-32-bit-libraries).
+Make sure to [enable the community repository](https://wiki.alpinelinux.org/wiki/Enable_Community_Repository).
+Alpine also doesn't support 32-bit builds, so make sure to [disable that](#disabling-32-bit-libraries).
 
-  ```sh
-  $ sudo apk add cmake clang bison flex xz fuse-dev pkgconfig libcap git git-lfs python2 python3 glu-dev \
-  cairo-dev mesa-dev tiff-dev freetype-dev libxml2-dev fontconfig-dev libbsd-dev libxrandr-dev libxcursor-dev \
-  giflib-dev pulseaudio-dev ffmpeg-dev dbus-dev libxkbfile-dev openssl-dev libexecinfo-dev make gcc g++ xdg-user-dirs
-  ```
+```bash
+sudo apk add cmake clang bison flex xz fuse-dev pkgconfig libcap git git-lfs python2 \
+python3 glu-dev cairo-dev mesa-dev tiff-dev freetype-dev libxml2-dev fontconfig-dev \
+libbsd-dev libxrandr-dev libxcursor-dev giflib-dev pulseaudio-dev ffmpeg-dev dbus-dev \
+libxkbfile-dev openssl-dev libexecinfo-dev make gcc g++ xdg-user-dirs
+```
 
-  These are the minimum requirements for building and running Darling on Alpine. Of course, if you want to run GUI applications,
-  you'll also need a desktop environment.
+These are the minimum requirements for building and running Darling on Alpine.
+Of course, if you want to run GUI applications, you'll also need a desktop environment.
 
 # Fetch the Sources
 
@@ -94,8 +99,8 @@ Darling uses git-lfs. Set this up if needed with [official instructions](https:/
 
 Darling makes extensive use of Git submodules, therefore you cannot use a plain `git clone`. Make a clone like this:
 
-```
-$ git clone --recursive https://github.com/darlinghq/darling.git
+```bash
+git clone --recursive https://github.com/darlinghq/darling.git
 ```
 
 **Attention:** The source tree requires up to 5 GB of disk space!
@@ -104,11 +109,11 @@ $ git clone --recursive https://github.com/darlinghq/darling.git
 
 If you have already cloned Darling and would like to get the latest changes, do this in the source root:
 
-```
-$ git lfs install
-$ git pull
-$ git submodule init
-$ git submodule update
+```bash
+git lfs install
+git pull
+git submodule init
+git submodule update
 ```
 
 # Build
@@ -121,19 +126,19 @@ The build system of Darling is CMake. Makefiles are generated by CMake by defaul
 
 Now let's build Darling:
 
-```
+```bash
 # Move into the cloned sources
-$ cd darling
+cd darling
 
 # Make a build directory
-$ mkdir build && cd build
+mkdir build && cd build
 
 # Configure the build
-$ cmake ..
+cmake ..
 
 # Build and install Darling
-$ make
-$ sudo make install
+make
+sudo make install
 ```
 
 ##  Build Options 
@@ -190,7 +195,7 @@ If you wish to properly move your Darling installation, the only supported optio
 
 If your distribution is Backbox and you run into build issues try the following commands:
 
-```
+```bash
 sudo update-alternatives --install /usr/bin/clang clang /usr/bin/clang-6.0 600
 sudo update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-6.0 600
 ```

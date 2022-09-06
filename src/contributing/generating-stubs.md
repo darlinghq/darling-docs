@@ -12,17 +12,17 @@ following commands into Terminal.
 
 Create the `bin` folder if it doesn't exist:
 
-```
-$ mkdir ~/bin
+```bash
+mkdir ~/bin
 ```
 
-If you `PATH` variable does not include the `bin` folder, you will need to add it.
+If your `PATH` variable does not include the `bin` folder, you will need to add it.
 
-```
+```bash
 # For bash
-$ echo "export PATH=\"~/bin:\$PATH\"" >> ~/.bash_profile && source ~/.bash_profile
+echo "export PATH=\"~/bin:\$PATH\"" >> ~/.bash_profile && source ~/.bash_profile
 # For zsh
-% echo "export PATH=\"\$HOME/bin:\$PATH\"" >> ~/.zshenv && source ~/.zshenv
+echo "export PATH=\"\$HOME/bin:\$PATH\"" >> ~/.zshenv && source ~/.zshenv
 ```
 
 ## Getting the stub generator
@@ -30,16 +30,16 @@ $ echo "export PATH=\"~/bin:\$PATH\"" >> ~/.bash_profile && source ~/.bash_profi
 Copy/paste the following command into Terminal. It will download both
 `darling-stub-gen` and `class-dump` and place it in the `bin` folder
 
-```
-$ curl https://raw.githubusercontent.com/darlinghq/darling/master/tools/darling-stub-gen -o ~/bin/darling-stub-gen && chmod +x ~/bin/darling-stub-gen && curl https://github.com/darlinghq/class-dump/releases/download/mojave/class-dump -L -o ~/bin/class-dump && chmod +x ~/bin/class-dump
+```bash
+curl https://raw.githubusercontent.com/darlinghq/darling/master/tools/darling-stub-gen -o ~/bin/darling-stub-gen && chmod +x ~/bin/darling-stub-gen && curl https://github.com/darlinghq/class-dump/releases/download/mojave/class-dump -L -o ~/bin/class-dump && chmod +x ~/bin/class-dump
 ```
 
 ## Using the stub generator
 
 To run the stub generator, structure your arguments like this:
 
-```
-$ darling-stub-gen /System/Library/Frameworks/DVDPlayback.framework/DVDPlayback DVDPlayback
+```bash
+darling-stub-gen /System/Library/Frameworks/DVDPlayback.framework/DVDPlayback DVDPlayback
 ```
 
 The process is identical for dynamic libraries.
@@ -60,9 +60,9 @@ the folder inside the include directory (ex: `MyNewFolder/include/MyNewFolder`).
 
 Example:
 
-```
-$ cd src/frameworks/include/
-$ ln -s ../MyNewFolder/include/MyNewFolder MyNewFolder`
+```bash
+cd src/frameworks/include/
+ln -s ../MyNewFolder/include/MyNewFolder MyNewFolder`
 ```
 
 Finally, you will need to add the folder to the build. In

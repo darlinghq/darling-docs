@@ -6,7 +6,7 @@ Here are some things you may want to try after installing Darling.
 
 See if Darling can print the famous greeting:
 
-```
+```bash
 Darling [~]$ echo Hello World
 Hello World
 ```
@@ -18,14 +18,14 @@ It works!
 `uname` is a standard Unix command to get the name (and optionally the version)
 of the core OS. On Linux distributions, it prints "Linux":
 
-```
-$ uname
+```bash
+uname
 Linux
 ```
 
 But Darling emulates a complete Darwin environment, so running `uname` results in "Darwin":
 
-```	
+```bash
 Darling [~]$ uname
 Darwin
 ```
@@ -35,7 +35,7 @@ Darwin
 `sw_vers` (for "software version") is a Darwin command that prints the
 user-facing name, version and code name (such as "El Capitan") of the OS:
 
-```
+```bash
 Darling [~]$ sw_vers
 ProductName:    Mac OS X
 ProductVersion: 10.14
@@ -46,7 +46,7 @@ BuildVersion:   Darling
 
 Explore the file system Darling presents to Darwin programs, e.g.:
 
-```
+```bash
 Darling [~]$ ls -l /
 ...
 Darling [~]$ ls /System/Library
@@ -62,7 +62,7 @@ Darling [~]$ ls -l /Volumes
 Darling ships with tools like `nm` and `otool` that let you inspect Mach-O
 binaries, ones that make up Darling and any third-party ones:
 
-```
+```bash
 Darling [~]$ nm /usr/lib/libobjc.A.dylib
 ...
 Darling [~]$ otool -L /bin/bash
@@ -77,7 +77,7 @@ While Darling emulates a complete Darwin system, it's still powered by Linux und
 this may prove useful. For example, you can use Linux's `/proc` pseudo-filesystem to explore the
 running processes. Let's use `cat` to explore its own process memory layout:
 
-```
+```bash
 Darling [~]$ cat /proc/self/maps
 ...
 7ffff7ffb000-7ffff7ffd000 rwxp 00000000 fe:01 20482                      /home/user/.darling/bin/cat
@@ -96,7 +96,7 @@ Darling [~]$ cat /proc/self/maps
 Darling runs in a mount namespace that's separate from the host. You can use
 host's native `mount` tool to inspect it:
 
-```
+```bash
 Darling [~]$ /Volumes/SystemRoot/usr/bin/mount | column -t
 /Volumes/SystemRoot/dev/sda3  on  /Volumes/SystemRoot  type  ext4     (rw,relatime,seclabel)
 overlay                       on  /                    type  overlay  (rw,relatime,seclabel,lowerdir=/usr/local/libexec/darling,upperdir=/home/user/.darling,workdir=/home/user/.darling.workdir)
@@ -110,7 +110,7 @@ in this case).
 
 Alternatively, you can read the same info from the `/proc` pseudo-filesystem:
 
-```
+```bash
 Darling [~]$ column -t /proc/self/mounts
 <...>
 ```
@@ -119,7 +119,7 @@ Darling [~]$ column -t /proc/self/mounts
 
 Darling emulates the BSD `sysctl`s that are needed for `ps` to work:
 
-```
+```bash
 Darling [~]$ ps aux
 USER   PID  %CPU %MEM      VSZ    RSS   TT  STAT STARTED      TIME COMMAND
 user    32   0.0  0.4  4229972  13016   ??  ?     1Jan70   0:00.05 ps aux
@@ -136,7 +136,7 @@ user     1   0.0  0.5  4256056  15484   ??  ?     1Jan70   0:00.25 launchd
 
 Darling ships with many `man` pages you can read:
 
-```
+```bash
 Darling [~]$ man dyld
 ```
 
@@ -145,7 +145,7 @@ Darling [~]$ man dyld
 Like Darwin, Darling ships with a build of Python, Ruby and Perl. You can try
 running a script or exploring them interactively.
 
-```
+```bash
 Darling [~]$ python
 Python 2.7.10 (default, Sep  8 2018, 13:32:07) 
 [GCC 4.2.1 Compatible Clang 6.0.1 (tags/RELEASE_601/final)] on darwin
@@ -160,7 +160,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 Use our `xtrace` tool to trace the emulated Darwin syscalls a process makes:
 
-```
+```bash
 Darling [~]$ arch
 i386
 Darling [~]$ xtrace arch
@@ -187,7 +187,7 @@ Darling [~]$ xtrace arch
 
 Use `launchctl` tool to control `launchd`:
 
-```
+```bash
 Darling [~]$ launchctl list
 PID	Status	Label
 323	-	0x7ffea3407da0.anonymous.launchctl
@@ -227,7 +227,7 @@ Read `man launchctl` for more information of other commands `launchctl` has.
 
 See if networking works as it should:
 
-```
+```bash
 Darling [~]$ curl http://example.org
 <!doctype html>
 <html>
@@ -243,7 +243,7 @@ may](https://www.macrumors.com/2017/11/28/macos-high-sierra-bug-admin-access/),
 Darling allows you to get root privileges without having to enter any password,
 except in our case it's a feature:
 
-```	
+```bash
 Darling [~]$ whoami
 user
 Darling [~]$ sudo whoami
@@ -261,13 +261,13 @@ Download and install the Rudix Package Manager:
 
 Note: Not currently working due to lack of TLS support.
 
-```	
+```bash
 Darling [~]$ curl -s https://raw.githubusercontent.com/rudix-mac/rpm/2015.10.20/rudix.py | sudo python - install rudix
 ```
 
 Now you can install arbitrary packages using the `rudix` command:
 
-```
+```bash
 Darling [~]$ sudo rudix install wget mc
 ```
 
@@ -275,13 +275,13 @@ Darling [~]$ sudo rudix install wget mc
 
 macOS's de-facto package manager, [Homebrew](https://brew.sh/), installs and works under Darling (albeit with issues with certain formulas).
 
-```
+```bash
 Darling [~]$ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
 Now you can install packages just like you would on a real macOS installation:
 
-```
+```bash
 Darling [~]$ brew install wget
 ```
 
@@ -290,7 +290,7 @@ Darling [~]$ brew install wget
 If you've installed Midnight Commander (`mc` package in Rudix), launch it to see
 if it runs smoothly:
 
-```
+```bash
 Darling [~]$ mc
 ```
 
@@ -299,7 +299,7 @@ Darling [~]$ mc
 You can also try installing a `.pkg` file manually using the `installer`
 command:
 
-```
+```bash
 Darling [~]$ installer -pkg mc-4.8.7-0.pkg -target /
 ```
 
@@ -311,7 +311,7 @@ to easily uninstall packages.
 Darling ships with an implementation of `hdiutil`, a tool that allows you to
 attach and detach DMG disk images:
 
-```
+```bash
 Darling [~]$ hdiutil attach Downloads/SomeApp.dmg
 /Volumes/SomeApp
 Darling [~]$ ls /Volumes/SomeApp
@@ -325,13 +325,13 @@ Darling [~]$ hdiutil detach /Volumes/SomeApp
 macOS software uses the so-called "user defaults" system to store preferences.
 You can access it using the `defaults` tool:
 
-```
+```bash
 Darling [~]$ defaults read
 ```
 
 For more information about using `defaults`, read the manual:
 
-```
+```bash
 Darling [~]$ man defaults
 ```
 
@@ -339,7 +339,7 @@ Darling [~]$ man defaults
 
 Get the `neofetch.sh` script from [its homepage](https://github.com/dylanaraps/neofetch ) and run it:
 
-```
+```bash
 Darling [~]$ bash neofetch.sh
                     'c.          user@hostname
                  ,xNMM.          ------------------------
@@ -368,13 +368,13 @@ calls, Mach IPC and host info API, and the "user defaults" subsystem.
 If you have [Xcode SDK installed](installing-software.md#command-line-developer-tools),
 you can compile and run programs.
 
-```
+```bash
 Darling [~]$ xcode-select --switch /Applications/Xcode.app
 ```
 
 Now, build a "Hello World" C program using the Clang compiler:
 
-```
+```bash
 Darling [~]$ cat > hello-world.c
 #include <stdio.h>
 
@@ -386,14 +386,14 @@ Darling [~]$ clang hello-world.c -o hello-world
 
 And run it:
 
-```
+```bash
 Darling [~]$ ./hello-world
 Hello world!
 ```
 
 The whole compiler stack works, how cool is that! Now, let's try Swift:
 
-```
+```bash
 Darling [~]$ cat > hi.swift
 print("Hi!")
 Darling [~]$ swiftc hi.swift
@@ -405,6 +405,6 @@ Hi!
 Darling has experimental support for graphical applications written using Cocoa.
 If you have a simple app installed, you can try running it:
 
-```
+```bash
 Darling [~]$ /Applications/HelloWorld.app/Contents/MacOS/HelloWorld
 ```
