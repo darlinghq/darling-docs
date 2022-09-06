@@ -192,7 +192,6 @@ If you wish to properly move your Darling installation, the only supported optio
 
 ### BackBox
 
-
 If your distribution is Backbox and you run into build issues try the following commands:
 
 ```bash
@@ -209,6 +208,12 @@ Cannot open mnt namespace file: No such file or directory
 ```
 
 To work around this try this command: `setsebool -P mmap_low_allowed 1`.
+
+### Broken Symbolic Link
+
+Darling relies heavily on symbolic links. It is important to build Darling on a filesystem that supports this feature.
+
+If you are still running into issues, despite downloading and building Darling on a filesystem that supports symbolic links, check your git configuration to make sure that you have not intentionally disabled it (ex: `core.symlinks=false`).
 
 ### File System Support
 
