@@ -44,36 +44,26 @@ darling-stub-gen /System/Library/Frameworks/DVDPlayback.framework/DVDPlayback DV
 
 The process is identical for dynamic libraries.
 
-The above command will create a folder that can be placed in the
-`src/frameworks/` directory of Darling's source tree. It is generated from the
-DVDPlayback framework. Note that the first argument points to the actual binary
+The above command will create a folder that can be placed in the either the
+`src/frameworks/` or `src/private-frameworks/` directory of Darling's source tree. Note that the first argument points to the actual binary
 of the framework, not the root directory of the framework.
 
 ## Applying the stubs to Darling
 
 Once you have generated the stub folder for the framework, copy that folder into
-Darling's source tree under `src/frameworks/`.
+Darling's source tree. If the framework is public, put it in `src/frameworks/`. If the framework is private put it in `src/private-frameworks/`.
 
-Then traverse to the `src/frameworks/include/` directory (also located inside
-Darling's source tree) and create a soft symbolic link. The link should point to
-the folder inside the include directory (ex: `MyNewFolder/include/MyNewFolder`).
+After you add in the folder, you will need to include it in the  build. In
+`src/frameworks/CMakeLists.txt` (or `src/private-frameworks/CMakeLists.txt` if the framework is private),
+ add the following line: `add_subdirectory(MyNewFolder)`. Make sure you put it in alphabetical order.
 
-Example:
-
-```bash
-cd src/frameworks/include/
-ln -s ../MyNewFolder/include/MyNewFolder MyNewFolder`
-```
-
-Finally, you will need to add the folder to the build. In
-`src/frameworks/CMakeLists.txt`, add the following line:
-`add_subdirectory(MyNewFolder)`. Make sure you put it in alphabetical order.
+To generate the SDK headers, make sure that you set `REGENERATE_SDK` to `ON` when you run the `cmake` command (ex: `cmake .. -DREGENERATE_SDK=ON`).
 
 Run a build and make sure your new code compiles. After that completes, you are
 ready to submit a pull request.
 
 See [Contributing](index.md) for how to submit a pull request. [This
-commit](https://github.com/darlinghq/darling/commit/92233d4e5ca613658345910d1acf4b3b7620a4f6)
+pull request](https://github.com/darlinghq/darling/pull/1199/files)
 is an example of a stub for a framework that was added to Darling using the
 process described in this article. Most notable is what it does to
 `src/CMakeLists.txt`.
