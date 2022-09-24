@@ -187,6 +187,19 @@ syscalls made (usually by native ELF libraries) will not be displayed, which
 means information and open file descriptors may appear to come from nowhere in
 those cases.
 
+## Darlingserver log file
+
+Darlingserver generates a log file called `dserver.log`. This file contains useful information on any potentional issue that could of occured in `darlingserver`.
+
+By default, `darlingserver` only logs errors. You can change this behavior by setting the enviroment vaiable `DSERVER_LOG_LEVEL`, like so:
+```
+export DSERVER_LOG_LEVEL=warn
+export DSERVER_LOG_LEVEL=info
+export DSERVER_LOG_LEVEL=debug
+```
+
+You can find this file at `${DARLING_PREFIX}/private/var/log/dserver.log`.
+
 ## When Darling Is Not Able To Start Up Properly
 
 In some situations, Darling is not able to access the bash shell. Normally, you should never run into this situation if you are building off of master. However, if you are doing any major changes to the source code (ex: updating Apple's open-source code to a new release), it may cause core applications to break in unexpected ways.
