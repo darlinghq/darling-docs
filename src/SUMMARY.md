@@ -41,5 +41,6 @@
   - [Google Summer of Code](contributing/google-summer-of-code.md)
   - [Packaging](contributing/packaging.md)
   - [Updating sources](contributing/updating-sources/README.md)
+    - [BerkeleyDB](contributing/updating-sources/berkeleydb.md)
     - [libc](contributing/updating-sources/libc.md)
 
