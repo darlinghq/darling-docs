@@ -42,5 +42,6 @@
   - [Packaging](contributing/packaging.md)
   - [Updating sources](contributing/updating-sources/README.md)
     - [BerkeleyDB](contributing/updating-sources/berkeleydb.md)
+    - [ICU](contributing/updating-sources/icu.md)
     - [libc](contributing/updating-sources/libc.md)
 
