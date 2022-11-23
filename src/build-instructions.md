@@ -176,6 +176,12 @@ Another way to speed up the build is to run `make` with multiple jobs. For this,
 
 If you still want to build JavaScriptCore and have a bit of RAM to spare, JavaScriptCore also supports a build mode known as ["unified builds"](https://blogs.gnome.org/mcatanzaro/2018/02/17/on-compiling-webkit-now-twice-as-fast/). This build mode can cut JSC build times in half, at the expense of causing slightly higher RAM usage. This build mode can be enabled in Darling by adding `-DJSC_UNIFIED_BUILD=ON` when configuring the build.
 
+### Ninja build system
+
+As an alternative to `make`, `ninja` comes with parallelism on by default and a nicer progress indicator.
+
+Follow the normal build instructions until you get to the `cmake ..` step. Replace that with `cmake .. -GNinja`. Now you can build with `ninja` instead of `make`.
+
 ### Debug Builds
 
 By default, CMake setups up a non-debug, non-release build.
