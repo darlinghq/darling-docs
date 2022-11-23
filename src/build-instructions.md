@@ -43,10 +43,22 @@ libssl-dev python2
 ```
 
 **Arch Linux & Manjaro:**
-  
+
+Due to the Python 2 dependency, an AUR is needed. If you don't have `yay` already, install it:
+
 ```bash
+sudo pacman -S --needed git base-devel
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si
+```
+
+Install dependencies:
+
+```bash
+yay -S python2
 sudo pacman -S --needed make cmake clang flex bison icu fuse gcc-multilib \
-lib32-gcc-libs pkg-config fontconfig cairo libtiff python2 mesa llvm libbsd libxkbfile \
+lib32-gcc-libs pkg-config fontconfig cairo libtiff mesa llvm libbsd libxkbfile \
 libxcursor libxext libxkbcommon libxrandr ffmpeg git git-lfs
 ```
 
