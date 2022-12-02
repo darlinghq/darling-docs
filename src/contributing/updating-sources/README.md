@@ -73,4 +73,5 @@ The following are links to more specific update requirement guides for subprojec
 
   * [BerkeleyDB](berkeleydb.md)
   * [ICU](icu.md)
+  * [JavaScriptCore](javascriptcore.md)
   * [libc](libc.md)
