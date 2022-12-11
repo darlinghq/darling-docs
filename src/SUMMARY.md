@@ -45,4 +45,5 @@
     - [ICU](contributing/updating-sources/icu.md)
     - [JavaScriptCore](contributing/updating-sources/javascriptcore.md)
     - [libc](contributing/updating-sources/libc.md)
+    - [OpenLDAP](contributing/updating-sources/openldap.md)
 

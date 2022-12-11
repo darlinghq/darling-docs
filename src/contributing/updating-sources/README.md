@@ -75,3 +75,4 @@ The following are links to more specific update requirement guides for subprojec
   * [ICU](icu.md)
   * [JavaScriptCore](javascriptcore.md)
   * [libc](libc.md)
+  * [OpenLDAP](openldap.md)
