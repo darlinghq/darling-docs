@@ -42,7 +42,6 @@
   - [Packaging](contributing/packaging.md)
   - [Updating sources](contributing/updating-sources/README.md)
     - [BerkeleyDB](contributing/updating-sources/berkeleydb.md)
-    - [dtrace](contributing/updating-sources/dtrace.md)
     - [ICU](contributing/updating-sources/icu.md)
     - [JavaScriptCore](contributing/updating-sources/javascriptcore.md)
     - [libc](contributing/updating-sources/libc.md)
