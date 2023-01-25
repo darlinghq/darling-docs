@@ -78,3 +78,14 @@ The following are links to more specific update requirement guides for subprojec
   * [libc](libc.md)
   * [OpenLDAP](openldap.md)
   * [Security](security.md)
+
+### Generating Source Files From `.y`/`.l` Files
+
+While working on some projects, you might encounter files like `dt_grammar.y`/`dt_lex.l`. These are `Yacc`/`Lex` source files. 
+
+Normally, it is recommended to let XCode generate these sources files. However, you sometimes might run into issues building on XCode. The next alternative is to use `bison`/`flex` to manually generate these files.
+
+```
+bison -b -y -d ../../lib/libdtrace/common/dt_grammar.y
+flex ../../lib/libdtrace/common/dt_lex.l
+```
