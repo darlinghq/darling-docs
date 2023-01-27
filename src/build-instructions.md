@@ -58,7 +58,7 @@ Install dependencies:
 ```bash
 yay -S python2
 sudo pacman -S --needed make cmake clang flex bison icu fuse gcc-multilib \
-lib32-gcc-libs pkg-config fontconfig cairo libtiff mesa llvm libbsd libxkbfile \
+lib32-gcc-libs pkg-config fontconfig cairo libtiff mesa glu llvm libbsd libxkbfile \
 libxcursor libxext libxkbcommon libxrandr ffmpeg git git-lfs
 ```
 
