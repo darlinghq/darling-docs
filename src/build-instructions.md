@@ -182,6 +182,10 @@ As an alternative to `make`, `ninja` comes with parallelism on by default and a 
 
 Follow the normal build instructions until you get to the `cmake ..` step. Replace that with `cmake .. -GNinja`. Now you can build with `ninja` instead of `make`.
 
+#### Ninja fails to link libscu
+
+If you are using Ninja, the library "libscu" might fail to link. The solution is to remove the library located at "./src/external/csu/libcsu.a" and try again. See [this issue](https://github.com/darlinghq/darling/issues/915) for more information.
+
 ### Debug Builds
 
 By default, CMake setups up a non-debug, non-release build.
