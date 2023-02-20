@@ -92,6 +92,9 @@ ffmpeg-4-libswresample-devel
 
 **Alpine Linux**
 
+Alpine Linux doesn't ship Python 2 any more which currently is required to build Darling.
+The oldest release that still does is Alpine Linux 3.15 so the following instructions are only for that version.
+
 Make sure to [enable the community repository](https://wiki.alpinelinux.org/wiki/Enable_Community_Repository).
 Alpine also doesn't support 32-bit builds, so make sure to [disable that](#disabling-32-bit-libraries).
 
