@@ -88,3 +88,22 @@ Normally, it is recommended to let XCode generate these sources files. However, 
 bison -b -y -d ../../lib/libdtrace/common/dt_grammar.y
 flex ../../lib/libdtrace/common/dt_lex.l
 ```
+### Getting Make-Based Projects To Build
+
+Out of the box, some projects that use a `MakeFile` don't build properly on macOS. This requires some additional paths to be added to `CPATH` and `LIBRARY_PATH`.
+
+Option #1: Exclusively use the Darling SDK
+```bash
+export DARLING_PATH="/Volumes/CaseSensitive/darling"
+export DARLING_SDK_PATH="$DARLING_PATH/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk"
+export LIBRARY_PATH="$LD_LIBRARY_PATH:$DARLING_SDK_PATH/usr/lib:$DARLING_PATH/framework-include:$DARLING_PATH/framework-private-include"
+export CPATH="$CPATH:$DARLING_PATH/usr/include"
+```
+
+Option #2: Use Apple's CLT & Darling SDK (for Frameworks)
+```bash
+export DARLING_PATH="/Volumes/CaseSensitive/darling"
+export MACOS_CMDTOOLS_SDK_PATH="/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk"
+export LIBRARY_PATH="$MACOS_CMDTOOLS_SDK_PATH/usr/lib"
+export CPATH="$MACOS_CMDTOOLS_SDK_PATH/usr/include:$DARLING_PATH/framework-include:$DARLING_PATH/framework-private-include"
+```
