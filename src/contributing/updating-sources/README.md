@@ -96,8 +96,8 @@ Option #1: Exclusively use the Darling SDK
 ```bash
 export DARLING_PATH="/Volumes/CaseSensitive/darling"
 export DARLING_SDK_PATH="$DARLING_PATH/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk"
-export LIBRARY_PATH="$LD_LIBRARY_PATH:$DARLING_SDK_PATH/usr/lib:$DARLING_PATH/framework-include:$DARLING_PATH/framework-private-include"
-export CPATH="$CPATH:$DARLING_PATH/usr/include"
+export LIBRARY_PATH="$LD_LIBRARY_PATH:$DARLING_SDK_PATH/usr/lib"
+export CPATH="$CPATH:$DARLING_SDK_PATH/usr/include:$DARLING_PATH/framework-include:$DARLING_PATH/framework-private-include"
 ```
 
 Option #2: Use Apple's CLT & Darling SDK (for Frameworks)
