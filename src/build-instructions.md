@@ -155,15 +155,7 @@ make
 sudo make install
 ```
 
-##  Build Options 
-
-### Doing non-full (a.k.a. shallow) builds
-
-You will notice that it takes a long time to build Darling. Darling contains the software layer equivalent to an entire operating system, which means it contains a large amount of code. You can optionally disable some large and less vital parts of the build in order to get faster builds.
-
-To do this, use the `-DFULL_BUILD=OFF` option when configuring Darling through CMake.
-
-You may encounter some things to be missing, such as JavaScriptCore. Before creating an issue about a certain library or framework missing from Darling, verify that you are doing a full build by not using this option or setting it to `ON`.
+## Build Options
 
 ### Disabling 32-bit Libraries
 
@@ -185,9 +177,9 @@ As an alternative to `make`, `ninja` comes with parallelism on by default and a 
 
 Follow the normal build instructions until you get to the `cmake ..` step. Replace that with `cmake .. -GNinja`. Now you can build with `ninja` instead of `make`.
 
-#### Ninja fails to link libscu
+#### Ninja fails to link libcsu
 
-If you are using Ninja, the library "libscu" might fail to link. The solution is to remove the library located at "./src/external/csu/libcsu.a" and try again. See [this issue](https://github.com/darlinghq/darling/issues/915) for more information.
+If you are using Ninja, the library "libcsu" might fail to link. The solution is to remove the library located at "./src/external/csu/libcsu.a" and try again. See [this issue](https://github.com/darlinghq/darling/issues/915) for more information.
 
 ### Debug Builds
 
@@ -205,12 +197,39 @@ Darling tries to stick to a standard macOS installation as much as possible. How
 
 ### Custom Installation Prefix
 
-To install Darling in a custom directory use the ``CMAKE_INSTALL_PREFIX`` CMake option. However, a Darling installataion is **NOT** portable, because the installataion prefix is hardcoded into the ``darling`` executable. This is intentional. If you do move your Darling installation you will get this error message:
+To install Darling in a custom directory, use the ``CMAKE_INSTALL_PREFIX`` CMake option. However, a Darling installation is **NOT** portable, because the installation prefix is hardcoded into the ``darling`` executable. This is intentional. If you do move your Darling installation, you will get this error message:
 ```
 Cannot mount overlay: No such file or directory
 Cannot open mnt namespace file: No such file or directory
 ```
 If you wish to properly move your Darling installation, the only supported option is for you to uninstall your current Darling installation, and then rebuild Darling with a different installation prefix.
+
+### Building Only Certain Components
+
+By default, almost all of Darling is built, similar to what would be a full macOS installation. However, you can also choose to only build certain components of Darling with the `COMPONENTS` configuration option in CMake. This is a comma-separated list of components to build. By default, `COMPONENTS` is set to `stock` (which includes various other components). The following components are currently recognized:
+
+  * Basic components
+    * `core` - Builds darlingserver, mldr, launchd, and libSystem (in addition to a couple of host-side executables). This is the minimal set of targets necessary to run an executable under Darling. Note that most executables depend on various other programs and system services which are not provided by this component; this will only support extremely bare-bones executables (e.g. a "Hello world" executable).
+    * `system` - Includes `core` and everything necessary to enter a shell (including a shell: bash and zsh) and perform basic system functions (i.e. essential system daemons).
+  * Script runtimes - Note that you'll likely also want to include `system` with these, but it's not strictly required
+    * `python` - Includes `core` and the Python 2.7 runtime and standard library, along with additional programs that require Python.
+    * `ruby` - Includes `core` and the Ruby 2.6 runtime and standard library, along with additional programs that require Ruby.
+    * `perl` - Includes `core` and the Perl 5.18 and 5.28 runtimes and standard libraries, along with additional programs that require Perl.
+  * CLI components
+    * `cli` - Includes `system` and most standalone command-line programs (i.e. those that don't require additional runtimes or complex frameworks/libraries).
+      * Note that this does *not* include Vim; this is because Vim depends on AppKit and CoreServices (which are considered GUI components). The `cli_dev` component, however, does include those frameworks, so it also includes Vim.
+    * `cli_dev` - Includes `cli`, `python`, `ruby`, and `perl`, along with some additional targets normally regarded as GUI targets. These additional targets are necessary for certain parts of the Xcode CLI tools. This is the component you want if you want to build and develop software with Xcode on the command line and don't need/want the full GUI installation.
+    * `cli_extra` - Includes `cli` and some additional programs not installed on a standard macOS installation (e.g. GNU tar).
+  * GUI components - Note that none of these components include `cli` or any other CLI-related components. Some apps may rely on certain CLI programs or script runtimes being available, so you may also need to include `cli`, `python`, `ruby`, and more yourself.
+    * `gui` - Includes `system` and everything necessary to run basic Cocoa, Metal, and OpenGL apps. Note that only includes the minimum required for GUI applications; most applications will also require additional frameworks (e.g. audio, video, location, etc.).
+    * `gui_frameworks` - Includes `gui` and many GUI-related frameworks depended upon by Cocoa apps (e.g. audio frameworks). Note that this component only includes non-stub frameworks.
+    * `gui_stubs` - Includes `gui_frameworks` and many stubbed GUI-related frameworks.
+  * Heavy frameworks - These are frameworks that can significantly slow down the build and/or take up a lot of space after installation but are unnecessary for the vast majority of programs.
+    * `jsc` - JavaScriptCore - This is a large framework used for executing JavaScript code, primarily in web browsers. This typically delays the build by an extra 30 minutes to 1 hour.
+    * `webkit` - WebKit - This is another large framework that is only used for web browsers (embedded or otherwise).
+  * Umbrella components - These are components that only include other components, intended to make it easy to select a large swath of components for common builds.
+    * `stock` - Includes `cli`, `python`, `ruby`, `perl`, and `gui_stubs` (these implicitly include `core`, `system`, `gui`, and `gui_frameworks`). This is the default component selected for standard builds and is intended to match the software included by default with a standard macOS installation.
+    * `all` - Includes every single other component. In other words, this includes `stock`, `jsc`, `webkit`, and `cli_extra`.
 
 ## Known Issues
 
