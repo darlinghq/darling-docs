@@ -71,13 +71,6 @@ Like it was mentioned earlier, most projects require additional modifications an
 
 The following are links to more specific update requirement guides for subprojects that need them. Note that these document what has had to be done until now; the upstream sources *could* completely switch up their setup from one version to the next, but until now, project structures have been pretty stable. Nonetheless, these are still *guidelines*; whenever sources are updated, you need to make sure to review them and perform any additional steps as necessary (and if possible, please document them).
 
-  * [BerkeleyDB](berkeleydb.md)
-  * [ICU](icu.md)
-  * [JavaScriptCore](javascriptcore.md)
-  * [libc](libc.md)
-  * [OpenLDAP](openldap.md)
-  * [Security](security.md)
-
 ### Generating Source Files From `.y`/`.l` Files
 
 While working on some projects, you might encounter files like `dt_grammar.y`/`dt_lex.l`. These are `Yacc`/`Lex` source files. 
