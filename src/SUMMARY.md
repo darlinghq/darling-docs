@@ -41,10 +41,4 @@
   - [Google Summer of Code](contributing/google-summer-of-code.md)
   - [Packaging](contributing/packaging.md)
   - [Updating sources](contributing/updating-sources/README.md)
-    - [BerkeleyDB](contributing/updating-sources/berkeleydb.md)
-    - [ICU](contributing/updating-sources/icu.md)
-    - [JavaScriptCore](contributing/updating-sources/javascriptcore.md)
-    - [libc](contributing/updating-sources/libc.md)
-    - [OpenLDAP](contributing/updating-sources/openldap.md)
-    - [Security](contributing/updating-sources/security.md)
 

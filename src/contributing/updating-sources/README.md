@@ -12,7 +12,9 @@ Each project is different, but for the most part, these are the steps you should
 
 ### <a name="step-1"></a>1. Replace the current source with the updated source
 
-The first step should be to download the updated source and replace the current source with it. You should delete all the files in the current source ***except the `CMakeLists.txt`*** and copy over the updated source. Most Apple sources don't contain a `CMakeLists.txt` of their own, but if one does, you should delete it or (preferably) rename it to something else (e.g. `CMakeLists.apple.txt`).
+The first step should be to download the updated source and replace the current source with it. You should first delete all the files in the current source ***except the `CMakeLists.txt`, `darling` folder, and `README.md` file***, then copy over the updated source.
+
+Most Apple sources don't contain a `CMakeLists.txt` / `README.md` of their own, but if one does, you should delete it or (preferably) rename it to something else (e.g. `CMakeLists.apple.txt` / `README.apple.md`).
 
 ### <a name="step-2"></a>2. Create an initial update commit
 
@@ -67,16 +69,9 @@ Finally, to propose your changes to be merged into Darling, commit your changes,
 
 ## Additional Notes
 
-Like it was mentioned earlier, most projects require additional modifications and tweaks to work.
+Like it was mentioned earlier, most projects require additional modifications and tweaks to work. For the subprojects that require additional steps, you can find the instructions in `[SUBMODULE]/darling/notes/UPDATE_SOURCE.md` (ex: [`darling-security/darling/notes/UPDATE_SOURCE.md`](https://github.com/darlinghq/darling-security/blob/master/darling/notes/UPDATE_SOURCE.md)).
 
-The following are links to more specific update requirement guides for subprojects that need them. Note that these document what has had to be done until now; the upstream sources *could* completely switch up their setup from one version to the next, but until now, project structures have been pretty stable. Nonetheless, these are still *guidelines*; whenever sources are updated, you need to make sure to review them and perform any additional steps as necessary (and if possible, please document them).
-
-  * [BerkeleyDB](berkeleydb.md)
-  * [ICU](icu.md)
-  * [JavaScriptCore](javascriptcore.md)
-  * [libc](libc.md)
-  * [OpenLDAP](openldap.md)
-  * [Security](security.md)
+Note that these instructions document what has had to be done until now; the upstream sources *could* completely switch up their setup from one version to the next, but until now, project structures have been pretty stable. Nonetheless, these are still *guidelines*; whenever sources are updated, you need to make sure to review them and perform any additional steps as necessary (and if possible, please document them).
 
 ### Generating Source Files From `.y`/`.l` Files
 
