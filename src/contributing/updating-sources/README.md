@@ -69,9 +69,9 @@ Finally, to propose your changes to be merged into Darling, commit your changes,
 
 ## Additional Notes
 
-Like it was mentioned earlier, most projects require additional modifications and tweaks to work.
+Like it was mentioned earlier, most projects require additional modifications and tweaks to work. For the subprojects that require additional steps, you can find the instructions in `[SUBMODULE]/darling/notes/UPDATE_SOURCE.md` (ex: [`darling-security/darling/notes/UPDATE_SOURCE.md`](https://github.com/darlinghq/darling-security/blob/master/darling/notes/UPDATE_SOURCE.md)).
 
-The following are links to more specific update requirement guides for subprojects that need them. Note that these document what has had to be done until now; the upstream sources *could* completely switch up their setup from one version to the next, but until now, project structures have been pretty stable. Nonetheless, these are still *guidelines*; whenever sources are updated, you need to make sure to review them and perform any additional steps as necessary (and if possible, please document them).
+Note that these instructions document what has had to be done until now; the upstream sources *could* completely switch up their setup from one version to the next, but until now, project structures have been pretty stable. Nonetheless, these are still *guidelines*; whenever sources are updated, you need to make sure to review them and perform any additional steps as necessary (and if possible, please document them).
 
 ### Generating Source Files From `.y`/`.l` Files
 
