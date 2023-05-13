@@ -102,3 +102,122 @@ export MACOS_CMDTOOLS_SDK_PATH="/Library/Developer/CommandLineTools/SDKs/MacOSX.
 export LIBRARY_PATH="$MACOS_CMDTOOLS_SDK_PATH/usr/lib"
 export CPATH="$MACOS_CMDTOOLS_SDK_PATH/usr/include:$DARLING_PATH/framework-include:$DARLING_PATH/framework-private-include"
 ```
+
+## Updating Version Number
+
+### Updating SystemVersion Plist Files
+
+The `SystemVersion.plist` contains information about the macOS (and iOS compatibility layer) version number. We keep this file in [`src/frameworks/CoreServices`](https://github.com/darlinghq/darling/tree/master/src/frameworks/CoreServices).
+
+The recommended approach is to copy over the file from a real macOS install (Located in `/System/Library/CoreServices/`) and change `ProductBuildVersion` and `ProductCopyright` to `Darling` and `2012-[CURRENT YEAR] Lubos Dolezel`. 
+
+Below is an example of macOS 11.7.4, with the changes applied.
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ProductBuildVersion</key>
+	<string>Darling</string>
+	<key>ProductCopyright</key>
+	<string>2012-2023 Lubos Dolezel</string>
+	<key>ProductName</key>
+	<string>macOS</string>
+	<key>ProductUserVisibleVersion</key>
+	<string>11.7.6</string>
+	<key>ProductVersion</key>
+	<string>11.7.6</string>
+	<key>iOSSupportVersion</key>
+	<string>14.7</string>
+</dict>
+</plist>
+```
+
+Next to the `SystemVersion.plist` file is `SystemVersionCompat.plist`. This file is used for older macOS programs that were not updated to handle the new version scheme introduced in Big Sur.
+
+Below is an example of macOS 11.7.4, with the changes applied to `ProductBuildVersion` and `ProductCopyright`.
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ProductBuildVersion</key>
+	<string>Darling</string>
+	<key>ProductCopyright</key>
+	<string>2012-2023 Lubos Dolezel</string>
+	<key>ProductName</key>
+	<string>Mac OS X</string>
+	<key>ProductUserVisibleVersion</key>
+	<string>10.16</string>
+	<key>ProductVersion</key>
+	<string>10.16</string>
+	<key>iOSSupportVersion</key>
+	<string>14.7</string>
+</dict>
+</plist>
+```
+
+### Updating `kernel/emulation/linux/CMakeLists.txt` File
+
+In this build file, there are variables that contain information about the kernel and system version.
+
+#### Obtaining The Kernel Version
+
+Use the command `uname -a` on macOS install you want to grab the kernel version from.
+
+```zsh
+% uname -a
+Darwin Users-Mac 20.6.0 Darwin Kernel Version 20.6.0: Thu Mar  9 20:39:26 PST 2023; root:xnu-7195.141.49.700.6~1/RELEASE_X86_64 x86_64
+```
+
+Then copy and paste the values into `EMULATED_RELEASE` and `EMULATED_VERSION`.
+
+```diff
+ add_definitions(-DBSDTHREAD_WRAP_LINUX_PTHREAD
+ 	-DEMULATED_SYSNAME="Darwin"
+- 	-DEMULATED_RELEASE="19.6.0"
+- 	-DEMULATED_VERSION="Darwin Kernel Version 19.6.0"
++	-DEMULATED_RELEASE="20.6.0"
++	-DEMULATED_VERSION="Darwin Kernel Version 20.6.0"
+ 	-DEMULATED_OSVERSION="19G73"
+ 	-DEMULATED_OSPRODUCTVERSION="10.15.2"
+)
+```
+
+#### Obtaining the System Version
+
+The `EMULATED_OSVERSION` and `EMULATED_OSPRODUCTVERSION` values can be obtained from the `SystemVersion.plist` file. Refer to the **[Updating SystemVersion Plist Files](#updating-systemversion-plist-files)** for instructions on where to obtain this file.
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ProductBuildVersion</key>
+	<string>20G1231</string>
+	<key>ProductCopyright</key>
+	<string>1983-2023 Apple Inc.</string>
+	<key>ProductName</key>
+	<string>macOS</string>
+	<key>ProductUserVisibleVersion</key>
+	<string>11.7.6</string>
+	<key>ProductVersion</key>
+	<string>11.7.6</string>
+	<key>iOSSupportVersion</key>
+	<string>14.7</string>
+</dict>
+</plist>
+```
+
+```diff
+ add_definitions(-DBSDTHREAD_WRAP_LINUX_PTHREAD
+ 	-DEMULATED_SYSNAME="Darwin"
+	-DEMULATED_RELEASE="20.6.0"
+	-DEMULATED_VERSION="Darwin Kernel Version 20.6.0"
+- 	-DEMULATED_OSVERSION="19G73"
+- 	-DEMULATED_OSPRODUCTVERSION="10.15.2"
++ 	-DEMULATED_OSVERSION="20G1231"
++ 	-DEMULATED_OSPRODUCTVERSION="11.7.6"
+)
+```
