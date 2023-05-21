@@ -144,6 +144,9 @@ Now let's build Darling:
 # Move into the cloned sources
 cd darling
 
+# Remove prior install of Darling
+tools/uninstall
+
 # Make a build directory
 mkdir build && cd build
 
@@ -154,6 +157,8 @@ cmake ..
 make
 sudo make install
 ```
+
+
 
 ## Build Options
 
