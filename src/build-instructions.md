@@ -42,6 +42,17 @@ libavformat-dev libavcodec-dev libswresample-dev libdbus-1-dev libxkbfile-dev \
 libssl-dev python2
 ```
 
+**Ubuntu 22.04:**
+
+```bash
+sudo apt install cmake automake clang-15 bison flex libfuse-dev libudev-dev pkg-config libc6-dev-i386 \
+gcc-multilib libcairo2-dev libgl1-mesa-dev curl libglu1-mesa-dev libtiff5-dev \
+libfreetype6-dev git git-lfs libelf-dev libxml2-dev libegl1-mesa-dev libfontconfig1-dev \
+libbsd-dev libxrandr-dev libxcursor-dev libgif-dev libavutil-dev libpulse-dev \
+libavformat-dev libavcodec-dev libswresample-dev libdbus-1-dev libxkbfile-dev \
+libssl-dev python2 libstdc++-12-dev
+```
+
 **Arch Linux & Manjaro:**
 
 Due to the Python 2 dependency, an AUR is needed. If you don't have `yay` already, install it:
