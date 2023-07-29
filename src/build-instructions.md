@@ -15,7 +15,7 @@ Linux 5.0 or higher is required.
 
 ```bash
 sudo apt install cmake clang-6.0 bison flex xz-utils libfuse-dev libudev-dev pkg-config \
-libc6-dev-i386 libcap2-bin git git-lfs python2 libglu1-mesa-dev libcairo2-dev \
+libc6-dev-i386 libcap2-bin git git-lfs libglu1-mesa-dev libcairo2-dev \
 libgl1-mesa-dev libtiff5-dev libfreetype6-dev libxml2-dev libegl1-mesa-dev libfontconfig1-dev \
 libbsd-dev libxrandr-dev libxcursor-dev libgif-dev libpulse-dev libavformat-dev libavcodec-dev \
 libswresample-dev libdbus-1-dev libxkbfile-dev libssl-dev llvm-dev
@@ -25,7 +25,7 @@ libswresample-dev libdbus-1-dev libxkbfile-dev libssl-dev llvm-dev
 
 ```bash
 sudo apt install cmake clang-9 bison flex xz-utils libfuse-dev libudev-dev pkg-config \
-libc6-dev-i386 libcap2-bin git git-lfs python2 libglu1-mesa-dev libcairo2-dev \
+libc6-dev-i386 libcap2-bin git git-lfs libglu1-mesa-dev libcairo2-dev \
 libgl1-mesa-dev libtiff5-dev libfreetype6-dev libxml2-dev libegl1-mesa-dev libfontconfig1-dev \
 libbsd-dev libxrandr-dev libxcursor-dev libgif-dev libpulse-dev libavformat-dev libavcodec-dev \
 libswresample-dev libdbus-1-dev libxkbfile-dev libssl-dev llvm-dev
@@ -39,7 +39,7 @@ gcc-multilib libcairo2-dev libgl1-mesa-dev libglu1-mesa-dev libtiff5-dev \
 libfreetype6-dev git git-lfs libelf-dev libxml2-dev libegl1-mesa-dev libfontconfig1-dev \
 libbsd-dev libxrandr-dev libxcursor-dev libgif-dev libavutil-dev libpulse-dev \
 libavformat-dev libavcodec-dev libswresample-dev libdbus-1-dev libxkbfile-dev \
-libssl-dev python2
+libssl-dev
 ```
 
 **Ubuntu 22.04:**
@@ -50,24 +50,14 @@ gcc-multilib libcairo2-dev libgl1-mesa-dev curl libglu1-mesa-dev libtiff5-dev \
 libfreetype6-dev git git-lfs libelf-dev libxml2-dev libegl1-mesa-dev libfontconfig1-dev \
 libbsd-dev libxrandr-dev libxcursor-dev libgif-dev libavutil-dev libpulse-dev \
 libavformat-dev libavcodec-dev libswresample-dev libdbus-1-dev libxkbfile-dev \
-libssl-dev python2 libstdc++-12-dev
+libssl-dev libstdc++-12-dev
 ```
 
 **Arch Linux & Manjaro:**
 
-Due to the Python 2 dependency, an AUR is needed. If you don't have `yay` already, install it:
-
-```bash
-sudo pacman -S --needed git base-devel
-git clone https://aur.archlinux.org/yay.git
-cd yay
-makepkg -si
-```
-
 Install dependencies:
 
 ```bash
-yay -S python2
 sudo pacman -S --needed make cmake clang flex bison icu fuse gcc-multilib \
 lib32-gcc-libs pkg-config fontconfig cairo libtiff mesa glu llvm libbsd libxkbfile \
 libxcursor libxext libxkbcommon libxrandr ffmpeg git git-lfs
@@ -78,7 +68,7 @@ libxcursor libxext libxkbcommon libxrandr ffmpeg git git-lfs
 [RPMFusion](https://rpmfusion.org/RPM%20Fusion) is required for FFmpeg.
 
 ```bash
-sudo dnf install make cmake clang bison dbus-devel flex python2 glibc-devel.i686 fuse-devel \
+sudo dnf install make cmake clang bison dbus-devel flex glibc-devel.i686 fuse-devel \
 systemd-devel elfutils-libelf-devel cairo-devel freetype-devel.{x86_64,i686} \
 libjpeg-turbo-devel.{x86_64,i686} libtiff-devel.{x86_64,i686} fontconfig-devel.{x86_64,i686} \
 libglvnd-devel.{x86_64,i686} mesa-libGL-devel.{x86_64,i686} mesa-libEGL-devel.{x86_64,i686} \
@@ -103,14 +93,11 @@ ffmpeg-4-libswresample-devel
 
 **Alpine Linux**
 
-Alpine Linux doesn't ship Python 2 any more which currently is required to build Darling.
-The oldest release that still does is Alpine Linux 3.15 so the following instructions are only for that version.
-
 Make sure to [enable the community repository](https://wiki.alpinelinux.org/wiki/Enable_Community_Repository).
 Alpine also doesn't support 32-bit builds, so make sure to [disable that](#disabling-32-bit-libraries).
 
 ```bash
-sudo apk add cmake clang bison flex xz fuse-dev pkgconfig libcap git git-lfs python2 \
+sudo apk add cmake clang bison flex xz fuse-dev pkgconfig libcap git git-lfs \
 python3 glu-dev cairo-dev mesa-dev tiff-dev freetype-dev libxml2-dev fontconfig-dev \
 libbsd-dev libxrandr-dev libxcursor-dev giflib-dev pulseaudio-dev ffmpeg-dev dbus-dev \
 libxkbfile-dev openssl-dev libexecinfo-dev make gcc g++ xdg-user-dirs
