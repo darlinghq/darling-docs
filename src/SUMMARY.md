@@ -33,6 +33,7 @@
     - [kqueue Channels](internals/darlingserver/kqchannels.md)
     - [Interrupt/Signal Handling](internals/darlingserver/interrupts.md)
     - [Event Loop](internals/darlingserver/event-loop.md)
+  - [Additional Resources](internals/additional-resources.md)
 - [Contributing](contributing/README.md)
   - [Debugging](contributing/debugging.md)
   - [Generating stubs](contributing/generating-stubs.md)
