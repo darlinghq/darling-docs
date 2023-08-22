@@ -4,7 +4,7 @@ You must be running a 64-bit x86 Linux distribution. Darling cannot be used on a
 
 # Dependencies
 
-Clang is required to compile Darling; at least Clang 6 is required. You can force a specific version of Clang (if it is installed on your system) by editing `Toolchain.cmake`.
+Clang is required to compile Darling; at least Clang 11 is required. You can force a specific version of Clang (if it is installed on your system) by editing `Toolchain.cmake`.
 
 A minimum of 4 GB of RAM is also required for building. Using swap space may help reduce the memory usage, but is likely to slow the build down significantly.
 
