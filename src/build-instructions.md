@@ -215,6 +215,12 @@ Cannot open mnt namespace file: No such file or directory
 ```
 If you wish to properly move your Darling installation, the only supported option is for you to uninstall your current Darling installation, and then rebuild Darling with a different installation prefix.
 
+### Manually Setting CMAKE_C_COMPILER and CMAKE_CXX_COMPILER.
+
+If `CMAKE_C_COMPILER` and `CMAKE_CXX_COMPILER` are not already set, the configuation script will try to locate `clang`/`clang++`. 
+
+Normally, you don't need to worry about setting these variables. With that being said, you can add `-DCMAKE_C_COMPILER="/absolute/path/to/clang"` and `-DCMAKE_CXX_COMPILER="/absolute/path/to/clang++"` when configuring the build to force the configuation script to use a specific clang compiler.
+
 ### Building Only Certain Components
 
 By default, almost all of Darling is built, similar to what would be a full macOS installation. However, you can also choose to only build certain components of Darling with the `COMPONENTS` configuration option in CMake. This is a comma-separated list of components to build. By default, `COMPONENTS` is set to `stock` (which includes various other components). The following components are currently recognized:
