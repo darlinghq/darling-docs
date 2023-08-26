@@ -39,7 +39,7 @@ libbsd-dev libxrandr-dev libxcursor-dev libgif-dev libpulse-dev libavformat-dev 
 libswresample-dev libdbus-1-dev libxkbfile-dev libssl-dev llvm-dev
 ```
 
-**Ubuntu 18.04/20.04:**
+**Ubuntu 20.04:**
 
 ```bash
 sudo apt install cmake clang bison flex libfuse-dev libudev-dev pkg-config libc6-dev-i386 \
