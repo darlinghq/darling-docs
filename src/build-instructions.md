@@ -80,7 +80,20 @@ libjpeg-turbo-devel.{x86_64,i686} fontconfig-devel.{x86_64,i686} libglvnd-devel.
 mesa-libGL-devel.{x86_64,i686} mesa-libEGL-devel.{x86_64,i686} mesa-libGLU-devel.{x86_64,i686} \
 libtiff-devel libxml2-devel libbsd-devel git git-lfs libXcursor-devel \
 libXrandr-devel giflib-devel pulseaudio-libs-devel libxkbfile-devel \
-openssl-devel llvm libcap-devel libavcodec-free-devel libavformat-free-devel
+openssl-devel llvm libcap-devel
+```
+
+In addition to the above dependencies, you will need to install the development libraries for the codecs you use.
+
+If you are using the non-free version of FFmpeg from [RPMFusion](https://rpmfusion.org/RPM%20Fusion):
+
+```bash
+sudo dnf install ffmpeg-devel
+```
+
+If you are using the codecs that are pre-installed in Fedora:
+```bash
+sudo dnf install libavcodec-free-devel libavformat-free-devel
 ```
 
 **OpenSUSE Tumbleweed**
