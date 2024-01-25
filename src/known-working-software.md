@@ -9,3 +9,4 @@ The following software has been tested to work with Darling:
 - The Xcode commandline tools.
 - GNUPlot (http://www.gnuplot.info/), when outputting to PNG files.
 - Python 3.11 from https://www.python.org
+- EdenMath 1.2.2 (scientific calculator) from http://www.edenwaith.com/products/edenmath/
