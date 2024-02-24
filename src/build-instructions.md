@@ -170,7 +170,7 @@ sudo make install
 
 Darling normally builds both 32-bit and 64-bit versions of all libraries, to enable 32-bit programs to run under Darling.
 However, this means Darling also requires 32-bit version of certain native libraries. If you can't setup a multilib environment or you just
-want to build only the 64-bit components, use `-DTARGET_i386=OFF` during configuration to disable building the 32-bit components.
+want to build only the 64-bit components, append `-DTARGET_i386=OFF` when you run `cmake` to disable building the 32-bit components.
 That is, run `cmake -DTARGET_i386=OFF ..` instead of `cmake ..`.
 
 ### Parallel Builds
