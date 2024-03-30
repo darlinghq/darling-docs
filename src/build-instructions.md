@@ -170,7 +170,8 @@ sudo make install
 
 Darling normally builds both 32-bit and 64-bit versions of all libraries, to enable 32-bit programs to run under Darling.
 However, this means Darling also requires 32-bit version of certain native libraries. If you can't setup a multilib environment or you just
-want to build only the 64-bit components, use `-DTARGET_i386=OFF` during configuration to disable building the 32-bit components.
+want to build only the 64-bit components, append `-DTARGET_i386=OFF` when you run `cmake` to disable building the 32-bit components.
+That is, run `cmake -DTARGET_i386=OFF ..` instead of `cmake ..`.
 
 ### Parallel Builds
 
@@ -179,6 +180,7 @@ Another way to speed up the build is to run `make` with multiple jobs. For this,
 ### "Unified" JavaScriptCore Builds
 
 If you still want to build JavaScriptCore and have a bit of RAM to spare, JavaScriptCore also supports a build mode known as ["unified builds"](https://blogs.gnome.org/mcatanzaro/2018/02/17/on-compiling-webkit-now-twice-as-fast/). This build mode can cut JSC build times in half, at the expense of causing slightly higher RAM usage. This build mode can be enabled in Darling by adding `-DJSC_UNIFIED_BUILD=ON` when configuring the build.
+That is, run `cmake -DJSC_UNIFIED_BUILD=ON ..` instead of `cmake ..`.
 
 ### Ninja build system
 
@@ -193,11 +195,11 @@ If you are using Ninja, the library "libcsu" might fail to link. The solution is
 ### Debug Builds
 
 By default, CMake setups up a non-debug, non-release build.
-If you run LLDB and encounter messages indicating a lack of debug symbols, make sure you are doing a debug build. To do this, use `-DCMAKE_BUILD_TYPE=Debug`.
+If you run LLDB and encounter messages indicating a lack of debug symbols, make sure you are doing a debug build. To do this, use `-DCMAKE_BUILD_TYPE=Debug` with `cmake`.
 
 ### Unit tests
 
-Darling has a limited number of unit tests. These are not currently built by default, but this can be enabled with '-DENABLE_TESTS=1'.
+Darling has a limited number of unit tests. These are not currently built by default, but this can be enabled with '-DENABLE_TESTS=1' (given as a flag to `cmake`).
 These tests are then installed to /usr/libexec within your Darling container.
 
 ### Additional, Non-standard Binaries
@@ -221,7 +223,7 @@ Normally, you don't need to worry about setting these variables. With that being
 
 ### Building Only Certain Components
 
-By default, almost all of Darling is built, similar to what would be a full macOS installation. However, you can also choose to only build certain components of Darling with the `COMPONENTS` configuration option in CMake. This is a comma-separated list of components to build. By default, `COMPONENTS` is set to `stock` (which includes various other components). The following components are currently recognized:
+By default, almost all of Darling is built, similar to what would be a full macOS installation. However, you can also choose to only build certain components of Darling with the `COMPONENTS` configuration option in CMake. This is a comma-separated list of components to build. So, for example, you might specify `-DCOMPONENTS=cli,python` as a flag to `cmake`. By default, `COMPONENTS` is set to `stock` (which includes various other components). The following components are currently recognized:
 
   * Basic components
     * `core` - Builds darlingserver, mldr, launchd, and libSystem (in addition to a couple of host-side executables). This is the minimal set of targets necessary to run an executable under Darling. Note that most executables depend on various other programs and system services which are not provided by this component; this will only support extremely bare-bones executables (e.g. a "Hello world" executable).
