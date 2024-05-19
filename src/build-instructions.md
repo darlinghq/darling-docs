@@ -116,10 +116,12 @@ Of course, if you want to run GUI applications, you'll also need a desktop envir
 
 Darling uses git-lfs. Set this up if needed with [official instructions](https://github.com/git-lfs/git-lfs/wiki/Installation).
 
+Newer versions of git will fail to clone Darling unless `GIT_CLONE_PROTECTION_ACTIVE` is set to false. This is due to how git-lfs relies on the post-checkout hook.
+
 Darling makes extensive use of Git submodules, therefore you cannot use a plain `git clone`. Make a clone like this:
 
 ```bash
-git clone --recursive https://github.com/darlinghq/darling.git
+GIT_CLONE_PROTECTION_ACTIVE=false git clone --recursive https://github.com/darlinghq/darling.git
 ```
 
 **Attention:** The source tree requires up to 5 GB of disk space!
