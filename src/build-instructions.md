@@ -292,3 +292,39 @@ If you try to use an unsupported file system, this error will be printed:
 ```
 Cannot mount overlay: Invalid argument
 ```
+
+### SSE3 Support
+
+When running on older CPUs without SSE3 Support you might run into issues like: 
+
+```
+user$ darling shell
+Bootstrapping the container with launchd...
+Cannot open mnt namespace file: No such file or directory
+```
+
+or more likely
+
+```
+user$ sudo darling shell
+Setting up a new Darling prefix at /root/.darling
+Bootstrapping the container with launchd...
+Illegal instruction (core dumped)
+```
+
+If your CPU doesn't support SSE3 you might still be able to run darling by installing the opemu-linux kernel module.
+
+But first check `/proc/cpuinfo` to find out if your CPU supports SSE3 e.g. by running `cat /proc/cpuinfo | grep SSE3`. Unless it comes back with `SSE3` your CPU doesn't support SSE3.
+
+To install [opemu-linux](https://github.com/mirh/opemu-linux) first clone the repository:
+```bash
+git clone https://github.com/mirh/opemu-linux
+```
+then switch directories & compile the kernel module:
+```bash
+cd opemu-linux && make
+```
+and load it:
+```bash
+sudo insmod op_emu.ko 
+```
