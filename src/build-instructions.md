@@ -295,7 +295,7 @@ Cannot mount overlay: Invalid argument
 
 ### SSE3 Support
 
-When running on older CPUs without SSE3 Support you might run into issues like: 
+When running on older CPUs without SSE3 Support, you might run into issues like: 
 
 ```
 user$ darling shell
@@ -312,9 +312,9 @@ Bootstrapping the container with launchd...
 Illegal instruction (core dumped)
 ```
 
-If your CPU doesn't support SSE3 you might still be able to run darling by installing the opemu-linux kernel module.
+If your CPU doesn't support SSE3, you might still be able to run darling by installing the opemu-linux kernel module.
 
-But first check `/proc/cpuinfo` to find out if your CPU supports SSE3 e.g. by running `cat /proc/cpuinfo | grep SSE3`. Unless it comes back with `SSE3` your CPU doesn't support SSE3.
+But first check `/proc/cpuinfo` to find out if your CPU supports SSE3, e.g. by running `cat /proc/cpuinfo | grep SSE3`. Unless it comes back with `SSE3` your CPU doesn't support SSE3.
 
 To install [opemu-linux](https://github.com/mirh/opemu-linux) first clone the repository:
 ```bash
