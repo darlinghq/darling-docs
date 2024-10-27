@@ -78,7 +78,7 @@ sudo dnf install make cmake clang bison dbus-devel flex glibc-devel.i686 fuse-de
 systemd-devel elfutils-libelf-devel cairo-devel freetype-devel.{x86_64,i686} \
 libjpeg-turbo-devel.{x86_64,i686} fontconfig-devel.{x86_64,i686} libglvnd-devel.{x86_64,i686} \
 mesa-libGL-devel.{x86_64,i686} mesa-libEGL-devel.{x86_64,i686} mesa-libGLU-devel.{x86_64,i686} \
-libtiff-devel{x86_64,i686} libxml2-devel libbsd-devel git git-lfs libXcursor-devel \
+libtiff-devel.{x86_64,i686} libxml2-devel libbsd-devel git git-lfs libXcursor-devel \
 libXrandr-devel giflib-devel pulseaudio-libs-devel libxkbfile-devel \
 openssl-devel llvm libcap-devel libavcodec-free-devel libavformat-free-devel
 ```
