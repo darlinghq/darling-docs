@@ -71,7 +71,7 @@ lib32-gcc-libs pkg-config fontconfig cairo libtiff mesa glu llvm libbsd libxkbfi
 libxcursor libxext libxkbcommon libxrandr ffmpeg git git-lfs
 ```
 
-**Fedora 39, RHEL 9, CentOS Stream 9, and AlmaLinux 9**
+**Fedora 40, RHEL 9, CentOS Stream 9, and AlmaLinux 9**
 
 ```bash
 sudo dnf install make cmake clang bison dbus-devel flex glibc-devel.i686 fuse-devel \
