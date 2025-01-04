@@ -83,6 +83,34 @@ libXrandr-devel giflib-devel pulseaudio-libs-devel libxkbfile-devel \
 openssl-devel llvm libcap-devel libavcodec-free-devel libavformat-free-devel
 ```
 
+**Rocky Linux 9**
+
+Enable the required repositories:
+1. Enable RPM Fusion repositories following the [official guide](https://rpmfusion.org/Configuration)
+2. Enable [CRB (CodeReady Builder)](https://wiki.rockylinux.org/rocky/repo/#notes-on-crb) repositorys
+
+```bash
+# Enable PowerTools (CRB) repository
+sudo dnf config-manager --set-enabled crb
+
+# Update package list again
+sudo dnf update
+```
+
+Install dependencies:
+
+
+```bash
+sudo dnf install make cmake clang bison dbus-devel flex glibc-devel.i686 fuse-devel \
+systemd-devel elfutils-libelf-devel cairo-devel freetype-devel.{x86_64,i686} \
+libjpeg-turbo-devel.{x86_64,i686} fontconfig-devel.{x86_64,i686} libglvnd-devel.{x86_64,i686} \
+mesa-libGL-devel.{x86_64,i686} mesa-libEGL-devel.{x86_64,i686} mesa-libGLU-devel.{x86_64,i686} \
+libtiff-devel.{x86_64,i686} libxml2-devel libbsd-devel git git-lfs libXcursor-devel \
+libXrandr-devel giflib-devel pulseaudio-libs-devel libxkbfile-devel \
+openssl-devel llvm libcap-devel libavcodec-free-devel libavformat-free-devel
+```
+
+
 **OpenSUSE Tumbleweed**
 
 You will need to build Darling with only the 64bit components. See **Build Options** for instructions. 
