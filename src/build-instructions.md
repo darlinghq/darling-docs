@@ -86,15 +86,10 @@ openssl-devel llvm libcap-devel libavcodec-free-devel libavformat-free-devel
 **Rocky Linux 9**
 
 Enable the required repositories:
+1. Enable RPM Fusion repositories following the [official guide](https://rpmfusion.org/Configuration)
+2. Enable [CRB (CodeReady Builder)](https://wiki.rockylinux.org/rocky/repo/#notes-on-crb) repositorys
 
 ```bash
-# Enable RPM Fusion repositories
-sudo dnf install https://download1.rpmfusion.org/free/el/rpmfusion-free-release-9.noarch.rpm
-sudo dnf install https://download1.rpmfusion.org/nonfree/el/rpmfusion-nonfree-release-9.noarch.rpm
-
-# Update package list
-sudo dnf update
-
 # Enable PowerTools (CRB) repository
 sudo dnf config-manager --set-enabled crb
 
