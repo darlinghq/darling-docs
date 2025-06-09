@@ -120,10 +120,10 @@ Make sure to [enable the community repository](https://wiki.alpinelinux.org/wiki
 Alpine also doesn't support 32-bit builds, so make sure to [disable that](#disabling-32-bit-libraries).
 
 ```bash
-sudo apk add cmake clang bison flex xz fuse-dev pkgconfig libcap git git-lfs \
+sudo apk add bash cmake clang bison flex xz fuse-dev pkgconfig libcap git git-lfs \
 python3 glu-dev cairo-dev mesa-dev tiff-dev freetype-dev libxml2-dev fontconfig-dev \
 libbsd-dev libxrandr-dev libxcursor-dev giflib-dev pulseaudio-dev ffmpeg-dev dbus-dev \
-libxkbfile-dev openssl-dev libexecinfo-dev make gcc g++ xdg-user-dirs
+libxkbfile-dev openssl-dev libexecinfo-dev build-base xdg-user-dirs
 ```
 
 These are the minimum requirements for building and running Darling on Alpine.
