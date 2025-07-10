@@ -208,7 +208,7 @@ If you ever run into this situation, here are some tricks that can help you find
 
 ### Logging When An Executable is Loading.
 
-In `src/kernel/emulation/linux/mach/lkm.c`, you can add the following print statements to the `mach_driver_init` method, like so:
+In `src/external/xnu/darling/src/libsystem_kernel/emulation/src/other/mach/lkm.c`, you can add the following print statements to the `mach_driver_init` method, like so:
 
 ```
 	if (applep != NULL)
