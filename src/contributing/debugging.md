@@ -210,19 +210,19 @@ If you ever run into this situation, here are some tricks that can help you find
 
 In `src/external/xnu/darling/src/libsystem_kernel/emulation/src/other/mach/lkm.c`, you can add the following print statements to the `mach_driver_init` method, like so:
 
-```
+```c
 	if (applep != NULL)
 	{
-		__simple_printf("applep is not NULL\n");
+		__simple_fprintf(2, "applep is not NULL\n");
 		int i;
 		for (i = 0; applep[i] != NULL; i++)
 		{
-			__simple_printf("applep[%d] = %s\n", i, applep[i]);
+			__simple_fprintf(2, "applep[%d] = %s\n", i, applep[i]);
 			if (strncmp(applep[i], "elf_calls=", 10) == 0)
 			{
 				uintptr_t table = (uintptr_t) __simple_atoi16(applep[i] + 10, NULL);
 				_elfcalls = (struct elf_calls*) table;
-				__simple_printf("_elfcalls = %d\n", _elfcalls);
+				__simple_fprintf(2, "_elfcalls = %d\n", _elfcalls);
 			}
 		}
 	}
@@ -255,4 +255,4 @@ applep is not NULL
 ...
 ```
 
-Just keep in mind that some scripts can break with this change.
+Just keep in mind that some tools may break with this change.
