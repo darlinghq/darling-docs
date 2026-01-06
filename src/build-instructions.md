@@ -29,14 +29,26 @@ libbsd-dev libxrandr-dev libxcursor-dev libgif-dev libpulse-dev libavformat-dev 
 libswresample-dev libdbus-1-dev libxkbfile-dev libssl-dev llvm-dev
 ```
 
-**Debian Testing**
+**Debian 13**
 
 ```bash
-sudo apt install cmake clang-9 bison flex xz-utils libfuse-dev libudev-dev pkg-config \
+sudo apt install cmake clang bison flex xz-utils libfuse-dev libudev-dev pkg-config \
 libc6-dev-i386 libcap2-bin git git-lfs libglu1-mesa-dev libcairo2-dev \
 libgl1-mesa-dev libtiff5-dev libfreetype6-dev libxml2-dev libegl1-mesa-dev libfontconfig1-dev \
 libbsd-dev libxrandr-dev libxcursor-dev libgif-dev libpulse-dev libavformat-dev libavcodec-dev \
-libswresample-dev libdbus-1-dev libxkbfile-dev libssl-dev llvm-dev
+libswresample-dev libdbus-1-dev libxkbfile-dev libssl-dev llvm-dev livvulkan-dev \
+libcurl4-openssl-dev libedit-dev
+```
+
+**Debian Testing**
+
+```bash
+sudo apt install cmake clang bison flex xz-utils libfuse-dev libudev-dev pkg-config \
+libc6-dev-i386 libcap2-bin git git-lfs libglu1-mesa-dev libcairo2-dev \
+libgl1-mesa-dev libtiff5-dev libfreetype6-dev libxml2-dev libegl1-mesa-dev libfontconfig1-dev \
+libbsd-dev libxrandr-dev libxcursor-dev libgif-dev libpulse-dev libavformat-dev libavcodec-dev \
+libswresample-dev libdbus-1-dev libxkbfile-dev libssl-dev llvm-dev livvulkan-dev \
+libcurl4-openssl-dev libedit-dev
 ```
 
 **Ubuntu 22.04/24.04:**
