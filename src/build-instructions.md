@@ -10,6 +10,8 @@ A minimum of 4 GB of RAM is also required for building. Using swap space may hel
 
 Linux 5.0 or higher is required.
 
+A CPU with the SSE3 instruction set is required. All modern CPUs support SSE3.
+
 **Debian 10/11**
 
 ```bash
