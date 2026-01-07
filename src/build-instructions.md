@@ -72,6 +72,8 @@ libXcursor-devel libXrandr-devel giflib-devel pulseaudio-libs-devel libxkbfile-d
 llvm libcap-devel libbsd-devel libfuse-devel ffmpeg-devel
 ```
 
+Please note that the 32-bit libraries are no longer available in RHEL 10, and as such you must disable the 32-bit libraries on that platform. The procedure to do that is documented in the relevant section below.
+
 **Fedora 42, RHEL 9, CentOS Stream 9, and AlmaLinux 9**
 
 ```bash
@@ -203,8 +205,6 @@ Darling normally builds both 32-bit and 64-bit versions of all libraries, to ena
 However, this means Darling also requires 32-bit version of certain native libraries. If you can't setup a multilib environment or you just
 want to build only the 64-bit components, append `-DTARGET_i386=OFF` when you run `cmake` to disable building the 32-bit components.
 That is, run `cmake -DTARGET_i386=OFF ..` instead of `cmake ..`.
-
-Please note that the 32-bit libraries are no longer available in RHEL 10, and as such you must disable the 32-bit libraries on that platform.
 
 ### Parallel Builds
 
