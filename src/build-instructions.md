@@ -62,8 +62,9 @@ libxcursor libxext libxkbcommon libxrandr ffmpeg git git-lfs
 
 **RHEL 10**
 
+If not done already, make sure to follow the [official guide for setting up RPM Fusion](https://rpmfusion.org/Configuration)
+
 ```bash
-sudo dnf install https://mirrors.rpmfusion.org/free/el/rpmfusion-free-release-10.noarch.rpm
 sudo dnf install make cmake clang bison dbus-devel flex glibc-devel fuse-devel systemd-devel \
 elfutils-libelf-devel cairo-devel freetype-devel libjpeg-turbo-devel fontconfig-devel libglvnd-devel \
 mesa-libGL-devel mesa-libEGL-devel mesa-libGLU-devel libtiff-devel libxml2-devel git git-lfs \
