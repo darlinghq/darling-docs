@@ -10,6 +10,8 @@ A minimum of 4 GB of RAM is also required for building. Using swap space may hel
 
 Linux 5.0 or higher is required.
 
+A CPU with the SSE3 instruction set is required. All modern CPUs support SSE3.
+
 **Debian 10/11**
 
 ```bash
@@ -29,14 +31,26 @@ libbsd-dev libxrandr-dev libxcursor-dev libgif-dev libpulse-dev libavformat-dev 
 libswresample-dev libdbus-1-dev libxkbfile-dev libssl-dev llvm-dev
 ```
 
-**Debian Testing**
+**Debian 13**
 
 ```bash
-sudo apt install cmake clang-9 bison flex xz-utils libfuse-dev libudev-dev pkg-config \
+sudo apt install cmake clang bison flex xz-utils libfuse-dev libudev-dev pkg-config \
 libc6-dev-i386 libcap2-bin git git-lfs libglu1-mesa-dev libcairo2-dev \
 libgl1-mesa-dev libtiff5-dev libfreetype6-dev libxml2-dev libegl1-mesa-dev libfontconfig1-dev \
 libbsd-dev libxrandr-dev libxcursor-dev libgif-dev libpulse-dev libavformat-dev libavcodec-dev \
-libswresample-dev libdbus-1-dev libxkbfile-dev libssl-dev llvm-dev
+libswresample-dev libdbus-1-dev libxkbfile-dev libssl-dev llvm-dev livvulkan-dev \
+libcurl4-openssl-dev libedit-dev
+```
+
+**Debian Testing**
+
+```bash
+sudo apt install cmake clang bison flex xz-utils libfuse-dev libudev-dev pkg-config \
+libc6-dev-i386 libcap2-bin git git-lfs libglu1-mesa-dev libcairo2-dev \
+libgl1-mesa-dev libtiff5-dev libfreetype6-dev libxml2-dev libegl1-mesa-dev libfontconfig1-dev \
+libbsd-dev libxrandr-dev libxcursor-dev libgif-dev libpulse-dev libavformat-dev libavcodec-dev \
+libswresample-dev libdbus-1-dev libxkbfile-dev libssl-dev llvm-dev livvulkan-dev \
+libcurl4-openssl-dev libedit-dev
 ```
 
 **Ubuntu 22.04/24.04:**
@@ -74,7 +88,7 @@ llvm libcap-devel libbsd-devel libfuse-devel ffmpeg-devel
 
 Please note that the 32-bit libraries are no longer available in RHEL 10, and as such you must disable the 32-bit libraries on that platform. The procedure to do that is documented in the relevant section below.
 
-**Fedora 42, RHEL 9, CentOS Stream 9, and AlmaLinux 9**
+**Fedora 43, RHEL 9, CentOS Stream 9, and AlmaLinux 9**
 
 ```bash
 sudo dnf install make cmake clang bison dbus-devel flex glibc-devel.i686 fuse-devel \
@@ -316,7 +330,7 @@ To quote the [kernel documentation](https://www.kernel.org/doc/Documentation/fil
 
 > The lower filesystem can be any filesystem supported by Linux and does not need to be writable. The lower filesystem can even be another overlayfs. The upper filesystem will normally be writable and if it is it must support the creation of trusted.* extended attributes, and must provide valid d_type in readdir responses, so NFS is not suitable.
 
-In addition to NFS not being supported, ZFS and eCryptfs encrypted storage are also known not to work.
+In addition to NFS not being supported, ZFS and eCryptfs encrypted storage are also known not to work. However, fscrypt encrypted storage has been tested to work.
 
 If you try to use an unsupported file system, this error will be printed:
 
