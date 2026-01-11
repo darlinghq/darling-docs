@@ -74,6 +74,20 @@ lib32-gcc-libs pkg-config fontconfig cairo libtiff mesa glu llvm libbsd libxkbfi
 libxcursor libxext libxkbcommon libxrandr ffmpeg git git-lfs
 ```
 
+**RHEL 10**
+
+If not done already, make sure to follow the [official guide for setting up RPM Fusion](https://rpmfusion.org/Configuration)
+
+```bash
+sudo dnf install make cmake clang bison dbus-devel flex glibc-devel fuse-devel systemd-devel \
+elfutils-libelf-devel cairo-devel freetype-devel libjpeg-turbo-devel fontconfig-devel libglvnd-devel \
+mesa-libGL-devel mesa-libEGL-devel mesa-libGLU-devel libtiff-devel libxml2-devel git git-lfs \
+libXcursor-devel libXrandr-devel giflib-devel pulseaudio-libs-devel libxkbfile-devel openssl-devel \
+llvm libcap-devel libbsd-devel libfuse-devel ffmpeg-devel
+```
+
+Please note that the 32-bit libraries are no longer available in RHEL 10, and as such you must disable the 32-bit libraries on that platform. See [Disabling 32-bit Libraries](#disabling-32-bit-libraries) for more details.
+
 **Fedora 43, RHEL 9, CentOS Stream 9, and AlmaLinux 9**
 
 ```bash
