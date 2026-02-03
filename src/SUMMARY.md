@@ -9,6 +9,7 @@
   - [Darling prefix](darling-prefix.md)
   - [Installing software](installing-software.md)
   - [What to try](what-to-try.md)
+  - [Common issues](common-issues.md)
   - [Known working software](known-working-software.md)
   - [Known partially working software](known-partial-software.md)
   - [Known non-functional software](known-nonfunctional-software.md)
