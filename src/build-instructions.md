@@ -297,6 +297,8 @@ By default, almost all of Darling is built, similar to what would be a full macO
 
 ## Known Issues
 
+See [Common Issues](common-issues.md) for runtime issues with Darling.
+
 ### BackBox
 
 If your distribution is Backbox and you run into build issues try the following commands:
@@ -306,34 +308,8 @@ sudo update-alternatives --install /usr/bin/clang clang /usr/bin/clang-6.0 600
 sudo update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-6.0 600
 ```
 
-### SELinux
-
-On SELinux you may see the following error when starting Darling:
-
-```
-Cannot open mnt namespace file: No such file or directory
-```
-
-To work around this try this command: `setsebool -P mmap_low_allowed 1`.
-
 ### Broken Symbolic Link
 
 Darling relies heavily on symbolic links. It is important to build Darling on a filesystem that supports this feature.
 
 If you are still running into issues, despite downloading and building Darling on a filesystem that supports symbolic links, check your git configuration to make sure that you have not intentionally disabled it (ex: `core.symlinks=false`).
-
-### File System Support
-
-Darling uses overlayfs for implementing prefixes on top of the macOS-like root filesystem. While overlayfs is not very picky about the lower (read-only) filesystem (where your `/usr` lives), it has stricter requirements for the upper filesystem (your home directory, unless you override the `DPREFIX` environment variable).
-
-To quote the [kernel documentation](https://www.kernel.org/doc/Documentation/filesystems/overlayfs.txt):
-
-> The lower filesystem can be any filesystem supported by Linux and does not need to be writable. The lower filesystem can even be another overlayfs. The upper filesystem will normally be writable and if it is it must support the creation of trusted.* extended attributes, and must provide valid d_type in readdir responses, so NFS is not suitable.
-
-In addition to NFS not being supported, ZFS and eCryptfs encrypted storage are also known not to work. However, fscrypt encrypted storage has been tested to work.
-
-If you try to use an unsupported file system, this error will be printed:
-
-```
-Cannot mount overlay: Invalid argument
-```
