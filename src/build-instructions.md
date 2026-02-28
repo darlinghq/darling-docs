@@ -130,7 +130,7 @@ openssl-devel llvm libcap-devel libavcodec-free-devel libavformat-free-devel
 
 **OpenSUSE Tumbleweed**
 
-You will need to build Darling with only the 64bit components. See **Build Options** for instructions. 
+You will need to build Darling with only the 64bit components. See **Build Options** for instructions.
 
 ```bash
 sudo zypper install make cmake-full clang10 bison flex python-base glibc fuse-devel \
@@ -264,7 +264,7 @@ If you wish to properly move your Darling installation, the only supported optio
 
 ### Manually Setting CMAKE_C_COMPILER and CMAKE_CXX_COMPILER.
 
-If `CMAKE_C_COMPILER` and `CMAKE_CXX_COMPILER` are not already set, the configuation script will try to locate `clang`/`clang++`. 
+If `CMAKE_C_COMPILER` and `CMAKE_CXX_COMPILER` are not already set, the configuation script will try to locate `clang`/`clang++`.
 
 Normally, you don't need to worry about setting these variables. With that being said, you can add `-DCMAKE_C_COMPILER="/absolute/path/to/clang"` and `-DCMAKE_CXX_COMPILER="/absolute/path/to/clang++"` when configuring the build to force the configuation script to use a specific clang compiler.
 
@@ -298,6 +298,10 @@ By default, almost all of Darling is built, similar to what would be a full macO
 ## Known Issues
 
 See [Common Issues](common-issues.md) for runtime issues with Darling.
+
+### Compiler Optimizations
+
+Compiler optimization flags like `-O2` are not actively tested and may cause the build to fail.
 
 ### BackBox
 
