@@ -12,7 +12,7 @@ Linux 5.0 or higher is required.
 
 A CPU with the SSE3 instruction set is required. All modern CPUs support SSE3.
 
-**Debian 10/11**
+**Debian 11**
 
 ```bash
 sudo apt install cmake clang-6.0 bison flex xz-utils libfuse-dev libudev-dev pkg-config \
