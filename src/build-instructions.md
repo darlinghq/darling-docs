@@ -10,7 +10,9 @@ A minimum of 4 GB of RAM is also required for building. Using swap space may hel
 
 Linux 5.0 or higher is required. One exception to this rule is Windows Subsystem for Linux 1, which emulates a Linux 4.4 kernel.
 
-**Debian 10/11**
+A CPU with the SSE3 instruction set is required. All modern CPUs support SSE3.
+
+**Debian 11**
 
 ```bash
 sudo apt install cmake clang-6.0 bison flex xz-utils libfuse-dev libudev-dev pkg-config \
@@ -29,14 +31,26 @@ libbsd-dev libxrandr-dev libxcursor-dev libgif-dev libpulse-dev libavformat-dev 
 libswresample-dev libdbus-1-dev libxkbfile-dev libssl-dev llvm-dev
 ```
 
-**Debian Testing**
+**Debian 13**
 
 ```bash
-sudo apt install cmake clang-9 bison flex xz-utils libfuse-dev libudev-dev pkg-config \
+sudo apt install cmake clang bison flex xz-utils libfuse-dev libudev-dev pkg-config \
 libc6-dev-i386 libcap2-bin git git-lfs libglu1-mesa-dev libcairo2-dev \
 libgl1-mesa-dev libtiff5-dev libfreetype6-dev libxml2-dev libegl1-mesa-dev libfontconfig1-dev \
 libbsd-dev libxrandr-dev libxcursor-dev libgif-dev libpulse-dev libavformat-dev libavcodec-dev \
-libswresample-dev libdbus-1-dev libxkbfile-dev libssl-dev llvm-dev
+libswresample-dev libdbus-1-dev libxkbfile-dev libssl-dev llvm-dev libvulkan-dev \
+libcurl4-openssl-dev libedit-dev
+```
+
+**Debian Testing**
+
+```bash
+sudo apt install cmake clang bison flex xz-utils libfuse-dev libudev-dev pkg-config \
+libc6-dev-i386 libcap2-bin git git-lfs libglu1-mesa-dev libcairo2-dev \
+libgl1-mesa-dev libtiff5-dev libfreetype6-dev libxml2-dev libegl1-mesa-dev libfontconfig1-dev \
+libbsd-dev libxrandr-dev libxcursor-dev libgif-dev libpulse-dev libavformat-dev libavcodec-dev \
+libswresample-dev libdbus-1-dev libxkbfile-dev libssl-dev llvm-dev libvulkan-dev \
+libcurl4-openssl-dev libedit-dev
 ```
 
 **Ubuntu 22.04/24.04:**
@@ -60,7 +74,21 @@ lib32-gcc-libs pkg-config fontconfig cairo libtiff mesa glu llvm libbsd libxkbfi
 libxcursor libxext libxkbcommon libxrandr ffmpeg git git-lfs
 ```
 
-**Fedora 42, RHEL 9, CentOS Stream 9, and AlmaLinux 9**
+**RHEL 10**
+
+If not done already, make sure to follow the [official guide for setting up RPM Fusion](https://rpmfusion.org/Configuration)
+
+```bash
+sudo dnf install make cmake clang bison dbus-devel flex glibc-devel fuse-devel systemd-devel \
+elfutils-libelf-devel cairo-devel freetype-devel libjpeg-turbo-devel fontconfig-devel libglvnd-devel \
+mesa-libGL-devel mesa-libEGL-devel mesa-libGLU-devel libtiff-devel libxml2-devel git git-lfs \
+libXcursor-devel libXrandr-devel giflib-devel pulseaudio-libs-devel libxkbfile-devel openssl-devel \
+llvm libcap-devel libbsd-devel libfuse-devel ffmpeg-devel
+```
+
+Please note that the 32-bit libraries are no longer available in RHEL 10, and as such you must disable the 32-bit libraries on that platform. See [Disabling 32-bit Libraries](#disabling-32-bit-libraries) for more details.
+
+**Fedora 43, RHEL 9, CentOS Stream 9, and AlmaLinux 9**
 
 ```bash
 sudo dnf install make cmake clang bison dbus-devel flex glibc-devel.i686 fuse-devel \
@@ -102,7 +130,7 @@ openssl-devel llvm libcap-devel libavcodec-free-devel libavformat-free-devel
 
 **OpenSUSE Tumbleweed**
 
-You will need to build Darling with only the 64bit components. See **Build Options** for instructions. 
+You will need to build Darling with only the 64bit components. See **Build Options** for instructions.
 
 ```bash
 sudo zypper install make cmake-full clang10 bison flex python-base glibc fuse-devel \
@@ -236,7 +264,7 @@ If you wish to properly move your Darling installation, the only supported optio
 
 ### Manually Setting CMAKE_C_COMPILER and CMAKE_CXX_COMPILER.
 
-If `CMAKE_C_COMPILER` and `CMAKE_CXX_COMPILER` are not already set, the configuation script will try to locate `clang`/`clang++`. 
+If `CMAKE_C_COMPILER` and `CMAKE_CXX_COMPILER` are not already set, the configuation script will try to locate `clang`/`clang++`.
 
 Normally, you don't need to worry about setting these variables. With that being said, you can add `-DCMAKE_C_COMPILER="/absolute/path/to/clang"` and `-DCMAKE_CXX_COMPILER="/absolute/path/to/clang++"` when configuring the build to force the configuation script to use a specific clang compiler.
 
@@ -269,6 +297,12 @@ By default, almost all of Darling is built, similar to what would be a full macO
 
 ## Known Issues
 
+See [Common Issues](common-issues.md) for runtime issues with Darling.
+
+### Compiler Optimizations
+
+Compiler optimization flags like `-O2` are not actively tested and may cause the build to fail.
+
 ### BackBox
 
 If your distribution is Backbox and you run into build issues try the following commands:
@@ -278,34 +312,8 @@ sudo update-alternatives --install /usr/bin/clang clang /usr/bin/clang-6.0 600
 sudo update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-6.0 600
 ```
 
-### SELinux
-
-On SELinux you may see the following error when starting Darling:
-
-```
-Cannot open mnt namespace file: No such file or directory
-```
-
-To work around this try this command: `setsebool -P mmap_low_allowed 1`.
-
 ### Broken Symbolic Link
 
 Darling relies heavily on symbolic links. It is important to build Darling on a filesystem that supports this feature.
 
 If you are still running into issues, despite downloading and building Darling on a filesystem that supports symbolic links, check your git configuration to make sure that you have not intentionally disabled it (ex: `core.symlinks=false`).
-
-### File System Support
-
-Darling uses overlayfs for implementing prefixes on top of the macOS-like root filesystem. While overlayfs is not very picky about the lower (read-only) filesystem (where your `/usr` lives), it has stricter requirements for the upper filesystem (your home directory, unless you override the `DPREFIX` environment variable).
-
-To quote the [kernel documentation](https://www.kernel.org/doc/Documentation/filesystems/overlayfs.txt):
-
-> The lower filesystem can be any filesystem supported by Linux and does not need to be writable. The lower filesystem can even be another overlayfs. The upper filesystem will normally be writable and if it is it must support the creation of trusted.* extended attributes, and must provide valid d_type in readdir responses, so NFS is not suitable.
-
-In addition to NFS not being supported, ZFS and eCryptfs encrypted storage are also known not to work.
-
-If you try to use an unsupported file system, this error will be printed:
-
-```
-Cannot mount overlay: Invalid argument
-```
