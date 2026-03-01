@@ -8,7 +8,7 @@ Clang is required to compile Darling; at least Clang 11 is required. You can for
 
 A minimum of 4 GB of RAM is also required for building. Using swap space may help reduce the memory usage, but is likely to slow the build down significantly.
 
-Linux 5.0 or higher is required. One exception to this rule is Windows Subsystem for Linux 1, which emulates a Linux 4.4 kernel.
+Linux 5.0 or higher is required. One exception to this rule is Windows Subsystem for Linux 1, which emulates a Linux 4.4 kernel. Please note that Windows Subsystem for Linux 1 is not officially supported - use it at your own risk.
 
 A CPU with the SSE3 instruction set is required. All modern CPUs support SSE3.
 
