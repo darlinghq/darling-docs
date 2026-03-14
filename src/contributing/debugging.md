@@ -53,7 +53,9 @@ sudo sysctl -w kernel.core_pattern=core_dump
 ulimit -c unlimited
 ```
 
-### Option #1: Grab Core Dump From Current Working Directory
+### Obtaining A Core Dump
+
+#### Option #1: Grab Core Dump From Current Working Directory
 
 Note that the core dump will be stored into the current working directory that Linux (not Darling) is pointing to. So you should `cd` into the directory you want the core dump to be stored in before you execute `darling shell`. From there, you can execute the application.
 
@@ -65,7 +67,7 @@ darling shell
 
 If everything was set up properly, you should find a file called `core_dump`. It will be located in the current working directory that Linux is pointing to.
 
-### Option #2: Using `coredumpctl` To Get The Core Dump.
+#### Option #2: Using `coredumpctl` To Get The Core Dump.
 
 If your distro uses SystemD, you can use `coredumpctl` utility as an alternative to grab the code dump.
 
@@ -92,7 +94,7 @@ Once you figure out the process' core_dump that you want save, you can use the `
 coredumpctl dump -o core_dump 812790
 ```
 
----
+### Loading The Core Dump
 
 For the time being, you will need to use the `darling-coredump` command to convert the ELF formatted core dump into a Mach-O core dump. 
 
