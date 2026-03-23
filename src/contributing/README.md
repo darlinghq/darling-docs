@@ -1,45 +1,80 @@
 # Contributing
 
-If you are familiar with how GitHub Pull Requests work, you should feel right at home contributing to Darling. 
+## Setting up your development environment
 
-## Fork the repository
+[See instruction page for guidance on how to set up and build Darling.](../build-instructions.md)
 
-Locate the repository that you made changes in on GitHub. The following command can help. 
-	
+We recommend adding the following additional flags when configuring the project with cmake:
+
 ```bash
-cd darling/src/external/less
+cmake .. -DCMAKE_BUILD_TYPE=Debug -DCOMPONENTS=all
+```
+
+## Creating your fork
+
+Unless you are one of the core Darling developers who has write access to the Darling repos, you will need to create a fork to push your changes to. [If you are unsure about how to fork a repository on GitHub, please refer to the following instructions for guidance.](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo#forking-a-repository)
+
+If the changes you want to make live in a submodule (usually located in `src/external`. [See `.gitmodules` file for a list of all of the submodules Darling uses](https://github.com/darlinghq/darling/blob/master/.gitmodules)), you’ll need to `cd` into the submodule’s directory and use git remote to get the URL
+
+```bash
+cd src/external/xnu/
 git remote get-url origin
-https://github.com/darlinghq/darling-less.git
 ```
-If it is an `https` scheme then you can paste the URL directly into your browser. 
+```
+https://github.com/darlinghq/darling-xnu.git
+```
 
-Once at the page for the repository you made changes to, click the *Fork*
-button. GitHub will then take you to the page for your fork of that repository.
-The last step here is to copy the URL for your fork. Use the Clone or download
-button to copy it.
+Normally, you are expected to create a clone of your fork and commit your changes on that cloned fork. For Darling, we recommend working off the official repo clone you created earlier and add your fork as an additional remote.
 
-# Commit and push your changes
+# Adding your fork as an additional remote
 
-Create and check out a branch describing your changes. In this example, we will
-use `reinvent-wheel`. Next, add your fork as a remote.
+By default, a fresh clone of Darling will have the following remote:
 
 ```bash
-git remote add my-fork git@github.com:user/darling-less.git
+git remote -v
+```
+```
+origin  https://github.com/darlinghq/darling.git (fetch)
+origin  https://github.com/darlinghq/darling.git (push)
 ```
 
-After this, push your commits to your fork. 
+Use `git remote add` to add your forked repo, like so:
 
 ```bash
-git push -u my-fork reinvent-wheel
+git remote add <YOUR GITHUB USERNAME> https://github.com/<YOUR GITHUB USERNAME>/darling.git
 ```
 
-The `-u my-fork` part is only necessary when a branch has never been pushed to your fork before. 
+If you are working off of a submodule, make sure to `cd` into the submodule’s directory first and use the forked submodule URL:
 
-# Submit a pull request
+```bash
+cd src/external/xnu/
+git remote add <YOUR GITHUB USERNAME> https://github.com/<YOUR GITHUB USERNAME>/darling-xnu.git
+```
 
-On the GitHub page of your fork, select the branch you just pushed from the
-branch dropdown menu (you may need to reload). Click the *New pull request*
-button. Give it a useful title and descriptive comment. After this, you can
-click create.
+If you did it correctly, you should see the following:
 
-After this, your changes will be reviewed by a Darling Project member.
+```bash
+git remote -v
+```
+```
+<YOUR GITHUB USERNAME>    https://github.com/<YOUR GITHUB USERNAME>/darling.git (fetch)
+<YOUR GITHUB USERNAME>    https://github.com/<YOUR GITHUB USERNAME>/darling.git (push)
+origin  https://github.com/darlinghq/darling.git (fetch)
+origin  https://github.com/darlinghq/darling.git (push)
+```
+
+## Pushing your changes to your fork
+
+After you have created a branch and committed your changes, you can push your commits to your fork by using the following command.
+
+```bash
+git push -u <YOUR GITHUB USERNAME> <BRANCH NAME>
+```
+
+The `-u <YOUR GITHUB USERNAME>` part is only necessary when a branch has never been pushed to your fork before.
+
+## Submit a pull request
+
+On the GitHub page of your fork, select the branch you just pushed from the branch dropdown menu (you may need to reload). Click the *New pull request* button. Give it a useful title and descriptive comment. After this, you can click create.
+
+After this, your changes will be reviewed by a Darling project member.
