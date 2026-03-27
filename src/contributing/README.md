@@ -1,8 +1,53 @@
 # Contributing
 
+## Understanding the structure of the Darling project
+
+### Submodules
+
+The Darling project relies heavily on the usage of submodules. The best way to understand a submodule is to think of it as repo inside of another repo.
+
+The [`.gitmodules` file](https://github.com/darlinghq/darling/blob/master/.gitmodules) provides a list of submodules that the `darling` repo uses.
+
+For example, let's take a look at the `darling-xnu` repo that the `darling` repo includes.
+
+```
+[submodule "src/external/xnu"]
+path = src/external/xnu
+url = ../darling-xnu.git
+```
+
+The path indicates the location of the submodule, while the url is the link to the git repo.
+
+> [!NOTE]
+> A git submodule's URL path would usually be absolute instead of relative.
+> ```
+> [submodule "src/external/xnu"]
+> path = src/external/xnu
+> url = https://github.com/darlinghq/darling-xnu.git
+> ```
+> However, the Darling team has made the deliberate decision to use a relative path instead, mainly for the following reasons:
+> * To allow cloning/updating the project either through `https` or `ssh`
+> * To make it easier to hard fork this project.
+
+When you `cd` into the `src/external/xnu` directory, you are working off of the `darling-xnu` repo, instead of the usual `darling` repo.
+
+```bash
+cd ~/Downloads/darling
+git remote -v
+# origin  https://github.com/darlinghq/darling.git (fetch)
+# origin  https://github.com/darlinghq/darling.git (push)
+```
+```bash
+cd ~/Downloads/darling/src/external/xnu
+git remote -v
+# origin  https://github.com/darlinghq/darling-xnu.git (fetch)
+# origin  https://github.com/darlinghq/darling-xnu.git (push)
+```
+
+[For additional details on git submodules, we recommend reading the submodule section in the git-scm website](https://git-scm.com/book/en/v2/Git-Tools-Submodules)
 ## Setting up your development environment
 
-[See instruction page for guidance on how to set up and build Darling.](../build-instructions.md)
+If you have not already, [please see instruction page for guidance on how to set up and build Darling.](../build-instructions.md)
 
 We recommend adding the following additional flags when configuring the project with cmake:
 
