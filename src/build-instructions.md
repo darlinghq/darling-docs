@@ -88,7 +88,7 @@ llvm libcap-devel libbsd-devel libfuse-devel ffmpeg-devel
 
 Please note that the 32-bit libraries are no longer available in RHEL 10, and as such you must disable the 32-bit libraries on that platform. See [Disabling 32-bit Libraries](#disabling-32-bit-libraries) for more details.
 
-**Fedora 43, RHEL 9, CentOS Stream 9, and AlmaLinux 9**
+**Fedora 44, RHEL 9, CentOS Stream 9, and AlmaLinux 9**
 
 ```bash
 sudo dnf install make cmake clang bison dbus-devel flex glibc-devel.i686 fuse-devel \
