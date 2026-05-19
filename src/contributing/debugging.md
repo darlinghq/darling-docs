@@ -191,7 +191,7 @@ those cases.
 
 ## Darlingserver log file
 
-Darlingserver generates a log file called `dserver.log`. This file contains useful information on any potential issue that could of occurred in `darlingserver`.
+Darlingserver generates a log file called `dserver.log`. This file contains useful information on any potential issue that could have occurred in `darlingserver`.
 
 By default, `darlingserver` only logs errors. You can change this behavior by setting the environment variable `DSERVER_LOG_LEVEL`, like so:
 ```
