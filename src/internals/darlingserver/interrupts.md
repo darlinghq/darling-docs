@@ -53,7 +53,7 @@ receive a reply, but for the wrong call (the one that was just interrupted).
 That's why another job of `interrupt_enter` on the client side is to handle
 unexpected replies and push them back to the server.
 
-It allocates a buffer (on the stack) large enough to accomodate all possible
+It allocates a buffer (on the stack) large enough to accommodate all possible
 replies and file descriptors. When it receives a reply it did not expect (i.e.
 a reply that is not for the `interrupt_enter` call), it sends it back to the
 server using a special `push_reply` message, which the server uses to save the
