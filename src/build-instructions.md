@@ -104,7 +104,7 @@ openssl-devel llvm libcap-devel libavcodec-free-devel libavformat-free-devel
 
 Enable the required repositories:
 1. Enable RPM Fusion repositories following the [official guide](https://rpmfusion.org/Configuration)
-2. Enable [CRB (CodeReady Builder)](https://wiki.rockylinux.org/rocky/repo/#notes-on-crb) repositorys
+2. Enable [CRB (CodeReady Builder)](https://wiki.rockylinux.org/rocky/repo/#notes-on-crb) repositories
 
 ```bash
 # Enable PowerTools (CRB) repository

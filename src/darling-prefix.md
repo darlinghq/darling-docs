@@ -1,6 +1,6 @@
 # Darling prefix
 
-A Darling prefix is a [container](internals/basics/containerization.md) overlayed on top of a base macOS-like root file system located in `$installation_prefix/libexec/darling`. The default prefix location is `~/.darling` and this can be controlled with the `DPREFIX` environment variable, very much like `WINEPREFIX` under Wine.
+A Darling prefix is a [container](internals/basics/containerization.md) overlaid on top of a base macOS-like root file system located in `$installation_prefix/libexec/darling`. The default prefix location is `~/.darling` and this can be controlled with the `DPREFIX` environment variable, very much like `WINEPREFIX` under Wine.
 
 Note that in order to change the prefix location with `DPREFIX`, you should `export` this variable in the current shell before running Darling. Using it only when running Darling (e.g. `DPREFIX=foo darling shell`) will not work as expected.
 
