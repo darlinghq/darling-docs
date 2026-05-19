@@ -27,7 +27,7 @@ XNU code for event details.
 
 ## Process Filters
 
-Process filters hook into the target Process instance in dalringserver to have
+Process filters hook into the target Process instance in darlingserver to have
 it notify us when certain events like forks, execs, and deaths occur.
 
 A special case occurs when a process forks because there is an old, deprecated

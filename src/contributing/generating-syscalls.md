@@ -2,7 +2,7 @@
 
 While not common, there are situations where you might need to regenerate syscalls. Fortunately, Apple provides a convenient perl script called `create-syscalls.pl`. The script is located in `[XNU]/libsyscall/xcodescripts/`.
 
-## Understanding `create-syscalls.pl`'s Arugments
+## Understanding `create-syscalls.pl`'s Arguments
 
 When you try to run the command, without any arguments, you will get the following prompt:
 

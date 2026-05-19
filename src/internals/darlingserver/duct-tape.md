@@ -11,7 +11,7 @@ essentially duct-tapes the XNU code into something we can use.
 Because duct-taped code uses XNU kernel headers, including any Linux headers
 would quickly cause header conflicts and complications. Therefore, whenever
 our duct-taping code needs to use some Linux functionality, we do one of two
-things: either manually add declaractions/prototypes (e.g. for simple things
+things: either manually add declarations/prototypes (e.g. for simple things
 like `mmap`) or, more commonly, add hooks for duct-taped code to call into C++
 code. Additionally, duct-taped code is C code, so if it needs to use some
 functionality that the C++ code implements, it *must* use hooks.
