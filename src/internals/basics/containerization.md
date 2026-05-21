@@ -25,5 +25,5 @@ More namespaces (e.g. UID or network) will be considered in future.
 ## Caveats
 
 * When you make changes to Darling's installation directory (e.g.
-  `/usr/local/libexec/darling`), you must stop running containers (via `darling shutdown`) so that the changes take effect. This is a limitaton of overlayfs.
+  `/usr/local/libexec/darling`), you must stop running containers (via `darling shutdown`) so that the changes take effect. This is a limitation of overlayfs.
 

@@ -3,7 +3,7 @@
 darlingserver needs to be involved in signal processing for two main reasons.
 The first is that there is some Mach functionality that relies on having
 access to signal information such as what signal occurred and the register state
-when it occured so that we can pass this on to debuggers when they ask for it.
+when it occurred so that we can pass this on to debuggers when they ask for it.
 The second reason is that signals can occur while a thread is waiting for a
 server call to complete. When this occurs, there is a possible race between
 the server replying to thread's interrupted call and the thread making a new
