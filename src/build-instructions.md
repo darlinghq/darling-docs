@@ -23,6 +23,7 @@ libswresample-dev libdbus-1-dev libxkbfile-dev libssl-dev llvm-dev
 ```
 
 **Debian 12**
+
 ```bash
 sudo apt install cmake clang bison flex xz-utils libfuse-dev libudev-dev pkg-config \
 libc6-dev-i386 libcap2-bin git git-lfs libglu1-mesa-dev libcairo2-dev \
@@ -62,6 +63,17 @@ libfreetype6-dev git git-lfs libelf-dev libxml2-dev libegl1-mesa-dev libfontconf
 libbsd-dev libxrandr-dev libxcursor-dev libgif-dev libavutil-dev libpulse-dev \
 libavformat-dev libavcodec-dev libswresample-dev libdbus-1-dev libxkbfile-dev \
 libssl-dev libstdc++-12-dev
+```
+
+**Ubuntu 26.04:**
+
+```bash
+sudo apt install cmake automake clang bison flex libfuse-dev libudev-dev pkg-config libc6-dev-i386 \
+gcc-multilib libcairo2-dev libgl1-mesa-dev curl libglu1-mesa-dev libtiff-dev \
+libfreetype6-dev git git-lfs libelf-dev libxml2-dev libegl1-mesa-dev libfontconfig1-dev \
+libbsd-dev libxrandr-dev libxcursor-dev libgif-dev libavutil-dev libpulse-dev \
+libavformat-dev libavcodec-dev libswresample-dev libdbus-1-dev libxkbfile-dev \
+libssl-dev libstdc++-15-dev
 ```
 
 **Arch Linux & Manjaro:**
