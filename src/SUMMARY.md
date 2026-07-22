@@ -43,4 +43,6 @@
   - [Google Summer of Code](contributing/google-summer-of-code.md)
   - [Packaging](contributing/packaging.md)
   - [Updating sources](contributing/updating-sources/README.md)
+- [Community](community/README.md)
+  - [Packages](community/packages.md)
 
