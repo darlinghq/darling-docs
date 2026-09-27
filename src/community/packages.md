@@ -34,3 +34,4 @@ When submitting a new community package, please include:
 | Package / Project | Description | Maintainer | Status |
 | :--- | :--- | :--- | :--- |
 | [darling](https://launchpad.net/~jlucfarias/+archive/ubuntu/ppa) | Darling package for Ubuntu | [`@jlucfarias`](https://github.com/jlucfarias) | *Active* |
+| [darling-git](https://aur.archlinux.org/pkgbase/darling-git) | Arch Linux User Repository package | [`@Lazerbeak12345`](https://github.com/Lazerbeak12345) | *Active* |
