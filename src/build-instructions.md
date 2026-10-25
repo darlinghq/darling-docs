@@ -109,7 +109,8 @@ libjpeg-turbo-devel.{x86_64,i686} fontconfig-devel.{x86_64,i686} libglvnd-devel.
 mesa-libGL-devel.{x86_64,i686} mesa-libEGL-devel.{x86_64,i686} mesa-libGLU-devel.{x86_64,i686} \
 libtiff-devel.{x86_64,i686} libxml2-devel libbsd-devel git git-lfs libXcursor-devel \
 libXrandr-devel giflib-devel pulseaudio-libs-devel libxkbfile-devel \
-openssl-devel llvm libcap-devel libavcodec-free-devel libavformat-free-devel
+openssl-devel llvm libcap-devel libavcodec-free-devel libavformat-free-devel \
+llvm-devel.{x86_64,i686} vulkan-loader-devel
 ```
 
 **Rocky Linux 9**
