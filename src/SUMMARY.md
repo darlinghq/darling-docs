@@ -3,6 +3,7 @@
 - [Introduction](README.md)
 - [Using Darling](using-darling.md)
   - [Build instructions](build-instructions.md)
+  - [Cross compilation](cross-compilation.md)
   - [Building for the WSL](wsl-build.md)
   - [Uninstall](uninstall.md)
   - [Darling shell](darling-shell.md)
