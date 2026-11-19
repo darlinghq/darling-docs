@@ -62,7 +62,7 @@ gcc-multilib libcairo2-dev libgl1-mesa-dev curl libglu1-mesa-dev libtiff5-dev \
 libfreetype6-dev git git-lfs libelf-dev libxml2-dev libegl1-mesa-dev libfontconfig1-dev \
 libbsd-dev libxrandr-dev libxcursor-dev libgif-dev libavutil-dev libpulse-dev \
 libavformat-dev libavcodec-dev libswresample-dev libdbus-1-dev libxkbfile-dev \
-libssl-dev libstdc++-12-dev libvulkan-dev
+libssl-dev libstdc++-12-dev libvulkan-dev llvm-dev
 ```
 
 **Ubuntu 26.04:**
@@ -73,7 +73,7 @@ gcc-multilib libcairo2-dev libgl1-mesa-dev curl libglu1-mesa-dev libtiff-dev \
 libfreetype6-dev git git-lfs libelf-dev libxml2-dev libegl1-mesa-dev libfontconfig1-dev \
 libbsd-dev libxrandr-dev libxcursor-dev libgif-dev libavutil-dev libpulse-dev \
 libavformat-dev libavcodec-dev libswresample-dev libdbus-1-dev libxkbfile-dev \
-libssl-dev libstdc++-15-dev libvulkan-dev
+libssl-dev libstdc++-15-dev libvulkan-dev llvm-dev
 ```
 
 **Arch Linux & Manjaro:**
@@ -96,7 +96,7 @@ sudo dnf install make cmake clang bison dbus-devel flex glibc-devel fuse-devel s
 elfutils-libelf-devel cairo-devel freetype-devel libjpeg-turbo-devel fontconfig-devel libglvnd-devel \
 mesa-libGL-devel mesa-libEGL-devel mesa-libGLU-devel libtiff-devel libxml2-devel git git-lfs \
 libXcursor-devel libXrandr-devel giflib-devel pulseaudio-libs-devel libxkbfile-devel openssl-devel \
-llvm libcap-devel libbsd-devel libfuse-devel ffmpeg-devel vulkan-loader-devel
+llvm llvm-devel libcap-devel libbsd-devel libfuse-devel ffmpeg-devel vulkan-loader-devel
 ```
 
 Please note that the 32-bit libraries are no longer available in RHEL 10, and as such you must disable the 32-bit libraries on that platform. See [Disabling 32-bit Libraries](#disabling-32-bit-libraries) for more details.
@@ -110,7 +110,7 @@ libjpeg-turbo-devel.{x86_64,i686} fontconfig-devel.{x86_64,i686} libglvnd-devel.
 mesa-libGL-devel.{x86_64,i686} mesa-libEGL-devel.{x86_64,i686} mesa-libGLU-devel.{x86_64,i686} \
 libtiff-devel.{x86_64,i686} libxml2-devel libbsd-devel git git-lfs libXcursor-devel \
 libXrandr-devel giflib-devel pulseaudio-libs-devel libxkbfile-devel \
-openssl-devel llvm libcap-devel libavcodec-free-devel libavformat-free-devel \
+openssl-devel llvm llvm-devel libcap-devel libavcodec-free-devel libavformat-free-devel \
 vulkan-loader-devel.{x86_64,i686}
 ```
 
@@ -138,7 +138,7 @@ libjpeg-turbo-devel.{x86_64,i686} fontconfig-devel.{x86_64,i686} libglvnd-devel.
 mesa-libGL-devel.{x86_64,i686} mesa-libEGL-devel.{x86_64,i686} mesa-libGLU-devel.{x86_64,i686} \
 libtiff-devel.{x86_64,i686} libxml2-devel libbsd-devel git git-lfs libXcursor-devel \
 libXrandr-devel giflib-devel pulseaudio-libs-devel libxkbfile-devel \
-openssl-devel llvm libcap-devel libavcodec-free-devel libavformat-free-devel \
+openssl-devel llvm llvm-devel libcap-devel libavcodec-free-devel libavformat-free-devel \
 vulkan-loader-devel.{x86_64,i686}
 ```
 
@@ -153,7 +153,7 @@ libsystemd0 libelf1 cairo-devel libfreetype6 libjpeg-turbo libfontconfig1 libglv
 Mesa-libGL-devel Mesa-libEGL-devel libGLU1 libxml2-tools libbsd-devel git git-lfs \
 libXcursor-devel giflib-devel ffmpeg-4 ffmpeg-4-libavcodec-devel \
 ffmpeg-4-libavformat-devel libpulse-devel pulseaudio-utils libxkbfile-devel openssl \
-llvm libcap-progs libtiff-devel libjpeg8-devel libXrandr-devel dbus-1-devel glu-devel \
+llvm llvm-devel libcap-progs libtiff-devel libjpeg8-devel libXrandr-devel dbus-1-devel glu-devel \
 ffmpeg-4-libswresample-devel vulkan-devel
 ```
 
@@ -166,7 +166,7 @@ Alpine also doesn't support 32-bit builds, so make sure to [disable that](#disab
 sudo apk add bash cmake clang bison flex xz fuse-dev pkgconfig libcap git git-lfs \
 python3 glu-dev cairo-dev mesa-dev tiff-dev freetype-dev libxml2-dev fontconfig-dev \
 libbsd-dev libxrandr-dev libxcursor-dev giflib-dev pulseaudio-dev ffmpeg-dev dbus-dev \
-libxkbfile-dev openssl-dev libexecinfo-dev build-base xdg-user-dirs vulkan-loader-dev
+libxkbfile-dev openssl-dev libexecinfo-dev build-base xdg-user-dirs vulkan-loader-dev llvm-dev
 ```
 
 These are the minimum requirements for building and running Darling on Alpine.
