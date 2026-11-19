@@ -19,7 +19,7 @@ sudo apt install cmake clang-6.0 bison flex xz-utils libfuse-dev libudev-dev pkg
 libc6-dev-i386 libcap2-bin git git-lfs libglu1-mesa-dev libcairo2-dev \
 libgl1-mesa-dev libtiff5-dev libfreetype6-dev libxml2-dev libegl1-mesa-dev libfontconfig1-dev \
 libbsd-dev libxrandr-dev libxcursor-dev libgif-dev libpulse-dev libavformat-dev libavcodec-dev \
-libswresample-dev libdbus-1-dev libxkbfile-dev libssl-dev llvm-dev
+libswresample-dev libdbus-1-dev libxkbfile-dev libssl-dev llvm-dev libvulkan-dev
 ```
 
 **Debian 12**
@@ -29,7 +29,7 @@ sudo apt install cmake clang bison flex xz-utils libfuse-dev libudev-dev pkg-con
 libc6-dev-i386 libcap2-bin git git-lfs libglu1-mesa-dev libcairo2-dev \
 libgl1-mesa-dev libtiff5-dev libfreetype6-dev libxml2-dev libegl1-mesa-dev libfontconfig1-dev \
 libbsd-dev libxrandr-dev libxcursor-dev libgif-dev libpulse-dev libavformat-dev libavcodec-dev \
-libswresample-dev libdbus-1-dev libxkbfile-dev libssl-dev llvm-dev
+libswresample-dev libdbus-1-dev libxkbfile-dev libssl-dev llvm-dev libvulkan-dev
 ```
 
 **Debian 13**
@@ -62,7 +62,7 @@ gcc-multilib libcairo2-dev libgl1-mesa-dev curl libglu1-mesa-dev libtiff5-dev \
 libfreetype6-dev git git-lfs libelf-dev libxml2-dev libegl1-mesa-dev libfontconfig1-dev \
 libbsd-dev libxrandr-dev libxcursor-dev libgif-dev libavutil-dev libpulse-dev \
 libavformat-dev libavcodec-dev libswresample-dev libdbus-1-dev libxkbfile-dev \
-libssl-dev libstdc++-12-dev
+libssl-dev libstdc++-12-dev libvulkan-dev
 ```
 
 **Ubuntu 26.04:**
@@ -73,7 +73,7 @@ gcc-multilib libcairo2-dev libgl1-mesa-dev curl libglu1-mesa-dev libtiff-dev \
 libfreetype6-dev git git-lfs libelf-dev libxml2-dev libegl1-mesa-dev libfontconfig1-dev \
 libbsd-dev libxrandr-dev libxcursor-dev libgif-dev libavutil-dev libpulse-dev \
 libavformat-dev libavcodec-dev libswresample-dev libdbus-1-dev libxkbfile-dev \
-libssl-dev libstdc++-15-dev
+libssl-dev libstdc++-15-dev libvulkan-dev
 ```
 
 **Arch Linux & Manjaro:**
@@ -83,7 +83,8 @@ Install dependencies:
 ```bash
 sudo pacman -S --needed make cmake clang flex bison icu fuse gcc-multilib \
 lib32-gcc-libs pkg-config fontconfig cairo libtiff mesa glu llvm libbsd libxkbfile \
-libxcursor libxext libxkbcommon libxrandr ffmpeg git git-lfs
+libxcursor libxext libxkbcommon libxrandr ffmpeg git git-lfs \
+vulkan-headers vulkan-icd-loader lib32-vulkan-icd-loader
 ```
 
 **RHEL 10**
@@ -95,7 +96,7 @@ sudo dnf install make cmake clang bison dbus-devel flex glibc-devel fuse-devel s
 elfutils-libelf-devel cairo-devel freetype-devel libjpeg-turbo-devel fontconfig-devel libglvnd-devel \
 mesa-libGL-devel mesa-libEGL-devel mesa-libGLU-devel libtiff-devel libxml2-devel git git-lfs \
 libXcursor-devel libXrandr-devel giflib-devel pulseaudio-libs-devel libxkbfile-devel openssl-devel \
-llvm libcap-devel libbsd-devel libfuse-devel ffmpeg-devel
+llvm libcap-devel libbsd-devel libfuse-devel ffmpeg-devel vulkan-loader-devel
 ```
 
 Please note that the 32-bit libraries are no longer available in RHEL 10, and as such you must disable the 32-bit libraries on that platform. See [Disabling 32-bit Libraries](#disabling-32-bit-libraries) for more details.
@@ -109,7 +110,8 @@ libjpeg-turbo-devel.{x86_64,i686} fontconfig-devel.{x86_64,i686} libglvnd-devel.
 mesa-libGL-devel.{x86_64,i686} mesa-libEGL-devel.{x86_64,i686} mesa-libGLU-devel.{x86_64,i686} \
 libtiff-devel.{x86_64,i686} libxml2-devel libbsd-devel git git-lfs libXcursor-devel \
 libXrandr-devel giflib-devel pulseaudio-libs-devel libxkbfile-devel \
-openssl-devel llvm libcap-devel libavcodec-free-devel libavformat-free-devel
+openssl-devel llvm libcap-devel libavcodec-free-devel libavformat-free-devel \
+vulkan-loader-devel.{x86_64,i686}
 ```
 
 **Rocky Linux 9**
@@ -136,7 +138,8 @@ libjpeg-turbo-devel.{x86_64,i686} fontconfig-devel.{x86_64,i686} libglvnd-devel.
 mesa-libGL-devel.{x86_64,i686} mesa-libEGL-devel.{x86_64,i686} mesa-libGLU-devel.{x86_64,i686} \
 libtiff-devel.{x86_64,i686} libxml2-devel libbsd-devel git git-lfs libXcursor-devel \
 libXrandr-devel giflib-devel pulseaudio-libs-devel libxkbfile-devel \
-openssl-devel llvm libcap-devel libavcodec-free-devel libavformat-free-devel
+openssl-devel llvm libcap-devel libavcodec-free-devel libavformat-free-devel \
+vulkan-loader-devel.{x86_64,i686}
 ```
 
 
@@ -151,7 +154,7 @@ Mesa-libGL-devel Mesa-libEGL-devel libGLU1 libxml2-tools libbsd-devel git git-lf
 libXcursor-devel giflib-devel ffmpeg-4 ffmpeg-4-libavcodec-devel \
 ffmpeg-4-libavformat-devel libpulse-devel pulseaudio-utils libxkbfile-devel openssl \
 llvm libcap-progs libtiff-devel libjpeg8-devel libXrandr-devel dbus-1-devel glu-devel \
-ffmpeg-4-libswresample-devel
+ffmpeg-4-libswresample-devel vulkan-devel
 ```
 
 **Alpine Linux**
@@ -163,7 +166,7 @@ Alpine also doesn't support 32-bit builds, so make sure to [disable that](#disab
 sudo apk add bash cmake clang bison flex xz fuse-dev pkgconfig libcap git git-lfs \
 python3 glu-dev cairo-dev mesa-dev tiff-dev freetype-dev libxml2-dev fontconfig-dev \
 libbsd-dev libxrandr-dev libxcursor-dev giflib-dev pulseaudio-dev ffmpeg-dev dbus-dev \
-libxkbfile-dev openssl-dev libexecinfo-dev build-base xdg-user-dirs
+libxkbfile-dev openssl-dev libexecinfo-dev build-base xdg-user-dirs vulkan-loader-dev
 ```
 
 These are the minimum requirements for building and running Darling on Alpine.
