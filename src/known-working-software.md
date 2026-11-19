@@ -1,4 +1,7 @@
 # Known working software
+
+> **Note:** The main source of application compatibility information (what works and what does not) is the [Application Database (AppDB)](https://appdb.darlinghq.org/). The list below is only a small, manually maintained subset.
+
 The following software has been tested to work with Darling:
 
 - Homebrew.

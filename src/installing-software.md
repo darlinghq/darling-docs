@@ -2,6 +2,8 @@
 
 There are multiple ways to install software on macOS, and our aim is to make all of them work on Darling as well. However there currently are a few limitations, mainly the lack of GUI.
 
+To find out whether a particular application is known to work, check the [Application Database (AppDB)](https://appdb.darlinghq.org/), which is the main source of app compatibility information for Darling.
+
 ## You might not even need to install it
 
 [Unlike Wine](https://wiki.winehq.org/FAQ#I_have_lots_of_applications_already_installed_in_Windows._How_do_I_run_them_in_Wine.3F), Darling can run software that's installed on an **existing macOS installation** on the same computer. This is possible thanks to the way application bundles (`.app`-s) work on macOS and Darling.
