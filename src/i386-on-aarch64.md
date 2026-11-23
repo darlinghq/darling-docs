@@ -30,8 +30,7 @@ These are properties of the host and the emulator, not of Darling:
 
 ## Known problems
 
-- With the emulator, the program's threads blocked in `sendto()` to the prefix's syslog socket. Setting `ASL_DISABLE=1` in the program's environment avoids it. The cause is not known.
-- `libdispatch` logs `memorystatus` kevent failures (`Function not implemented`). The program still ran.
+- Programs can block forever in `sendto()` to the prefix's syslog socket (`var/run/syslog`). This also happens without an emulator: native Darling daemons were seen waiting on the same socket in the aarch64 virtual machine used here. In one prefix, seven daemons each logged two `libdispatch` messages at startup: `kevent monitor ... Function not implemented` (the memorystatus kevent) and a `25E246 - 5830 - 0x16` BUG message. That left 14 datagrams unread in the socket, and the limit for a unix datagram queue (`net.unix.max_dgram_qlen`, 10 by default) was exceeded. `_simple_asl_send` in `libplatform` sends with a blocking `sendto()` and no timeout, so later senders blocked. `syslogd` read the whole backlog after part of it was drained from outside and a new datagram arrived. It is not known why it did not read it by itself. Setting `ASL_DISABLE=1` in the program's environment only hides the problem.
 
 ## Status
 
