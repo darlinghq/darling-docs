@@ -11,6 +11,7 @@
   - [Installing software](installing-software.md)
   - [What to try](what-to-try.md)
   - [Common issues](common-issues.md)
+  - [i386 programs on aarch64](i386-on-aarch64.md)
   - [Known working software](known-working-software.md)
   - [Known partially working software](known-partial-software.md)
   - [Known non-functional software](known-nonfunctional-software.md)
